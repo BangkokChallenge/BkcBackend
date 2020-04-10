@@ -1,0 +1,19 @@
+[source,http,options="nowrap"]
+----
+HTTP/1.1 200 OK
+Pragma: no-cache
+Content-Length: 196
+X-XSS-Protection: 1; mode=block
+X-Frame-Options: DENY
+X-Content-Type-Options: nosniff
+Cache-Control: no-store
+Content-Type: application/json;charset=UTF-8
+
+{
+  "access_token" : "2efbc77e-9835-4141-bfe4-224822c64f3b",
+  "token_type" : "bearer",
+  "refresh_token" : "13089036-255a-4ffe-abc9-7f5adab5aa03",
+  "expires_in" : 599,
+  "scope" : "read write"
+}
+----

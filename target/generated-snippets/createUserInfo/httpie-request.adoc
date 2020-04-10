@@ -1,0 +1,15 @@
+[source,bash]
+----
+$ echo '{
+  "qrid" : "InitTEST_QRID",
+  "id" : "InitTEST_KakaoID",
+  "fcmToken" : "InitTEST_FcmToken",
+  "kakaoAccessToken" : "InitTEST_AccessToken",
+  "kakaoRefreshToken" : "InitTEST_RefreshToken",
+  "username" : "InitTEST_Username",
+  "nickname" : "InitTEST_Nickname",
+  "profile_photo" : "InitTEST_ProfileImage",
+  "password" : "1234"
+}' | http POST 'http://localhost:8080/api/userInfo/login/app' \
+    'Content-Type:application/json;charset=UTF-8'
+----

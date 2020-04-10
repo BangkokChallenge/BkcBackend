@@ -1,0 +1,40 @@
+|===
+|Path|Type|Description
+
+|`+qrid+`
+|`+String+`
+|회원 고유 QRCode
+
+|`+id+`
+|`+String+`
+|SNS로그인을 위한 Token id
+
+|`+fcmToken+`
+|`+String+`
+|Fcm Token id
+
+|`+kakaoAccessToken+`
+|`+String+`
+|KaKao AccessToken
+
+|`+kakaoRefreshToken+`
+|`+String+`
+|Kakao RefreshToken
+
+|`+password+`
+|`+String+`
+|회원 password
+
+|`+profile_photo+`
+|`+String+`
+|회원 프로필 사진
+
+|`+nickname+`
+|`+String+`
+|Kakao 닉네임
+
+|`+username+`
+|`+String+`
+|회원 이름
+
+|===

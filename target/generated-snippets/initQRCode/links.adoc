@@ -1,0 +1,16 @@
+|===
+|Relation|Description
+
+|`+self+`
+|현재 링크
+
+|`+getQRCodeInfo+`
+|QRCode[Stamp,Coupon] 정보를 가져오는 링크
+
+|`+updateQRCodeInfo+`
+|QRCode 정보를 업데이트하는 링크
+
+|`+profile+`
+|도큐먼트 링크
+
+|===

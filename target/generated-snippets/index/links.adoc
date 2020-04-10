@@ -1,0 +1,16 @@
+|===
+|Relation|Description
+
+|`+userInfo+`
+|유저정보 API 링크
+
+|`+qrCode+`
+|QrCode API 링크
+
+|`+stamps+`
+|Stamps API 링크
+
+|`+coupon+`
+|Coupon API 링크
+
+|===

@@ -1,0 +1,29 @@
+[source,http,options="nowrap"]
+----
+HTTP/1.1 200 OK
+Pragma: no-cache
+X-XSS-Protection: 1; mode=block
+Expires: 0
+X-Frame-Options: DENY
+X-Content-Type-Options: nosniff
+Content-Type: application/hal+json;charset=UTF-8
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Content-Length: 322
+
+{
+  "_links" : {
+    "coupon" : {
+      "href" : "http://localhost:8080/api/coupons"
+    },
+    "qrCode" : {
+      "href" : "http://localhost:8080/api/qrCode"
+    },
+    "stamps" : {
+      "href" : "http://localhost:8080/api/stamps"
+    },
+    "userInfo" : {
+      "href" : "http://localhost:8080/api/userInfo"
+    }
+  }
+}
+----

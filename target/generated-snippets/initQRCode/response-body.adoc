@@ -1,0 +1,22 @@
+[source,options="nowrap"]
+----
+{
+  "qrid" : "initQRID",
+  "coupon_cnt" : 0,
+  "stamp_cnt" : 0,
+  "_links" : {
+    "self" : {
+      "href" : "http://localhost:8080/api/qrCode"
+    },
+    "getQRCodeInfo" : {
+      "href" : "http://localhost:8080/api/qrCode/initQRID"
+    },
+    "updateQRCodeInfo" : {
+      "href" : "http://localhost:8080/api/qrCode"
+    },
+    "profile" : {
+      "href" : "/docs/index.html#resource-initQRCodeInfo"
+    }
+  }
+}
+----

@@ -1,0 +1,19 @@
+[source,http,options="nowrap"]
+----
+PUT /api/userInfo/InitTEST_Username HTTP/1.1
+Content-Length: 316
+Content-Type: application/json;charset=UTF-8
+Host: localhost:8080
+
+{
+  "qrid" : "InitTEST_Username",
+  "id" : "updated Id",
+  "fcmToken" : "test_fcmToken",
+  "kakaoAccessToken" : "test_kakaoAccessToken",
+  "kakaoRefreshToken" : "test_kakaoRefreshToken",
+  "username" : "test_username",
+  "nickname" : "test_nickname",
+  "profile_photo" : "test_profile_photo",
+  "password" : "1234"
+}
+----

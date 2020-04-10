@@ -1,0 +1,25 @@
+[source,options="nowrap"]
+----
+{
+  "qrid" : "InitTEST_Username",
+  "id" : "login_test_token_id",
+  "fcmToken" : "test_fcmToken",
+  "kakaoAccessToken" : "test_kakaoAccessToken",
+  "kakaoRefreshToken" : "test_kakaoRefreshToken",
+  "serviceAccessToken" : null,
+  "serviceRefreshToken" : null,
+  "username" : "test_username",
+  "nickname" : "test_nickname",
+  "profile_photo" : "test_profile_photo",
+  "password" : "1234",
+  "roles" : [ "USER" ],
+  "_links" : {
+    "self" : {
+      "href" : "http://localhost:8080/api/userInfo"
+    },
+    "profile" : {
+      "href" : "/docs/index.html#resource-getUserInfo"
+    }
+  }
+}
+----

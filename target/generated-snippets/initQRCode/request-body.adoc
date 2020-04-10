@@ -1,0 +1,8 @@
+[source,options="nowrap"]
+----
+{
+  "qrid" : "initQRID",
+  "coupon_cnt" : 0,
+  "stamp_cnt" : 0
+}
+----
