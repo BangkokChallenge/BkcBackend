@@ -1,14 +1,16 @@
 package us.dev.backend.Account;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import org.apache.tomcat.util.json.JSONParser;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.MediaTypes;
 import org.springframework.hateoas.mvc.ControllerLinkBuilder;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.security.oauth2.common.util.Jackson2JsonParser;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.LinkedMultiValueMap;
@@ -24,6 +26,7 @@ import us.dev.backend.configs.RestTemplateLoggingRequestInterceptor;
 import javax.validation.Valid;
 import java.net.URI;
 import java.util.Arrays;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 
@@ -42,7 +45,6 @@ public class AccountController {
     @Autowired
     AccountRepository accountRepository;
 
-
     @Autowired
     AccountService accountService;
 
@@ -52,22 +54,54 @@ public class AccountController {
     @Autowired
     AppProperties appProperties;
 
-    /* 안드로이드 로그인으로 회원정보 생성하여 리턴해주기 */
-    @PostMapping("/login")
-    public ResponseEntity AccountLogin(@RequestBody @Valid AccountDto accountDto, Errors errors) {
-        if(errors.hasErrors()) {
-            return badRequest(errors);
-        }
+
+    /* 로그인으로 회원정보 생성하여 리턴해주기 */
+    @GetMapping("/login/{key}")
+    public ResponseEntity AccountLogin(@PathVariable String key) {
+
+        RestTemplate restTemplate;
+        HttpHeaders headers;
+
+        JsonParser parser = new JsonParser();
+
+
+        headers = new HttpHeaders();
+        headers.set("Authorization", "Bearer "+ key);
+        headers.setContentType(MediaTypes.HAL_JSON);
+
+        HttpEntity<String> entity = new HttpEntity<>(headers);
+
+
+        restTemplate = new RestTemplate();
+        ResponseEntity<String> responseEntity = restTemplate.exchange("https://kapi.kakao.com/v2/user/me", HttpMethod.GET,entity,String.class);
+        restTemplate.setInterceptors(Arrays.asList(new RestTemplateLoggingRequestInterceptor()));
+
+        JsonElement element = parser.parse(responseEntity.getBody());
+        String kakaoId = element.getAsJsonObject().get("id").getAsString();
+        JsonObject kakaoProperties = element.getAsJsonObject().get("properties").getAsJsonObject();
+
+        String kakaoUsername = kakaoProperties.get("nickname").getAsString();
+        String kakaoProfile_image = kakaoProperties.get("profile_image").getAsString();
+
+
 
         /* Dto -> 'UserInfo'로 변환 */
-        Account account = this.modelMapper.map(accountDto,Account.class);
+        Account account = Account.builder()
+                .id(kakaoId)
+                .nickname(kakaoUsername)
+                .profile_photo(kakaoProfile_image)
+                .build();
+
+        //받아오면 여기서 세이브
+
+
+
         account.setRoles(Set.of(AccountRole.USER));
+        account.setPassword("1234");
 
         /* 저장을 한번해야 Oauth2 인증 가능 */
         Account newAccount = this.accountService.saveAccount(account);
 
-        RestTemplate restTemplate;
-        HttpHeaders headers;
 
         /* 자체 Oauth2 인증 */
         headers = new HttpHeaders();
@@ -80,14 +114,15 @@ public class AccountController {
         parameters.add("password","1234");
         HttpEntity<MultiValueMap<String,String>> requestEntity = new HttpEntity<>(parameters,headers);
 
+        Jackson2JsonParser parser2 = new Jackson2JsonParser();
+
         //restTemplate = appConfig.customizeRestTemplate();
         restTemplate = new RestTemplate();
         String response = restTemplate.postForObject("http://127.0.0.1:8080/oauth/token",requestEntity,String.class);
         restTemplate.setInterceptors(Arrays.asList(new RestTemplateLoggingRequestInterceptor()));
 
-        Jackson2JsonParser parser = new Jackson2JsonParser();
-        String getaccess_Token = parser.parseMap(response).get("access_token").toString();
-        String getrefrsh_Token = parser.parseMap(response).get("refresh_token").toString();
+        String getaccess_Token = parser2.parseMap(response).get("access_token").toString();
+        String getrefrsh_Token = parser2.parseMap(response).get("refresh_token").toString();
 
 
         /* Token 제대로 읽었는지 확인 */
@@ -129,7 +164,7 @@ public class AccountController {
         return ResponseEntity.ok(accountResource);
     }
 
-    /* 회원정보 수정 */
+    /* 회원정보 수정 -> 아직 필요 없음 */
     @PutMapping("/{id}")
     public ResponseEntity updateUserInfo(@PathVariable String id, @RequestBody @Valid AccountDto accountDto, Errors errors) {
         Optional<Account> optionalAccountDto = this.accountRepository.findById(id);

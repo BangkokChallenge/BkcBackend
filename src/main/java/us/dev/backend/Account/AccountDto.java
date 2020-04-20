@@ -18,24 +18,12 @@ public class AccountDto {
     @Id
     private String id;
 
-
-    private String fcmToken;
-
-    private String kakaoAccessToken;
-    private String kakaoRefreshToken;
     private String serviceAccessToken;
     private String serviceRefreshToken;
 
-    @NotNull
-    private String username;
     @NotNull
     private String nickname;
     @NotNull
     private String profile_photo;
 
-    private String password;
-
-    @ElementCollection(fetch = FetchType.EAGER)
-    @Enumerated(EnumType.STRING)
-    private Set<AccountRole> roles;
 }

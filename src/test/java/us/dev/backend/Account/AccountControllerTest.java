@@ -34,12 +34,6 @@ public class AccountControllerTest extends BaseControllerTest {
 
         //given
         AccountDto accountDto = AccountDto.builder()
-                .id("TEST_ID")
-                .kakaoAccessToken("TEST_KAT")
-                .kakaoRefreshToken("TEST_KRT")
-                .username("TEST_UN")
-                .profile_photo("TEST_PP")
-                .nickname("TEST_NN")
                 .build();
 
         //when&then

@@ -10,9 +10,9 @@ Cache-Control: no-store
 Content-Type: application/json;charset=UTF-8
 
 {
-  "access_token" : "2efbc77e-9835-4141-bfe4-224822c64f3b",
+  "access_token" : "af610b4b-3852-47cd-b935-5ded3a8efdb2",
   "token_type" : "bearer",
-  "refresh_token" : "13089036-255a-4ffe-abc9-7f5adab5aa03",
+  "refresh_token" : "eb2dabc0-e97c-47bc-964f-320e2ace5d61",
   "expires_in" : 599,
   "scope" : "read write"
 }
