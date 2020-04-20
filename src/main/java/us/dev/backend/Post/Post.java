@@ -19,13 +19,12 @@ public class Post {
     @Id
     Integer post_Index;
 
-    String hashTag[];
+    String hashTag;
     String nickname;
     String profile_photo;
     String article;
     Date writeDate;
 
     String filePath;
-    Integer fileNum;
 
 }

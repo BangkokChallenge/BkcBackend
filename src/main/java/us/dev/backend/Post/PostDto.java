@@ -12,6 +12,8 @@ import javax.persistence.Id;
 @AllArgsConstructor
 @Data
 public class PostDto {
+    String id;
+
     @Id
     Integer post_Index;
 
