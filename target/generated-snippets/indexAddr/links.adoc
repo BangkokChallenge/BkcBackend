@@ -1,7 +1,0 @@
-|===
-|Relation|Description
-
-|`+Account+`
-|유저정보 API 링크
-
-|===
