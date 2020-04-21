@@ -18,7 +18,7 @@ import javax.validation.Valid;
 import java.io.IOException;
 
 @Controller
-@RequestMapping(value = "/api/post", produces = MediaTypes.HAL_JSON_UTF8_VALUE)
+@RequestMapping(value = "/api/post")
 public class PostController {
 
     @Autowired
@@ -46,6 +46,18 @@ public class PostController {
 
 
         return ResponseEntity.ok(errors);
+
+    }
+
+    @PostMapping("/test")
+    public String createPostTest(
+                                     MultipartFile file) throws IOException {
+
+        String filePath = s3Service.upload(file);
+        System.out.println("################");
+
+        return filePath;
+
 
     }
 

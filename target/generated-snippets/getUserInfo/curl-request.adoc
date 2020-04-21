@@ -1,4 +1,0 @@
-[source,bash]
-----
-$ curl 'http://localhost:8080/api/userInfo/InitTEST_Username' -i -X GET
-----

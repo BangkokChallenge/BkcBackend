@@ -47,7 +47,9 @@
  - Deserialize : 역직렬화, Json형태를 객채로 만드는 것.
  - assertThat ( p1, p2) : matcher에 의해 두 인자를 비교함. http://sejong-wiki.appspot.com/assertThat
  - Spring Docs 적용 : http://woowabros.github.io/experience/2018/12/28/spring-rest-docs.html
- - Serialize -> Dto를 타고 밖으로 나가는 Json을 Custom하여 출력하거나 제한할 수 있음.
+ - kakao login -> 자체 login을 내장톰켓으로 진행해야하는 이유 :
+           MockBean으로 등록하여 테스트를 진행하면 127.0.0.1/oauth/token 으로 진입불가.
+           가 아니고 서버켜놓고 테스트 돌리면된다 ^^ㅣ바려나  하 ㅈ 같네 
  
  
  
@@ -89,7 +91,7 @@
  - 해당 테스트 코드로 이동 : Command + Shift + T<br>
  - Select Method to Override/implement : ctrl + O <br>
  - 참고 : https://lalwr.blogspot.com/2018/04/intellij.html
- - 
+ - 8080포트 죽이기 kill $(lsof -t -i:8080) 
    
 
 

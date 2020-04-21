@@ -1,12 +1,13 @@
 package us.dev.backend.configs;
 
 import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import us.dev.backend.common.BaseControllerTest;
 import us.dev.backend.common.TestDescription;
 
-
+@Ignore
 public class JasycriptConfigTest extends BaseControllerTest {
 
     @Autowired

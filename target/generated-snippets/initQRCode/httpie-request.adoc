@@ -1,9 +1,0 @@
-[source,bash]
-----
-$ echo '{
-  "qrid" : "initQRID",
-  "coupon_cnt" : 0,
-  "stamp_cnt" : 0
-}' | http POST 'http://localhost:8080/api/qrCode' \
-    'Content-Type:application/json;charset=UTF-8'
-----

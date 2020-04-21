@@ -36,12 +36,6 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 @RequestMapping(value = "/api/account", produces = MediaTypes.HAL_JSON_UTF8_VALUE)
 public class AccountController {
 
-    private final ModelMapper modelMapper;
-
-    public AccountController(ModelMapper modelMapper) {
-        this.modelMapper = modelMapper;
-    }
-
     @Autowired
     AccountRepository accountRepository;
 
@@ -84,20 +78,14 @@ public class AccountController {
         String kakaoProfile_image = kakaoProperties.get("profile_image").getAsString();
 
 
-
         /* Dto -> 'UserInfo'로 변환 */
         Account account = Account.builder()
                 .id(kakaoId)
+                .password("1234")
+                .roles(Set.of(AccountRole.USER))
                 .nickname(kakaoUsername)
                 .profile_photo(kakaoProfile_image)
                 .build();
-
-        //받아오면 여기서 세이브
-
-
-
-        account.setRoles(Set.of(AccountRole.USER));
-        account.setPassword("1234");
 
         /* 저장을 한번해야 Oauth2 인증 가능 */
         Account newAccount = this.accountService.saveAccount(account);
@@ -180,7 +168,7 @@ public class AccountController {
         //여기서 비즈니스로직 추가하고 에러 확인 함 더 해도됨.
 
         Account existingAccount = optionalAccountDto.get();
-        this.modelMapper.map(accountDto,existingAccount);
+        this.appConfig.modelMapper().map(accountDto,existingAccount);
         Account savedAccount = this.accountRepository.save(existingAccount);
 
         AccountResource accountResource = new AccountResource(savedAccount);
@@ -194,5 +182,6 @@ public class AccountController {
     private ResponseEntity badRequest(Errors errors) {
         return ResponseEntity.badRequest().body(new ErrorsResource(errors));
     }
+
 
 }
