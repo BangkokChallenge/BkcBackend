@@ -4,70 +4,6 @@
     <list default="true" id="29260ba4-250b-4de4-a0a5-c6d7a03a079f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AlcoholMembership.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/demo.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/asciidoc/index.adoc" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/asciidoc/index.adoc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/us/dev/backend/Account/AccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/us/dev/backend/Account/AccountController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/us/dev/backend/configs/ResourceServerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/us/dev/backend/configs/ResourceServerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/us/dev/backend/Account/AccountControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/us/dev/backend/Account/AccountControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/us/dev/backend/configs/AuthServerConfigTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/us/dev/backend/configs/AuthServerConfigTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/us/dev/backend/configs/JasycriptConfigTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/us/dev/backend/configs/JasycriptConfigTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/s3Test.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/us/dev/backend/Account/AccountController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/us/dev/backend/Account/AccountController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/us/dev/backend/configs/ResourceServerConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/us/dev/backend/configs/ResourceServerConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT.jar.original" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/docker/build.timestamp" beforeDir="false" afterPath="$PROJECT_DIR$/target/docker/build.timestamp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/docker/mojunseo49/demo/tmp/docker-build.tar" beforeDir="false" afterPath="$PROJECT_DIR$/target/docker/mojunseo49/demo/tmp/docker-build.tar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-docs/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-docs/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-snippets/createUserInfo/curl-request.adoc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-snippets/createUserInfo/http-request.adoc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-snippets/createUserInfo/http-response.adoc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-snippets/createUserInfo/httpie-request.adoc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-snippets/createUserInfo/links.adoc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-snippets/createUserInfo/request-body.adoc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-snippets/createUserInfo/request-fields.adoc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-snippets/createUserInfo/response-body.adoc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-snippets/createUserInfo/response-fields.adoc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-snippets/getOauthToken/http-response.adoc" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-snippets/getOauthToken/http-response.adoc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-snippets/getOauthToken/response-body.adoc" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-snippets/getOauthToken/response-body.adoc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-snippets/getUserInfo/curl-request.adoc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-snippets/getUserInfo/http-request.adoc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-snippets/getUserInfo/http-response.adoc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-snippets/getUserInfo/httpie-request.adoc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-snippets/getUserInfo/links.adoc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-snippets/getUserInfo/request-body.adoc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-snippets/getUserInfo/response-body.adoc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-snippets/getUserInfo/response-fields.adoc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-snippets/index/curl-request.adoc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-snippets/index/http-request.adoc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-snippets/index/http-response.adoc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-snippets/index/httpie-request.adoc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-snippets/index/links.adoc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-snippets/index/request-body.adoc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-snippets/index/response-body.adoc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-snippets/initQRCode/curl-request.adoc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-snippets/initQRCode/http-request.adoc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-snippets/initQRCode/http-response.adoc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-snippets/initQRCode/httpie-request.adoc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-snippets/initQRCode/links.adoc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-snippets/initQRCode/request-body.adoc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-snippets/initQRCode/request-fields.adoc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-snippets/initQRCode/response-body.adoc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-snippets/initQRCode/response-fields.adoc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-snippets/updateUserInfo/curl-request.adoc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-snippets/updateUserInfo/http-request.adoc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-snippets/updateUserInfo/http-response.adoc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-snippets/updateUserInfo/httpie-request.adoc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-snippets/updateUserInfo/links.adoc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-snippets/updateUserInfo/request-body.adoc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-snippets/updateUserInfo/request-fields.adoc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-snippets/updateUserInfo/response-body.adoc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-snippets/updateUserInfo/response-fields.adoc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/us/dev/backend/Account/AccountControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/us/dev/backend/Account/AccountControllerTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/us/dev/backend/configs/AuthServerConfigTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/us/dev/backend/configs/AuthServerConfigTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/us/dev/backend/configs/JasycriptConfigTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/us/dev/backend/configs/JasycriptConfigTest.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -94,11 +30,20 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="445">
+              <caret line="29" column="21" selection-start-line="29" selection-start-column="21" selection-end-line="29" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="682">
-              <caret line="31" column="8" selection-start-line="31" selection-start-column="8" selection-end-line="31" selection-end-column="8" />
+            <state relative-caret-position="198">
+              <caret line="9" column="5" lean-forward="true" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -448,7 +393,7 @@
       <updated>1586510230639</updated>
       <workItem from="1586510234009" duration="658000" />
       <workItem from="1587022910878" duration="19980000" />
-      <workItem from="1587482141571" duration="4914000" />
+      <workItem from="1587482141571" duration="6348000" />
     </task>
     <servers />
   </component>
@@ -485,7 +430,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25552000" />
+    <option name="totallyTimeSpent" value="26986000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -660,13 +605,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
-          <caret line="29" column="21" selection-start-line="29" selection-start-column="21" selection-end-line="29" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -859,10 +797,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="445">
+          <caret line="29" column="21" selection-start-line="29" selection-start-column="21" selection-end-line="29" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="682">
-          <caret line="31" column="8" selection-start-line="31" selection-start-column="8" selection-end-line="31" selection-end-column="8" />
+        <state relative-caret-position="198">
+          <caret line="9" column="5" lean-forward="true" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
         </state>
       </provider>
     </entry>
