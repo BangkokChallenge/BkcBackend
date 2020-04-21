@@ -19,10 +19,10 @@ import java.io.IOException;
 public class S3Service {
         private AmazonS3 s3Client;
 
-        @Value("${cloud.aws.credentials.accessKey}")
+        @Value("${cloud.aws.credentials.accesskey}")
         private String accessKey;
 
-        @Value("${cloud.aws.credentials.secretKey}")
+        @Value("${cloud.aws.credentials.secretkey}")
         private String secretKey;
 
         @Value("${cloud.aws.s3.bucket}")
@@ -43,6 +43,8 @@ public class S3Service {
 
         public String upload(MultipartFile file) throws IOException {
             String fileName = file.getOriginalFilename();
+
+            System.out.println(fileName);
 
             s3Client.putObject(new PutObjectRequest(bucket, fileName, file.getInputStream(), null)
                     .withCannedAcl(CannedAccessControlList.PublicRead));
