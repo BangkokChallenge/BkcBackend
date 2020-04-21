@@ -2,27 +2,72 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="29260ba4-250b-4de4-a0a5-c6d7a03a079f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_attoparser_attoparser_2_0_5_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_thymeleaf_2_2_6_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_thymeleaf_extras_thymeleaf_extras_java8time_3_0_4_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_thymeleaf_thymeleaf_3_0_11_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_thymeleaf_thymeleaf_spring5_3_0_11_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_unbescape_unbescape_1_1_6_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AlcoholMembership.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/demo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/demo.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/us/dev/backend/Post/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/us/dev/backend/Post/PostController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/us/dev/backend/Post/S3Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/us/dev/backend/Post/S3Service.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/asciidoc/index.adoc" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/asciidoc/index.adoc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/us/dev/backend/Account/AccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/us/dev/backend/Account/AccountController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/us/dev/backend/configs/ResourceServerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/us/dev/backend/configs/ResourceServerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/s3Test.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/application-test.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/application-test.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/s3Test.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/s3Test.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/us/dev/backend/Post/PostController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/us/dev/backend/Post/PostController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/us/dev/backend/Post/S3Service.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/us/dev/backend/Post/S3Service.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/us/dev/backend/Account/AccountControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/us/dev/backend/Account/AccountControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/us/dev/backend/configs/AuthServerConfigTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/us/dev/backend/configs/AuthServerConfigTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/us/dev/backend/configs/JasycriptConfigTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/us/dev/backend/configs/JasycriptConfigTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/s3Test.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/us/dev/backend/Account/AccountController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/us/dev/backend/Account/AccountController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/us/dev/backend/configs/ResourceServerConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/us/dev/backend/configs/ResourceServerConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/application-test.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/application-test.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/demo-0.0.1-SNAPSHOT.jar.original" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/docker/build.timestamp" beforeDir="false" afterPath="$PROJECT_DIR$/target/docker/build.timestamp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/docker/mojunseo49/demo/tmp/docker-build.tar" beforeDir="false" afterPath="$PROJECT_DIR$/target/docker/mojunseo49/demo/tmp/docker-build.tar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-docs/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-docs/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-snippets/createUserInfo/curl-request.adoc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-snippets/createUserInfo/http-request.adoc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-snippets/createUserInfo/http-response.adoc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-snippets/createUserInfo/httpie-request.adoc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-snippets/createUserInfo/links.adoc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-snippets/createUserInfo/request-body.adoc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-snippets/createUserInfo/request-fields.adoc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-snippets/createUserInfo/response-body.adoc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-snippets/createUserInfo/response-fields.adoc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-snippets/getOauthToken/http-response.adoc" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-snippets/getOauthToken/http-response.adoc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-snippets/getOauthToken/response-body.adoc" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-snippets/getOauthToken/response-body.adoc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-snippets/getUserInfo/curl-request.adoc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-snippets/getUserInfo/http-request.adoc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-snippets/getUserInfo/http-response.adoc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-snippets/getUserInfo/httpie-request.adoc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-snippets/getUserInfo/links.adoc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-snippets/getUserInfo/request-body.adoc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-snippets/getUserInfo/response-body.adoc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-snippets/getUserInfo/response-fields.adoc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-snippets/index/curl-request.adoc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-snippets/index/http-request.adoc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-snippets/index/http-response.adoc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-snippets/index/httpie-request.adoc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-snippets/index/links.adoc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-snippets/index/request-body.adoc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-snippets/index/response-body.adoc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-snippets/initQRCode/curl-request.adoc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-snippets/initQRCode/http-request.adoc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-snippets/initQRCode/http-response.adoc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-snippets/initQRCode/httpie-request.adoc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-snippets/initQRCode/links.adoc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-snippets/initQRCode/request-body.adoc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-snippets/initQRCode/request-fields.adoc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-snippets/initQRCode/response-body.adoc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-snippets/initQRCode/response-fields.adoc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-snippets/updateUserInfo/curl-request.adoc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-snippets/updateUserInfo/http-request.adoc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-snippets/updateUserInfo/http-response.adoc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-snippets/updateUserInfo/httpie-request.adoc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-snippets/updateUserInfo/links.adoc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-snippets/updateUserInfo/request-body.adoc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-snippets/updateUserInfo/request-fields.adoc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-snippets/updateUserInfo/response-body.adoc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-snippets/updateUserInfo/response-fields.adoc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/us/dev/backend/Account/AccountControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/us/dev/backend/Account/AccountControllerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/us/dev/backend/configs/AuthServerConfigTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/us/dev/backend/configs/AuthServerConfigTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/us/dev/backend/configs/JasycriptConfigTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/us/dev/backend/configs/JasycriptConfigTest.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -40,92 +85,38 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/us/dev/backend/Account/AccountControllerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-50">
-              <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
+            <state relative-caret-position="120">
+              <caret line="51" column="121" selection-start-line="51" selection-start-column="121" selection-end-line="51" selection-end-column="121" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="464">
-              <caret line="29" column="21" selection-start-line="29" selection-start-column="21" selection-end-line="29" selection-end-column="21" />
+            <state relative-caret-position="682">
+              <caret line="31" column="8" selection-start-line="31" selection-start-column="8" selection-end-line="31" selection-end-column="8" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/us/dev/backend/Post/Post.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/us/dev/backend/Account/AccountController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="27" column="20" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="155">
+              <caret line="108" column="70" selection-start-line="108" selection-start-column="70" selection-end-line="108" selection-end-column="70" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/us/dev/backend/Post/PostDto.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/us/dev/backend/Account/Account.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="431">
-              <caret line="28" column="20" selection-start-line="28" selection-start-column="20" selection-end-line="28" selection-end-column="20" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/us/dev/backend/Account/AccountResource.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="11" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/us/dev/backend/Post/PostController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="331">
-              <caret line="58" column="24" selection-start-line="58" selection-start-column="24" selection-end-line="58" selection-end-column="24" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="118">
-              <caret line="30" column="36" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/us/dev/backend/Post/S3Service.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="44" selection-start-line="44" selection-end-line="44" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/us/dev/backend/configs/ResourceServerConfig.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="37" column="48" selection-start-line="37" selection-start-column="48" selection-end-line="37" selection-end-column="48" />
+            <state relative-caret-position="141">
+              <caret line="17" column="18" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -150,25 +141,31 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/us/dev/backend/Account/Account.java" />
-        <option value="$PROJECT_DIR$/src/main/java/us/dev/backend/Account/AccountDto.java" />
         <option value="$PROJECT_DIR$/src/main/java/us/dev/backend/configs/AppConfig.java" />
-        <option value="$PROJECT_DIR$/src/test/java/us/dev/backend/Account/AccountControllerTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/us/dev/backend/Comment/Comment.java" />
-        <option value="$PROJECT_DIR$/src/main/java/us/dev/backend/Account/AccountService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/us/dev/backend/Account/AccountRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/us/dev/backend/Post/PostRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/us/dev/backend/Post/PostResource.java" />
-        <option value="$PROJECT_DIR$/src/main/java/us/dev/backend/Account/AccountController.java" />
         <option value="$PROJECT_DIR$/src/main/java/us/dev/backend/Post/Post.java" />
         <option value="$PROJECT_DIR$/src/main/java/us/dev/backend/Post/PostDto.java" />
         <option value="$PROJECT_DIR$/src/test/resources/application-test.properties" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/s3Test.html" />
-        <option value="$PROJECT_DIR$/src/main/java/us/dev/backend/configs/ResourceServerConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/us/dev/backend/Post/PostController.java" />
         <option value="$PROJECT_DIR$/src/main/java/us/dev/backend/Post/S3Service.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/us/dev/backend/Account/AccountService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/us/dev/backend/Account/AccountDto.java" />
+        <option value="$PROJECT_DIR$/src/main/java/us/dev/backend/Account/Account.java" />
+        <option value="$PROJECT_DIR$/src/main/java/us/dev/backend/Account/AccountRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/us/dev/backend/configs/ResourceServerConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/us/dev/backend/Account/AccountController.java" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/src/test/java/us/dev/backend/Account/AccountControllerTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/us/dev/backend/configs/JasycriptConfigTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/us/dev/backend/configs/AuthServerConfigTest.java" />
+        <option value="$PROJECT_DIR$/src/main/asciidoc/index.adoc" />
+        <option value="$PROJECT_DIR$/target/generated-docs/index.html" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -178,6 +175,22 @@
         <option name="importAutomatically" value="true" />
       </MavenImportingSettings>
     </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="demo" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="demo" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
   </component>
   <component name="ProjectConfigurationFiles">
     <option name="files">
@@ -195,7 +208,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -279,6 +291,15 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="index" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="demo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BangkokChallenge" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
               <item name="Post" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -299,57 +320,6 @@
               <item name="BangkokChallenge" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="demo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BangkokChallenge" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="demo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BangkokChallenge" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-              <item name="Account" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="demo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BangkokChallenge" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="demo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BangkokChallenge" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-              <item name="configs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="demo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BangkokChallenge" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-              <item name="index" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="demo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BangkokChallenge" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -363,10 +333,24 @@
               <item name="target" type="462c0819:PsiDirectoryNode" />
               <item name="generated-docs" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="demo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BangkokChallenge" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+              <item name="generated-snippets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="demo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BangkokChallenge" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+              <item name="generated-snippets" type="462c0819:PsiDirectoryNode" />
+              <item name="createAccount" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -413,6 +397,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="All in demo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="demo" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="AuthServerConfigTest.getAuthToken" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="demo" />
       <extension name="coverage">
@@ -438,6 +430,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in demo" />
         <item itemvalue="JUnit.AccountControllerTest.createAccount" />
         <item itemvalue="JUnit.AuthServerConfigTest.getAuthToken" />
       </list>
@@ -454,44 +447,52 @@
       <option name="presentableId" value="Default" />
       <updated>1586510230639</updated>
       <workItem from="1586510234009" duration="658000" />
-      <workItem from="1587022910878" duration="15360000" />
+      <workItem from="1587022910878" duration="19980000" />
+      <workItem from="1587482141571" duration="4914000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="AuthServerConfigTest_getAuthToken - 2020.04.10 at 18h 18m 09s.xml">
-      <configuration name="AuthServerConfigTest.getAuthToken" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="AccountControllerTest_createAccount - 2020.04.16 at 16h 43m 08s.xml">
+    <history-entry file="AccountControllerTest_createAccount - 2020.04.22 at 01h 23m 35s.xml">
       <configuration name="AccountControllerTest.createAccount" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AccountControllerTest_createAccount - 2020.04.16 at 16h 44m 40s.xml">
+    <history-entry file="AccountControllerTest_createAccount - 2020.04.22 at 01h 29m 00s.xml">
       <configuration name="AccountControllerTest.createAccount" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AccountControllerTest_createAccount - 2020.04.16 at 16h 45m 33s.xml">
+    <history-entry file="AccountControllerTest_createAccount - 2020.04.22 at 01h 29m 54s.xml">
       <configuration name="AccountControllerTest.createAccount" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AccountControllerTest_createAccount - 2020.04.16 at 16h 58m 55s.xml">
+    <history-entry file="AccountControllerTest_createAccount - 2020.04.22 at 01h 31m 04s.xml">
       <configuration name="AccountControllerTest.createAccount" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AccountControllerTest_createAccount - 2020.04.16 at 17h 00m 43s.xml">
+    <history-entry file="AccountControllerTest_createAccount - 2020.04.22 at 01h 32m 48s.xml">
       <configuration name="AccountControllerTest.createAccount" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AccountControllerTest_createAccount - 2020.04.16 at 17h 05m 45s.xml">
+    <history-entry file="AccountControllerTest_createAccount - 2020.04.22 at 01h 33m 25s.xml">
       <configuration name="AccountControllerTest.createAccount" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AccountControllerTest_createAccount - 2020.04.16 at 17h 07m 24s.xml">
+    <history-entry file="AccountControllerTest_createAccount - 2020.04.22 at 01h 37m 56s.xml">
       <configuration name="AccountControllerTest.createAccount" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="AccountControllerTest_createAccount - 2020.04.22 at 01h 38m 46s.xml">
+      <configuration name="AccountControllerTest.createAccount" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_demo - 2020.04.22 at 01h 40m 08s.xml">
+      <configuration name="All in demo" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_demo - 2020.04.22 at 01h 41m 57s.xml">
+      <configuration name="All in demo" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16018000" />
+    <option name="totallyTimeSpent" value="25552000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21888413" />
+      <window_info id="Persistence" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22174536" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -501,7 +502,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.26506025" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.38072288" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -515,9 +516,9 @@
       <window_info anchor="bottom" id="Database Changes" order="13" />
       <window_info anchor="bottom" id="Version Control" order="14" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.24964234" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Maven" order="3" />
+      <window_info anchor="right" id="Maven" order="3" weight="0.3297568" />
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
       <window_info anchor="right" id="Database" order="6" />
@@ -529,14 +530,11 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/test/java/us/dev/backend/configs/AuthServerConfigTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="28" column="26" selection-start-line="28" selection-start-column="26" selection-end-line="28" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/us/dev/backend/BackendApplication.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="110">
@@ -557,12 +555,6 @@
           <caret column="23" selection-start-column="23" selection-end-column="23" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/demo.iml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AlcoholMembership.iml">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.1.9.RELEASE/spring-web-5.1.9.RELEASE.jar!/org/springframework/http/HttpHeaders.class">
       <provider selected="true" editor-type-id="text-editor">
@@ -589,27 +581,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/us/dev/backend/Account/AccountService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="27" selection-start-line="27" selection-end-line="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/us/dev/backend/Account/Account.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="21" column="38" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/us/dev/backend/Account/AccountRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="8" column="73" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/us/dev/backend/Post/PostRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
@@ -620,27 +591,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/us/dev/backend/Account/AccountDto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/us/dev/backend/Post/Post.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="435">
           <caret line="27" column="20" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/us/dev/backend/Post/PostDto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="431">
-          <caret line="28" column="20" selection-start-line="28" selection-start-column="20" selection-end-line="28" selection-end-column="20" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -664,52 +618,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/us/dev/backend/Account/AccountResource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="11" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/us/dev/backend/Account/AccountController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="46" selection-start-line="46" selection-end-line="46" />
-          <folding>
-            <element signature="method#updateUserInfo#0;class#AccountController#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/us/dev/backend/common/AppProperties.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/us/dev/backend/configs/AppConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="51" column="44" lean-forward="true" selection-start-line="51" selection-start-column="44" selection-end-line="51" selection-end-column="44" />
-          <folding>
-            <element signature="e#2034#2035#0" expanded="true" />
-            <element signature="e#2115#2116#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/s3Test.html" />
     <entry file="file://$PROJECT_DIR$/src/main/java/us/dev/backend/configs/AuthServerConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-810">
+        <state relative-caret-position="-845">
           <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/us/dev/backend/configs/ResourceServerConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="37" column="48" selection-start-line="37" selection-start-column="48" selection-end-line="37" selection-end-column="48" />
         </state>
       </provider>
     </entry>
@@ -723,23 +636,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/s3Test.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="9" column="18" lean-forward="true" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/us/dev/backend/Post/PostController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="58" column="24" selection-start-line="58" selection-start-column="24" selection-end-line="58" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="118">
@@ -747,10 +643,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/us/dev/backend/Account/AccountControllerTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/us/dev/backend/Post/PostController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-50">
-          <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
+        <state relative-caret-position="632">
+          <caret line="58" column="24" selection-start-line="58" selection-start-column="24" selection-end-line="58" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/us/dev/backend/Post/PostDto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="431">
+          <caret line="28" column="20" selection-start-line="28" selection-start-column="20" selection-end-line="28" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -758,6 +667,202 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="464">
           <caret line="29" column="21" selection-start-line="29" selection-start-column="21" selection-end-line="29" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AlcoholMembership.iml" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/us/dev/backend/Account/AccountRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="8" column="72" selection-start-line="8" selection-start-column="66" selection-end-line="8" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/us/dev/backend/Account/AccountDto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="18" column="18" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/us/dev/backend/common/AppProperties.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="123">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demo.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-358">
+          <caret line="15" column="19" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/us/dev/backend/common/BaseControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="254">
+          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/us/dev/backend/configs/AppConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1100">
+          <caret line="72" column="33" selection-start-line="72" selection-start-column="33" selection-end-line="72" selection-end-column="33" />
+          <folding>
+            <element signature="e#2034#2035#0" expanded="true" />
+            <element signature="e#2115#2116#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/us/dev/backend/Account/AccountRole.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/us/dev/backend/Account/AccountService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="295">
+          <caret line="28" column="5" lean-forward="true" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/us/dev/backend/Account/AccountResource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/us/dev/backend/Account/Account.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="141">
+          <caret line="17" column="18" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/us/dev/backend/Account/AccountController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="108" column="70" selection-start-line="108" selection-start-column="70" selection-end-line="108" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="334">
+            <caret line="49" column="28" selection-start-line="49" selection-start-column="28" selection-end-line="49" selection-end-column="28" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/us/dev/backend/common/RestDocsConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/us/dev/backend/configs/JasycriptConfigTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="13" column="32" lean-forward="true" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/us/dev/backend/configs/AuthServerConfigTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="19" column="7" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/us/dev/backend/index/IndexControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="15" column="61" lean-forward="true" selection-start-line="15" selection-start-column="61" selection-end-line="15" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/generated-snippets/createAccount/http-request.adoc">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/us/dev/backend/index/IndexController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/generated-snippets/createAccount/httpie-request.adoc">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/generated-snippets/createAccount/links.adoc">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/generated-snippets/createAccount/request-body.adoc">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/generated-snippets/createAccount/response-fields.adoc">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/generated-snippets/createAccount/http-response.adoc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-54" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/asciidoc/index.adoc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="2" selection-start-column="2" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/generated-docs/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="8" column="23" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/us/dev/backend/configs/ResourceServerConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="37" column="54" selection-start-line="37" selection-start-column="54" selection-end-line="37" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HELP.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="-108" />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/us/dev/backend/Account/AccountControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="51" column="121" selection-start-line="51" selection-start-column="121" selection-end-line="51" selection-end-column="121" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="682">
+          <caret line="31" column="8" selection-start-line="31" selection-start-column="8" selection-end-line="31" selection-end-column="8" />
         </state>
       </provider>
     </entry>

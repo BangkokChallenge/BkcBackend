@@ -1,9 +1,9 @@
 [source,options="nowrap"]
 ----
 {
-  "access_token" : "af610b4b-3852-47cd-b935-5ded3a8efdb2",
+  "access_token" : "4eb3bdf5-9b33-4cd9-a50a-ef3491f4885d",
   "token_type" : "bearer",
-  "refresh_token" : "eb2dabc0-e97c-47bc-964f-320e2ace5d61",
+  "refresh_token" : "c91a6050-4da6-4ede-8fed-48857ff88ae4",
   "expires_in" : 599,
   "scope" : "read write"
 }
