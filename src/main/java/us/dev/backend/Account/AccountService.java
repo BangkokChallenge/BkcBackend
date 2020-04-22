@@ -28,8 +28,6 @@ public class AccountService implements UserDetailsService {
         return this.accountRepository.save(account);
     }
 
-
-
     @Override
     public UserDetails loadUserByUsername(String id) throws UsernameNotFoundException {
         /* input 해당하는 Qrid 찾는다. 없으면 orElseThrow로 Exception을 보기좋게 출력함 */

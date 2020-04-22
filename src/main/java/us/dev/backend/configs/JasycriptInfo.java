@@ -2,6 +2,7 @@ package us.dev.backend.configs;
 
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -9,19 +10,19 @@ import org.springframework.stereotype.Component;
 
 @Component
 @ConfigurationProperties(prefix = "jasycript")
+@NoArgsConstructor
 @Getter @Setter
 public class JasycriptInfo {
-    /*
-        민감 정보를 받아오는 DTO
-        //TODO ClientSecret, ClientId, OauthTokenURL등 숨겨야함. (예정)
-    */
 
-    @Value("${DBPATH}")
+    @Value("${jasycript.db-path}")
     private String dbPath;
 
-    @Value("${DBUSER}")
+    @Value("${jasycript.db-user}")
     private String dbUser;
 
-    @Value("${DBPWD}")
+    @Value("${jasycript.db-pwd}")
     private String dbPwd;
+
+
+
 }

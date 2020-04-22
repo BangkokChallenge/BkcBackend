@@ -131,7 +131,7 @@ public class AccountController {
         URI createdUri = selfLinkBuilder.toUri();
 
         AccountResource accountResource = new AccountResource(newAccount);
-        accountResource.add(linkTo(AccountController.class).withRel("Account"));
+        accountResource.add(linkTo(AccountController.class).withRel("account"));
 
         accountResource.add(new Link("/docs/index.html#resource-createAccount").withRel("profile"));
         return ResponseEntity.created(createdUri).body(accountResource);

@@ -3,6 +3,7 @@ package us.dev.backend.Post;
 import lombok.*;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.Date;
 
@@ -11,12 +12,12 @@ import java.util.Date;
 @NoArgsConstructor
 @Getter
 @Setter
-@EqualsAndHashCode(of = "id")
+@EqualsAndHashCode(of = "post_Index")
 @Entity
 public class Post {
     String id;
 
-    @Id
+    @Id @GeneratedValue
     Integer post_Index;
 
     String hashTag;

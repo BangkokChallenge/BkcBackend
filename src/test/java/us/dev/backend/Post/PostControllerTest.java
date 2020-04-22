@@ -1,41 +1,38 @@
-package us.dev.backend.Account;
+package us.dev.backend.Post;
 
 import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.MediaTypes;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.mock.web.MockMultipartFile;
 import us.dev.backend.common.BaseControllerTest;
 import us.dev.backend.common.TestDescription;
-import us.dev.backend.configs.AppConfig;
 
+import static org.junit.Assert.*;
 import static org.springframework.restdocs.hypermedia.HypermediaDocumentation.linkWithRel;
 import static org.springframework.restdocs.hypermedia.HypermediaDocumentation.links;
+import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.payload.PayloadDocumentation.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 
-public class AccountControllerTest extends BaseControllerTest{
-    /*
-        이부분을 내장톰켓으로 진행해야하는 이유 :
-        MockBean으로 등록하여 테스트를 진행하면 127.0.0.1/oauth/token 으로 진입불가.
-        가 아니고 서버켜놓고 테스트 돌리면된다 ^^ㅣ바려나  하 ㅈ 같네
-     */
-
-    @Autowired
-    AccountService accountService;
-
-    @Autowired
-    AppConfig appConfig;
-
+public class PostControllerTest extends BaseControllerTest {
 
     @Test
-    @TestDescription("카카오/자체Oauth 로그인테스트")
-    public void createAccount() throws Exception {
+    @TestDescription("Post upload 테스트")
+    public void uploadPost() throws Exception {
         //given
 
+        MockMultipartFile file = new MockMultipartFile("file", "hello.txt", MediaType.TEXT_PLAIN_VALUE, "Hello, World!".getBytes());
+        //TODO 파일업로드 테스트 작성해야함.
+        //나눠야할 수도 있음. controller 부분.
         //when&then
-                mockMvc.perform(get("/api/account/login/{key}","dMiixCphdLu5W3_xbLdzwqaLwEGr-TiSTUYMMQo9dRsAAAFxnUcs7g"))
+        mockMvc.perform(post("/api/post/upload")
+                .contentType(MediaType.MULTIPART_FORM_DATA)
+                .content(objectMapper.writeValueAsString(Post)))
                 .andDo(print())
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("id").exists())
@@ -44,6 +41,13 @@ public class AccountControllerTest extends BaseControllerTest{
                                 linkWithRel("self").description("현재 링크"),
                                 linkWithRel("Account").description("Account 링크"),
                                 linkWithRel("profile").description("도큐먼트 링크")
+                        ),
+                        requestFields(
+                                fieldWithPath("name").description("Name of new event"),
+                                fieldWithPath("description").description("Description of new event"),
+                                fieldWithPath("beginEnrollmentDateTime").description("date time of beginEnrollment"),
+                                fieldWithPath("closeEnrollmentDateTime").description("date time of closeEnrollmentDateTime"),
+                                fieldWithPath("beginEventDateTime").description("date time of begin")
                         ),
                         relaxedResponseFields(
                                 fieldWithPath("id").description("Kakao 고유 아이디"),
@@ -61,15 +65,15 @@ public class AccountControllerTest extends BaseControllerTest{
 
 
     @Test
-    @TestDescription("회원정보가져오기 테스트")
-    public void getAccount() throws Exception {
+    @TestDescription("Page List를 불러오는 테스트")
+    public void getPostList() throws Exception {
         //given
-        this.mockMvc.perform(get("/api/account/{id}","TEST_ID"))
+        this.mockMvc.perform(get("/api/post/list"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("id").exists())
+                .andExpect(jsonPath("_embedded").exists())
                 .andExpect(jsonPath("_links.self").exists())
                 .andExpect(jsonPath("_links.profile").exists())
-                .andDo(document("get-an-account"))
+                .andDo(document("get-posts"))
         ;
     }
 

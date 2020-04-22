@@ -17,10 +17,15 @@ import org.springframework.web.client.RestTemplate;
 import us.dev.backend.Account.Account;
 import us.dev.backend.Account.AccountRole;
 import us.dev.backend.Account.AccountService;
+import us.dev.backend.Post.Post;
+import us.dev.backend.Post.PostRepository;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.IntStream;
 
 @Configuration
 public class AppConfig {
@@ -61,6 +66,9 @@ public class AppConfig {
             @Autowired
             AccountService accountService;
 
+            @Autowired
+            PostRepository postRepository;
+
             @Override
             public void run(ApplicationArguments args) throws Exception {
                 Account account = Account.builder()
@@ -72,6 +80,20 @@ public class AppConfig {
                         .roles(Set.of(AccountRole.ADMIN, AccountRole.USER))
                         .build();
                 accountService.saveAccount(account);
+
+
+
+
+                /* test data 여러개 집어넣기 */
+                IntStream.rangeClosed(1, 40).forEach(index ->
+                        postRepository.save(Post.builder()
+                                .id("1234")
+                                .article("TEST")
+                                .filePath("PATHJ")
+                                .profile_photo("#$#$")
+                                .nickname("!#$$#")
+                                .build()));
+
 
             }
         };
