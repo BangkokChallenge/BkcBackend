@@ -5,6 +5,6 @@ import org.springframework.stereotype.Service;
 import us.dev.backend.Account.Account;
 
 @Service
-public interface PostRepository extends JpaRepository<Post, String> {
+public interface PostRepository extends JpaRepository<Post, Integer> {
 
 }
