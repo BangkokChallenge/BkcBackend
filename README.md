@@ -95,7 +95,16 @@
    
 
 
+### git ignore 안먹을 때
+~~~
+git rm --cached .
+git add .
+git commit -m "~~~~"
+git push master  
+~~~
+
 ### Todo
 - Docs적용 :  http://woowabros.github.io/experience/2018/12/28/spring-rest-docs.html
+AWs 키 바꾸기 
     
      
