@@ -2,6 +2,7 @@ package us.dev.backend.Comment;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import us.dev.backend.Post.Post;
 
 import java.util.List;
 
@@ -10,5 +11,6 @@ import java.util.List;
 // 단순히 인터페이스를 생성 후, JpaRepository<Entity 클래스, PK타입> 을 상속하면 기본적인 crud 메소드가 자동으로 생성된다.
 // Entity 클래스와 Entity repository는 함께 위치해야 한다.
 public interface CommentRepository extends JpaRepository<Comment, Long> {
+    List<Comment> findAllByPost(Post post);
 }
 

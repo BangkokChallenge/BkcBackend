@@ -4,6 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RequiredArgsConstructor  // final이 선언된 모든 필드를 인자값으로 하는 생성자를 생성해준다. 그래서 commentService를 사용할 수 있는것!
 @RestController
@@ -11,17 +13,17 @@ public class CommentController {
     private final CommentService commentService;
 
     // 댓글 등록
+    @CrossOrigin(origins = "*")
     @PostMapping("/post/{postId}/comment")
-    public ResponseEntity save(@PathVariable Integer postId,
-                               @RequestBody CommentDto commentDto) {
+    public Comment save(@PathVariable Integer postId, @RequestBody CommentDto commentDto) {
         return commentService.save(postId, commentDto);
     }
 
     // 리스트 조회
-//    @GetMapping("/post/{postId}/comment")
-//    public List<ResponseEntity> findAllComments(@PathVariable Integer postId) {
-//        return commentService.findAllComments(postId);
-//    }
+    @GetMapping("/post/{postId}/comment")
+    public List<Comment> findAllComments(@PathVariable Integer postId) {
+        return commentService.findAllComments(postId);
+    }
 
     // 단건조회
     @GetMapping("/post/{postId}/comment/{commentId}")

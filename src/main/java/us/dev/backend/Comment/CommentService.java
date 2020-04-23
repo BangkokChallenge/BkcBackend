@@ -3,6 +3,9 @@ package us.dev.backend.Comment;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import us.dev.backend.Account.Account;
@@ -22,18 +25,20 @@ public class CommentService {
     private final PostRepository postRepository;
     private final AccountRepository accountRepository;
 
-    @Transactional
-    public ResponseEntity save(Integer postId, CommentDto commentDto) {
-        Post post = postRepository.findById(postId).orElseThrow(() -> new IllegalArgumentException("해당 post가 없습니다. id=" + postId));
-        Account account = accountRepository.findById(commentDto.getAccountId()).orElseThrow(() -> new IllegalArgumentException("해당 post가 없습니다. id=" + postId));
 
+    @Transactional
+    public Comment save(Integer postId, CommentDto commentDto) {
+        Post post = postRepository.findById(postId).orElseThrow(() -> new IllegalArgumentException("해당 post가 없습니다. id=" + postId));
+        Account account = accountRepository.findById(commentDto.getAccountId()).orElseThrow(() -> new IllegalArgumentException("해당 user가 없습니다. id=" + postId));
+
+        String content = commentDto.getContent();
         Comment comment = Comment.builder()
-                .content(commentDto.getContent())
+                .content(content)
                 .post(post)
                 .account(account)
                 .build();
         Comment postedComment = commentRepository.save(comment);
-        return ResponseEntity.ok().body(postedComment);
+        return postedComment;
     }
 
     public ResponseEntity findById(Integer postId, Long commentId) {
@@ -41,10 +46,13 @@ public class CommentService {
         return ResponseEntity.ok().body(comment);
     }
 
-//    @Transactional(readOnly = true)
-//    public List<ResponseEntity> findAllComments(Integer postId) {
-//        return postsRepository.findAllDesc().stream().map(posts -> new PostsListResponseDto(posts)).collect(Collectors.toList());
-//    }
+    @Transactional(readOnly = true)
+    public List<Comment> findAllComments(Integer postId) {
+        Post post = postRepository.findById(postId).orElseThrow(() -> new IllegalArgumentException("해당 post가 없습니다. id=" + postId));
+
+        List<Comment> comments = commentRepository.findAllByPost(post);
+        return comments;
+    }
 
     @Transactional
     public void delete(Integer postId, Long commentId) {
