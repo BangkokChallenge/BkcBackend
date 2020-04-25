@@ -1,0 +1,8 @@
+|===
+|Path|Type|Description
+
+|`+_embedded+`
+|`+Object+`
+|Post 페이지정보들
+
+|===

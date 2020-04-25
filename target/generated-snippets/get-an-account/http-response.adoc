@@ -1,0 +1,31 @@
+[source,http,options="nowrap"]
+----
+HTTP/1.1 200 OK
+Pragma: no-cache
+X-XSS-Protection: 1; mode=block
+Expires: 0
+X-Frame-Options: DENY
+X-Content-Type-Options: nosniff
+Content-Type: application/hal+json;charset=UTF-8
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Content-Length: 477
+
+{
+  "id" : "TEST_ID",
+  "fcmToken" : "TEST_FCM",
+  "serviceAccessToken" : null,
+  "serviceRefreshToken" : null,
+  "nickname" : "TEST_NICKNAME",
+  "profile_photo" : "TEST_PROFILEPT",
+  "password" : "{bcrypt}$2a$10$0FpLKgV.7SFkEeULyar9H..b2JTxdD8vR5oAn9DdgI1/ae3aCaylq",
+  "roles" : [ "USER", "ADMIN" ],
+  "_links" : {
+    "self" : {
+      "href" : "http://localhost:8080/api/account"
+    },
+    "profile" : {
+      "href" : "/docs/index.html#resource-getAccountInfo"
+    }
+  }
+}
+----

@@ -1,0 +1,40 @@
+|===
+|Path|Type|Description
+
+|`+createdAt+`
+|`+String+`
+|Post 생성 날짜
+
+|`+modifiedAt+`
+|`+String+`
+|Post 수정 날짜
+
+|`+userId+`
+|`+String+`
+|사용자 id
+
+|`+id+`
+|`+Number+`
+|Post id
+
+|`+hashTag+`
+|`+Null+`
+|Hash Tage
+
+|`+filePath+`
+|`+String+`
+|file path
+
+|`+selfLike+`
+|`+Boolean+`
+|좋아요 여부
+
+|`+commentCount+`
+|`+Number+`
+|댓글 수
+
+|`+likeCount+`
+|`+Number+`
+|좋아요 수
+
+|===

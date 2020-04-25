@@ -1,0 +1,4 @@
+[source,bash]
+----
+$ curl 'http://localhost:8080/api/account/login/5RYvBNZQohrsXe3Yfa2cD8ki8AJZtswC2kSwuwo9c04AAAFxplmXIA' -i -X GET
+----

@@ -1,0 +1,8 @@
+|===
+|Path|Type|Description
+
+|`+article+`
+|`+String+`
+|Name of new event
+
+|===

@@ -1,0 +1,12 @@
+[source,bash]
+----
+$ curl 'http://localhost:8080/api/post/upload' -i -X POST \
+    -H 'Content-Type: application/json;charset=UTF-8' \
+    -H 'Authorization: Bearer 1a581763-b550-4ba1-b27f-ccdf51e4aa04' \
+    -F 'file=@hello.txt;type=text/plain' \
+    -d '{
+  "id" : 11,
+  "article" : "TEST",
+  "selfLike" : false
+}'
+----

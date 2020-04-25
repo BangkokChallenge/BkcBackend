@@ -1,0 +1,221 @@
+[source,http,options="nowrap"]
+----
+HTTP/1.1 200 OK
+Content-Length: 5280
+Pragma: no-cache
+X-XSS-Protection: 1; mode=block
+Expires: 0
+X-Frame-Options: DENY
+X-Content-Type-Options: nosniff
+Content-Type: application/hal+json;charset=UTF-8
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+
+{
+  "_embedded" : {
+    "postList" : [ {
+      "createdAt" : "2020-04-25T17:51:02.226135",
+      "modifiedAt" : "2020-04-25T17:51:02.226135",
+      "userId" : null,
+      "id" : 1,
+      "hashTag" : null,
+      "nickname" : "!#$$#",
+      "profile_photo" : "#$#$",
+      "selfLike" : false,
+      "commentCount" : 0,
+      "likeCount" : 0,
+      "article" : "TEST",
+      "filePath" : "PATHJ",
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/api/post"
+        }
+      }
+    }, {
+      "createdAt" : "2020-04-25T17:51:02.257661",
+      "modifiedAt" : "2020-04-25T17:51:02.257661",
+      "userId" : null,
+      "id" : 2,
+      "hashTag" : null,
+      "nickname" : "!#$$#",
+      "profile_photo" : "#$#$",
+      "selfLike" : false,
+      "commentCount" : 0,
+      "likeCount" : 0,
+      "article" : "TEST",
+      "filePath" : "PATHJ",
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/api/post"
+        }
+      }
+    }, {
+      "createdAt" : "2020-04-25T17:51:02.26718",
+      "modifiedAt" : "2020-04-25T17:51:02.26718",
+      "userId" : null,
+      "id" : 3,
+      "hashTag" : null,
+      "nickname" : "!#$$#",
+      "profile_photo" : "#$#$",
+      "selfLike" : false,
+      "commentCount" : 0,
+      "likeCount" : 0,
+      "article" : "TEST",
+      "filePath" : "PATHJ",
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/api/post"
+        }
+      }
+    }, {
+      "createdAt" : "2020-04-25T17:51:02.276878",
+      "modifiedAt" : "2020-04-25T17:51:02.276878",
+      "userId" : null,
+      "id" : 4,
+      "hashTag" : null,
+      "nickname" : "!#$$#",
+      "profile_photo" : "#$#$",
+      "selfLike" : false,
+      "commentCount" : 0,
+      "likeCount" : 0,
+      "article" : "TEST",
+      "filePath" : "PATHJ",
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/api/post"
+        }
+      }
+    }, {
+      "createdAt" : "2020-04-25T17:51:02.286004",
+      "modifiedAt" : "2020-04-25T17:51:02.286004",
+      "userId" : null,
+      "id" : 5,
+      "hashTag" : null,
+      "nickname" : "!#$$#",
+      "profile_photo" : "#$#$",
+      "selfLike" : false,
+      "commentCount" : 0,
+      "likeCount" : 0,
+      "article" : "TEST",
+      "filePath" : "PATHJ",
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/api/post"
+        }
+      }
+    }, {
+      "createdAt" : "2020-04-25T17:51:02.29566",
+      "modifiedAt" : "2020-04-25T17:51:02.29566",
+      "userId" : null,
+      "id" : 6,
+      "hashTag" : null,
+      "nickname" : "!#$$#",
+      "profile_photo" : "#$#$",
+      "selfLike" : false,
+      "commentCount" : 0,
+      "likeCount" : 0,
+      "article" : "TEST",
+      "filePath" : "PATHJ",
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/api/post"
+        }
+      }
+    }, {
+      "createdAt" : "2020-04-25T17:51:02.310846",
+      "modifiedAt" : "2020-04-25T17:51:02.310846",
+      "userId" : null,
+      "id" : 7,
+      "hashTag" : null,
+      "nickname" : "!#$$#",
+      "profile_photo" : "#$#$",
+      "selfLike" : false,
+      "commentCount" : 0,
+      "likeCount" : 0,
+      "article" : "TEST",
+      "filePath" : "PATHJ",
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/api/post"
+        }
+      }
+    }, {
+      "createdAt" : "2020-04-25T17:51:02.327621",
+      "modifiedAt" : "2020-04-25T17:51:02.327621",
+      "userId" : null,
+      "id" : 8,
+      "hashTag" : null,
+      "nickname" : "!#$$#",
+      "profile_photo" : "#$#$",
+      "selfLike" : false,
+      "commentCount" : 0,
+      "likeCount" : 0,
+      "article" : "TEST",
+      "filePath" : "PATHJ",
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/api/post"
+        }
+      }
+    }, {
+      "createdAt" : "2020-04-25T17:51:02.341585",
+      "modifiedAt" : "2020-04-25T17:51:02.341585",
+      "userId" : null,
+      "id" : 9,
+      "hashTag" : null,
+      "nickname" : "!#$$#",
+      "profile_photo" : "#$#$",
+      "selfLike" : false,
+      "commentCount" : 0,
+      "likeCount" : 0,
+      "article" : "TEST",
+      "filePath" : "PATHJ",
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/api/post"
+        }
+      }
+    }, {
+      "createdAt" : "2020-04-25T17:51:02.355588",
+      "modifiedAt" : "2020-04-25T17:51:02.355588",
+      "userId" : null,
+      "id" : 10,
+      "hashTag" : null,
+      "nickname" : "!#$$#",
+      "profile_photo" : "#$#$",
+      "selfLike" : false,
+      "commentCount" : 0,
+      "likeCount" : 0,
+      "article" : "TEST",
+      "filePath" : "PATHJ",
+      "_links" : {
+        "self" : {
+          "href" : "http://localhost:8080/api/post"
+        }
+      }
+    } ]
+  },
+  "_links" : {
+    "first" : {
+      "href" : "http://localhost:8080/api/post?page=0&size=10"
+    },
+    "self" : {
+      "href" : "http://localhost:8080/api/post?page=0&size=10"
+    },
+    "next" : {
+      "href" : "http://localhost:8080/api/post?page=1&size=10"
+    },
+    "last" : {
+      "href" : "http://localhost:8080/api/post?page=1&size=10"
+    },
+    "profile" : {
+      "href" : "/docs/index.html#resource-post-list"
+    }
+  },
+  "page" : {
+    "size" : 10,
+    "totalElements" : 11,
+    "totalPages" : 2,
+    "number" : 0
+  }
+}
+----

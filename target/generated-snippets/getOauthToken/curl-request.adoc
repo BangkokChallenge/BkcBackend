@@ -1,0 +1,5 @@
+[source,bash]
+----
+$ curl 'http://localhost:8080/oauth/token' -i -u 'membership:skuniv' -X POST \
+    -d 'username=TEST_ID&password=TEST_PWD&grant_type=password'
+----

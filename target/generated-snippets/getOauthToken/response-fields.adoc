@@ -1,0 +1,24 @@
+|===
+|Path|Type|Description
+
+|`+access_token+`
+|`+String+`
+|접근 Token
+
+|`+token_type+`
+|`+String+`
+|Token Type
+
+|`+refresh_token+`
+|`+String+`
+|갱신 Token
+
+|`+expires_in+`
+|`+Number+`
+|Token 유지 시간
+
+|`+scope+`
+|`+String+`
+|권한 범위
+
+|===
