@@ -9,25 +9,26 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.MediaTypes;
+import org.springframework.hateoas.mvc.ControllerLinkBuilder;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import us.dev.backend.Account.Account;
-import us.dev.backend.Account.AccountDto;
-import us.dev.backend.Account.AccountRepository;
-import us.dev.backend.Account.AccountService;
+import us.dev.backend.Account.*;
+import us.dev.backend.Comment.CommentRepository;
 import us.dev.backend.common.ErrorsResource;
 import us.dev.backend.configs.AppConfig;
 
 import javax.validation.Valid;
 import java.io.IOException;
+import java.net.URI;
 import java.util.Optional;
+
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 
 @Controller
 @RequestMapping(value = "/api/post")
@@ -43,47 +44,81 @@ public class PostController {
     AccountRepository accountRepository;
 
     @Autowired
+    CommentRepository commentRepository;
+
+    @Autowired
     S3Service s3Service;
 
     @Autowired
     AppConfig appConfig;
 
     @PostMapping("/upload")
-    public ResponseEntity createPost(@RequestBody @Valid PostDto postDto, Errors errors,
-                                      MultipartFile file) throws IOException {
-        if(errors.hasErrors()) {
-            return badRequest(errors);
-        }
+    public ResponseEntity createPost(PostDto postDto, MultipartFile file,
+                                       Authentication authentication) throws IOException {
+        String filePath = s3Service.upload(file);
 
-        Optional<Account> optionalAccount = this.accountRepository.findById(postDto.id);
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        Optional<Account> optionalAccount = this.accountRepository.findById(userDetails.getUsername());
         if(optionalAccount.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
         Account newAccount = optionalAccount.get();
 
-        String filePath = s3Service.upload(file);
+        System.out.println(filePath);
+
         Post post = this.appConfig.modelMapper().map(postDto, Post.class);
-        post.setId(newAccount.getId());
+        post.setUserId(newAccount.getId());
         post.setNickname(newAccount.getNickname());
         post.setProfile_photo(newAccount.getNickname());
         post.setFilePath(filePath);
 
+        long commentCount = commentRepository.countByPost(post.id);
+        long likeCount = 0;
+
+        post.setCommentCount(commentCount);
+
 
         Post newPost = postRepository.save(post);
 
-        return ResponseEntity.ok().body(newPost);
+        ControllerLinkBuilder selfLinkBuilder = linkTo(PostController.class).slash("/upload");
+        URI createdUri = selfLinkBuilder.toUri();
+
+        PostResource postResource = new PostResource(newPost);
+        postResource.add(new Link("/docs/index.html#resource-createPost").withRel("profile"));
+
+        return ResponseEntity.created(createdUri).body(postResource);
 
     }
 
-    @GetMapping("/list")
-    public ResponseEntity list(@PageableDefault Pageable pageable, PagedResourcesAssembler<Post> assembler) {
+    @GetMapping("/")
+    public ResponseEntity getPosts(@PageableDefault Pageable pageable, PagedResourcesAssembler<Post> assembler) {//Authentication authentication {
         Page<Post> postList = this.postRepository.findAll(pageable);
-        var pagedResources = assembler.toResource(postList, e-> new PostResource(e));
 
+        var pagedResources = assembler.toResource(postList, e-> new PostResource(e));
         pagedResources.add(new Link("/docs/index.html#resource-post-list").withRel("profile"));
 
 
         return ResponseEntity.ok(pagedResources);
+    }
+
+    @PutMapping("/changeLS/{id}")
+    public ResponseEntity changeLikeStatus(@PathVariable Integer id) {
+
+        Optional<Post> optionalPost = postRepository.findById(id);
+        Post getPost = optionalPost.get();
+        if(getPost.selfLike) {
+            getPost.setSelfLike(false);
+        }
+        else if(getPost.selfLike) {
+            getPost.setSelfLike(true);
+        }
+
+        Post newPost = postRepository.save(getPost);
+
+        PostResource postResource = new PostResource(newPost);
+        postResource.add(new Link("/docs/index.html#resource-changeLikeStatus").withRel("profile"));
+
+        return ResponseEntity.ok(newPost);
     }
 
 

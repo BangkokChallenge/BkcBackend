@@ -74,7 +74,6 @@ public class AppConfig {
                 Account account = Account.builder()
                         .id("TEST_ID")
                         .password("TEST_PWD")
-                        .fcmToken("TEST_FCM")
                         .nickname("TEST_NICKNAME")
                         .profile_photo("TEST_PROFILEPT")
                         .roles(Set.of(AccountRole.ADMIN, AccountRole.USER))
@@ -87,7 +86,7 @@ public class AppConfig {
                 /* test data 여러개 집어넣기 */
                 IntStream.rangeClosed(1, 40).forEach(index ->
                         postRepository.save(Post.builder()
-                                .id("1234")
+                                .id(11)
                                 .article("TEST")
                                 .filePath("PATHJ")
                                 .profile_photo("#$#$")

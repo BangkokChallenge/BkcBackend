@@ -1,31 +1,27 @@
 package us.dev.backend.Post;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.Id;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 public class PostDto {
-    String id;
 
     @Id
-    Integer post_Index;
+    Integer id;
 
     String article;
-    String hasgTag[];
-    String file;
 
-    Integer likeNum;
     boolean selfLike;
-    Integer commentNum;
-
-    String filePath;
-    Integer fileNum;
 
 }

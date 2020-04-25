@@ -35,14 +35,14 @@ public class AccountControllerTest extends BaseControllerTest{
         //given
 
         //when&then
-                mockMvc.perform(get("/api/account/login/{key}","dMiixCphdLu5W3_xbLdzwqaLwEGr-TiSTUYMMQo9dRsAAAFxnUcs7g"))
+                mockMvc.perform(get("/api/account/login/{key}","5RYvBNZQohrsXe3Yfa2cD8ki8AJZtswC2kSwuwo9c04AAAFxplmXIA"))
                 .andDo(print())
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("id").exists())
                 .andDo(document("createAccount",
                         links(
                                 linkWithRel("self").description("현재 링크"),
-                                linkWithRel("Account").description("Account 링크"),
+                                linkWithRel("account").description("Account 링크"),
                                 linkWithRel("profile").description("도큐먼트 링크")
                         ),
                         relaxedResponseFields(

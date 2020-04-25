@@ -1,10 +1,13 @@
 package us.dev.backend.Post;
 
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
+import us.dev.backend.common.BaseTimeEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.Min;
 import java.util.Date;
 
 @Builder
@@ -12,19 +15,26 @@ import java.util.Date;
 @NoArgsConstructor
 @Getter
 @Setter
-@EqualsAndHashCode(of = "post_Index")
+@EqualsAndHashCode(callSuper = false)
 @Entity
-public class Post {
-    String id;
+public class Post extends BaseTimeEntity {
+    String userId;
 
     @Id @GeneratedValue
-    Integer post_Index;
+    Integer id;
 
     String hashTag;
+
     String nickname;
     String profile_photo;
+
+    boolean selfLike;
+
+    @Min(0)
+    long commentCount;
+    long likeCount;
+
     String article;
-    Date writeDate;
 
     String filePath;
 

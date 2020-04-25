@@ -127,7 +127,7 @@ public class AccountController {
 
 
         /* HATEOUS */
-        ControllerLinkBuilder selfLinkBuilder = linkTo(AccountController.class).slash("/login/app");
+        ControllerLinkBuilder selfLinkBuilder = linkTo(AccountController.class).slash("/login/{key}");
         URI createdUri = selfLinkBuilder.toUri();
 
         AccountResource accountResource = new AccountResource(newAccount);
@@ -148,7 +148,7 @@ public class AccountController {
 
         Account account = optionalAccount.get();
         AccountResource accountResource = new AccountResource(account);
-        accountResource.add(new Link("/docs/index.html#resource-getAccountInfo").withRel("profile"));
+        accountResource.add(new Link("/docs/index.html#resource-getAccount").withRel("profile"));
         return ResponseEntity.ok(accountResource);
     }
 

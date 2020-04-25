@@ -30,7 +30,7 @@ public class AccountService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String id) throws UsernameNotFoundException {
-        /* input 해당하는 Qrid 찾는다. 없으면 orElseThrow로 Exception을 보기좋게 출력함 */
+        /* input 해당하는 id 찾는다. 없으면 orElseThrow로 Exception을 보기좋게 출력함 */
         Account account = accountRepository.findById(id)
                 .orElseThrow(()->new UsernameNotFoundException(id));
 

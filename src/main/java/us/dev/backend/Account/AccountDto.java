@@ -18,8 +18,6 @@ public class AccountDto {
     @Id
     private String id;
 
-    private String serviceAccessToken;
-    private String serviceRefreshToken;
 
     @NotNull
     private String nickname;

@@ -12,5 +12,7 @@ import java.util.List;
 // Entity 클래스와 Entity repository는 함께 위치해야 한다.
 public interface CommentRepository extends JpaRepository<Comment, Long> {
     List<Comment> findAllByPost(Post post);
+
+    long countByPost(Integer postId);
 }
 
