@@ -1,0 +1,8 @@
+|===
+|Path|Type|Description
+
+|`+key+`
+|`+String+`
+|KaKao Access Key
+
+|===

@@ -1,0 +1,7 @@
+[source,http,options="nowrap"]
+----
+GET /api/account/TDD_TEMP_ID HTTP/1.1
+Host: localhost:8080
+Authorization: Bearer bda27d25-1e67-4eef-89c5-2d4aac9b0d28
+
+----
