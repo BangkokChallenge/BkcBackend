@@ -1,4 +1,8 @@
 [source,bash]
 ----
-$ curl 'http://localhost:8080/api/account/login/5RYvBNZQohrsXe3Yfa2cD8ki8AJZtswC2kSwuwo9c04AAAFxplmXIA' -i -X GET
+$ curl 'http://localhost:8080/api/account/login' -i -X POST \
+    -H 'Content-Type: application/json;charset=UTF-8' \
+    -d '{
+  "key" : "Bs0WZW_TdjWQ5FV5T8FF8J_JqX4Ak2Dgmnu3Jgo9dVwAAAFxu5lOxg"
+}'
 ----

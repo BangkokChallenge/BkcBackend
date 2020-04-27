@@ -50,8 +50,10 @@ public class AccountController {
 
 
     /* 로그인으로 회원정보 생성하여 리턴해주기 */
-    @GetMapping("/login/{key}")
-    public ResponseEntity AccountLogin(@PathVariable String key) {
+    @PostMapping("/login")
+    public ResponseEntity AccountLogin(@RequestBody AccountDtoKey accountDtoKey) {
+
+        String key = accountDtoKey.getKey();
 
         RestTemplate restTemplate;
         HttpHeaders headers;
@@ -140,7 +142,7 @@ public class AccountController {
 
     /* 회원정보 가져오기 */
     @GetMapping("/{id}")
-    public ResponseEntity getAccountInfo(@PathVariable String id) {
+    public ResponseEntity getAccountInfo(@PathVariable String id) throws Exception{
         Optional<Account> optionalAccount = this.accountRepository.findById(id);
         if(optionalAccount.isEmpty()) {
             return ResponseEntity.notFound().build();

@@ -40,18 +40,7 @@ public class PostControllerTest extends BaseControllerTest {
     @Autowired
     AccountService accountService;
 
-    @Before
-    public void createTddAccount() {
-        Account account = Account.builder()
-                .id("TDD_TEMP_ID")
-                .password("1234")
-                .nickname("TDD_NICKNAME")
-                .roles(Set.of(AccountRole.USER))
-                .profile_photo("TDD_PHOTO")
-                .build();
 
-        accountService.saveAccount(account);
-    }
 
     @Test
     @TestDescription("Post upload 테스트")
@@ -115,31 +104,22 @@ public class PostControllerTest extends BaseControllerTest {
                         linkWithRel("last").description("마지막 페이지 링크")
                         ),
                         relaxedResponseFields(
-                                fieldWithPath("_embedded").description("Post 페이지정보들")
+                                fieldWithPath("_embedded").description("Post 페이지정보들[기본리턴속성임]"),
+                                fieldWithPath("_embedded.postList[0].userId").description("작성자 Kakao ID"),
+                                fieldWithPath("_embedded.postList[0].nickname").description("작성자 Kakao Nickname"),
+                                fieldWithPath("_embedded.postList[0].profile_photo").description("작성자 KaKao Profile Photo"),
+                                fieldWithPath("_embedded.postList[0].id").description("Post ID"),
+                                fieldWithPath("_embedded.postList[0].hashTag").description("Post HashTag"),
+                                fieldWithPath("_embedded.postList[0].selfLike").description("작성자가 해당 Post에 좋아요를 눌렀는지 여부"),
+                                fieldWithPath("_embedded.postList[0].commentCount").description("댓글 수 "),
+                                fieldWithPath("_embedded.postList[0].likeCount").description("좋아요 수 "),
+                                fieldWithPath("_embedded.postList[0].article").description("Post 내용"),
+                                fieldWithPath("_embedded.postList[0].filePath").description("S3 image file path"),
+                                fieldWithPath("page").description("Paging 정보들")
+
                         )
-                        ))
+                ))
         ;
     }
-
-    private String getBearerToken() throws Exception {
-        return "Bearer " + getAccessToken();
-    }
-
-    public String getAccessToken() throws Exception{
-        ResultActions perform = this.mockMvc.perform(post("/oauth/token")
-                .with(httpBasic(appProperties.getClientId(),appProperties.getClientSecret())) //basic Auth 라는 header를 만듦.
-                .param("username","TDD_TEMP_ID")
-                .param("password","1234")
-                .param("grant_type","password"))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("access_token").exists()
-                );
-
-        var responseBody = perform.andReturn().getResponse().getContentAsString();
-        Jackson2JsonParser parser = new Jackson2JsonParser();
-        return parser.parseMap(responseBody).get("access_token").toString();
-    }
-
 
 }

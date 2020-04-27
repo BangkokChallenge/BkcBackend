@@ -90,17 +90,19 @@ public class PostController {
 
     }
 
-    @GetMapping("/")
+    @GetMapping
     public ResponseEntity getPosts(@PageableDefault Pageable pageable, PagedResourcesAssembler<Post> assembler) {//Authentication authentication {
         Page<Post> postList = this.postRepository.findAll(pageable);
 
-        var pagedResources = assembler.toResource(postList, e-> new PostResource(e));
+        var pagedResources = assembler.toResource(postList);
         pagedResources.add(new Link("/docs/index.html#resource-post-list").withRel("profile"));
 
 
         return ResponseEntity.ok(pagedResources);
     }
 
+
+    //TODO
     @PutMapping("/changeLS/{id}")
     public ResponseEntity changeLikeStatus(@PathVariable Integer id) {
 

@@ -2,6 +2,8 @@ package us.dev.backend.Account;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import us.dev.backend.common.BaseControllerTest;
 import us.dev.backend.common.TestDescription;
 import us.dev.backend.configs.AppConfig;
@@ -33,9 +35,14 @@ public class AccountControllerTest extends BaseControllerTest{
     @TestDescription("카카오/자체Oauth 로그인테스트")
     public void createAccount() throws Exception {
         //given
+        AccountDtoKey accountDtoKey = AccountDtoKey.builder()
+                .key("Bs0WZW_TdjWQ5FV5T8FF8J_JqX4Ak2Dgmnu3Jgo9dVwAAAFxu5lOxg")
+                .build();
 
         //when&then
-                mockMvc.perform(get("/api/account/login/{key}","5RYvBNZQohrsXe3Yfa2cD8ki8AJZtswC2kSwuwo9c04AAAFxplmXIA"))
+                mockMvc.perform(post("/api/account/login")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(accountDtoKey)))
                 .andDo(print())
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("id").exists())
@@ -45,15 +52,18 @@ public class AccountControllerTest extends BaseControllerTest{
                                 linkWithRel("account").description("Account 링크"),
                                 linkWithRel("profile").description("도큐먼트 링크")
                         ),
+                        relaxedRequestFields(
+                                fieldWithPath("key").description("KaKao Access Key")
+                        ),
                         relaxedResponseFields(
                                 fieldWithPath("id").description("Kakao 고유 아이디"),
-                                fieldWithPath("fcmToken").description("kakao FCM Token"),
                                 fieldWithPath("serviceAccessToken").description("자체 Service Access Token"),
                                 fieldWithPath("serviceRefreshToken").description("자체 Service Refresh Token"),
                                 fieldWithPath("password").description("내부 Security Value, 고정값:1234"),
                                 fieldWithPath("profile_photo").description("KaKao 회원 프로필 사진"),
                                 fieldWithPath("nickname").description("Kakao 닉네임"),
-                                fieldWithPath("roles").description("회원 권한")
+                                fieldWithPath("roles").description("회원 권한"),
+                                fieldWithPath("createdAt").description("가입 시간")
                         )
                 ))
         ;
@@ -64,12 +74,27 @@ public class AccountControllerTest extends BaseControllerTest{
     @TestDescription("회원정보가져오기 테스트")
     public void getAccount() throws Exception {
         //given
-        this.mockMvc.perform(get("/api/account/{id}","TEST_ID"))
+        this.mockMvc.perform(get("/api/account/{id}","TDD_TEMP_ID")
+                .header(HttpHeaders.AUTHORIZATION, getBearerToken()))
+                .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("id").exists())
-                .andExpect(jsonPath("_links.self").exists())
-                .andExpect(jsonPath("_links.profile").exists())
-                .andDo(document("get-an-account"))
+                .andDo(document("getAccount",
+                        links(
+                                linkWithRel("self").description("현재 링크"),
+                                linkWithRel("profile").description("도큐먼트 링크")
+                        ),
+                        relaxedResponseFields(
+                                fieldWithPath("id").description("Kakao 고유 아이디"),
+                                fieldWithPath("serviceAccessToken").description("자체 Service Access Token"),
+                                fieldWithPath("serviceRefreshToken").description("자체 Service Refresh Token"),
+                                fieldWithPath("password").description("내부 Security Value, 고정값:1234"),
+                                fieldWithPath("profile_photo").description("KaKao 회원 프로필 사진"),
+                                fieldWithPath("nickname").description("Kakao 닉네임"),
+                                fieldWithPath("roles").description("회원 권한"),
+                                fieldWithPath("createdAt").description("가입 시간")
+                        ))
+                )
         ;
     }
 

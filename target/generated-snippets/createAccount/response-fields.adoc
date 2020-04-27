@@ -5,10 +5,6 @@
 |`+String+`
 |Kakao 고유 아이디
 
-|`+fcmToken+`
-|`+Null+`
-|kakao FCM Token
-
 |`+serviceAccessToken+`
 |`+String+`
 |자체 Service Access Token
@@ -32,5 +28,9 @@
 |`+roles+`
 |`+Array+`
 |회원 권한
+
+|`+createdAt+`
+|`+String+`
+|가입 시간
 
 |===

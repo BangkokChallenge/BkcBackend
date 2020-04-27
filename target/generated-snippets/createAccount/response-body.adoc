@@ -1,14 +1,15 @@
 [source,options="nowrap"]
 ----
 {
+  "createdAt" : "2020-04-27T21:34:07.893457",
+  "modifiedAt" : "2020-04-27T21:34:08.157836",
   "id" : "1254792462",
-  "fcmToken" : null,
-  "serviceAccessToken" : "f0e28849-5d7e-4672-9122-ecee28ecca5e",
-  "serviceRefreshToken" : "62432f74-4ae6-439a-8797-7e03b4e05ecf",
   "nickname" : "모준",
   "profile_photo" : "http://k.kakaocdn.net/dn/Vma9w/btqz37kUX70/adEGnhLkS6k4nnWer44jyk/img_640x640.jpg",
-  "password" : "{bcrypt}$2a$10$vC4GrhO88n36UXFYNVS2HOol0zjgtVehzWboGc9LH3S0iS.TkiOTG",
+  "password" : "{bcrypt}$2a$10$w1jRaigBhjjNGpnhOY3e2e9PaThTyDNnj/lYhClH0YisWv4BOz4Ty",
   "roles" : [ "USER" ],
+  "serviceAccessToken" : "2bf43610-e58b-486f-b288-b7c61a005643",
+  "serviceRefreshToken" : "723c6fe0-7431-4f5e-9b5f-5c7619c75be0",
   "_links" : {
     "self" : {
       "href" : "http://localhost:8080/api/account"

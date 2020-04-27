@@ -87,10 +87,12 @@ public class AppConfig {
                 IntStream.rangeClosed(1, 40).forEach(index ->
                         postRepository.save(Post.builder()
                                 .id(11)
-                                .article("TEST")
-                                .filePath("PATHJ")
-                                .profile_photo("#$#$")
-                                .nickname("!#$$#")
+                                .userId("TDD_USER_ID")
+                                .article("작성내용")
+                                .filePath("S3 image 주소")
+                                .profile_photo("Kakao profile photo")
+                                .nickname("Kakao Nickname")
+                                .hashTag("일상")
                                 .build()));
 
 

@@ -1,5 +1,5 @@
 [source,bash]
 ----
 $ curl 'http://localhost:8080/api/post/' -i -X GET \
-    -H 'Authorization: Bearer a3b6d853-d9d3-41cd-93c9-0df340679b06'
+    -H 'Authorization: Bearer fa0835f3-0fe3-48ae-b4fe-44e4b7796bab'
 ----

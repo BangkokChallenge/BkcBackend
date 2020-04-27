@@ -1,4 +1,6 @@
 [source,options="nowrap"]
 ----
-
+{
+  "key" : "Bs0WZW_TdjWQ5FV5T8FF8J_JqX4Ak2Dgmnu3Jgo9dVwAAAFxu5lOxg"
+}
 ----

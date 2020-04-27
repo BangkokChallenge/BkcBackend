@@ -2,6 +2,7 @@ package us.dev.backend.Post;
 
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
+import org.springframework.hateoas.core.Relation;
 import us.dev.backend.common.BaseTimeEntity;
 
 import javax.persistence.Entity;
