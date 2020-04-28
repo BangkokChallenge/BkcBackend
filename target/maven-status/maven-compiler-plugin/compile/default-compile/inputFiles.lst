@@ -6,6 +6,7 @@
 /Users/wisdomose/Desktop/Project_for_git/BangkokChallenge/src/main/java/us/dev/backend/Account/AccountDto.java
 /Users/wisdomose/Desktop/Project_for_git/BangkokChallenge/src/main/java/us/dev/backend/Comment/CommentController.java
 /Users/wisdomose/Desktop/Project_for_git/BangkokChallenge/src/main/java/us/dev/backend/Account/AccountResource.java
+/Users/wisdomose/Desktop/Project_for_git/BangkokChallenge/src/main/java/us/dev/backend/Account/AccountDtoKey.java
 /Users/wisdomose/Desktop/Project_for_git/BangkokChallenge/src/main/java/us/dev/backend/common/ErrorsSerializer.java
 /Users/wisdomose/Desktop/Project_for_git/BangkokChallenge/src/main/java/us/dev/backend/Post/PostResource.java
 /Users/wisdomose/Desktop/Project_for_git/BangkokChallenge/src/main/java/us/dev/backend/configs/SecurityConfig.java

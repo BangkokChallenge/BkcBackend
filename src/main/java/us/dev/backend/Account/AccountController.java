@@ -108,7 +108,7 @@ public class AccountController {
 
         //restTemplate = appConfig.customizeRestTemplate();
         restTemplate = new RestTemplate();
-        String response = restTemplate.postForObject("http://127.0.0.1:8080/oauth/token",requestEntity,String.class);
+        String response = restTemplate.postForObject(appProperties.getGetOauthURL(),requestEntity,String.class);
         restTemplate.setInterceptors(Arrays.asList(new RestTemplateLoggingRequestInterceptor()));
 
         String getaccess_Token = parser2.parseMap(response).get("access_token").toString();

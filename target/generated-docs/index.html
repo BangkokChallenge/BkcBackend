@@ -477,6 +477,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel3">
 <li><a href="#resources-get-an-account_http_request">HTTP request</a></li>
 <li><a href="#resources-get-an-account_http_response">Example response</a></li>
+<li><a href="#resources-get-an-account_response_fields">Response fields</a></li>
+<li><a href="#resources-get-an-account_links">Links</a></li>
 </ul>
 </li>
 </ul>
@@ -592,9 +594,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h2 id="overview-hypermedia"><a class="link" href="#overview-hypermedia">하이퍼미디어</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>본 REST API는 하이퍼미디어와 사용하며 응답에 담겨있는 리소스는 다른 리소스에 대한 링크를 가지고 있다.
-응답은 <a href="http://stateless.co/hal_specification.html">Hypertext Application from resource to resource. Language (HAL)</a> 형식을 따른다.
-링크는 `_links`라는 키로 제공한다. 본 API의 사용자(클라이언트)는 URI를 직접 생성하지 않아야 하며, 리소스에서 제공하는 링크를 사용해야 한다.</p>
+<p>본 REST API는 하이퍼미디어와 사용하며 응답에 담겨있는 리소스는 다른 리소스에 대한 링크를 가지고 있다.<br>
+응답은 <a href="http://stateless.co/hal_specification.html">Hypertext Application from resource to resource. Language (HAL)</a> 형식을 따른다.<br>
+링크는 `_links`라는 키로 제공한다. 본 API의 사용자(클라이언트)는 URI를 직접 생성하지 않아야 하며, 리소스에서 제공하는 링크를 사용해야 한다.<br></p>
 </div>
 </div>
 </div>
@@ -708,15 +710,21 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 <div class="sect2">
 <h3 id="resources-create-Account"><a class="link" href="#resources-create-Account">유저정보 생성</a></h3>
 <div class="paragraph">
-<p><code>GET</code> 요청을 사용해서 새 유저정보를 만들 수 있다.
+<p><code>GET</code> 요청을 사용해서 새 유저정보를 만들 수 있다.<br>
 매커니즘은 카카오에 로그인을 하고, 그 값으로 자체 Token을 만들어 Return 한다.</p>
 </div>
 <div class="sect3">
 <h4 id="resources-create-Account_http_request"><a class="link" href="#resources-create-Account_http_request">HTTP request</a></h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /api/account/login/5RYvBNZQohrsXe3Yfa2cD8ki8AJZtswC2kSwuwo9c04AAAFxplmXIA HTTP/1.1
-Host: localhost:8080</code></pre>
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">POST /api/account/login HTTP/1.1
+Content-Length: 70
+Content-Type: application/json;charset=UTF-8
+Host: localhost:8080
+
+{
+  "key" : "Bs0WZW_TdjWQ5FV5T8FF8J_JqX4Ak2Dgmnu3Jgo9dVwAAAFxu5lOxg"
+}</code></pre>
 </div>
 </div>
 </div>
@@ -731,19 +739,20 @@ Expires: 0
 X-Frame-Options: DENY
 X-Content-Type-Options: nosniff
 Content-Type: application/hal+json;charset=UTF-8
-Content-Length: 668
+Location: http://localhost:8080/api/account/login/%257Bkey%257D
 Cache-Control: no-cache, no-store, max-age=0, must-revalidate
-Location: http://localhost:8080/api/account/login/app
+Content-Length: 740
 
 {
+  "createdAt" : "2020-04-27T21:34:07.893457",
+  "modifiedAt" : "2020-04-27T21:34:08.157836",
   "id" : "1254792462",
-  "fcmToken" : null,
-  "serviceAccessToken" : "f0e28849-5d7e-4672-9122-ecee28ecca5e",
-  "serviceRefreshToken" : "62432f74-4ae6-439a-8797-7e03b4e05ecf",
   "nickname" : "모준",
   "profile_photo" : "http://k.kakaocdn.net/dn/Vma9w/btqz37kUX70/adEGnhLkS6k4nnWer44jyk/img_640x640.jpg",
-  "password" : "{bcrypt}$2a$10$vC4GrhO88n36UXFYNVS2HOol0zjgtVehzWboGc9LH3S0iS.TkiOTG",
+  "password" : "{bcrypt}$2a$10$w1jRaigBhjjNGpnhOY3e2e9PaThTyDNnj/lYhClH0YisWv4BOz4Ty",
   "roles" : [ "USER" ],
+  "serviceAccessToken" : "2bf43610-e58b-486f-b288-b7c61a005643",
+  "serviceRefreshToken" : "723c6fe0-7431-4f5e-9b5f-5c7619c75be0",
   "_links" : {
     "self" : {
       "href" : "http://localhost:8080/api/account"
@@ -781,11 +790,6 @@ Location: http://localhost:8080/api/account/login/app
 <td class="tableblock halign-left valign-top"><p class="tableblock">Kakao 고유 아이디</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>fcmToken</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Null</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">kakao FCM Token</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>serviceAccessToken</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">자체 Service Access Token</p></td>
@@ -814,6 +818,11 @@ Location: http://localhost:8080/api/account/login/app
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>roles</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">회원 권한</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>createdAt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">가입 시간</p></td>
 </tr>
 </tbody>
 </table>
@@ -857,8 +866,9 @@ Location: http://localhost:8080/api/account/login/app
 <h4 id="resources-get-an-account_http_request"><a class="link" href="#resources-get-an-account_http_request">HTTP request</a></h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /api/account/TEST_ID HTTP/1.1
-Host: localhost:8080</code></pre>
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /api/account/TDD_TEMP_ID HTTP/1.1
+Host: localhost:8080
+Authorization: Bearer bda27d25-1e67-4eef-89c5-2d4aac9b0d28</code></pre>
 </div>
 </div>
 </div>
@@ -873,29 +883,114 @@ Expires: 0
 X-Frame-Options: DENY
 X-Content-Type-Options: nosniff
 Content-Type: application/hal+json;charset=UTF-8
+Content-Length: 528
 Cache-Control: no-cache, no-store, max-age=0, must-revalidate
-Content-Length: 477
 
 {
-  "id" : "TEST_ID",
-  "fcmToken" : "TEST_FCM",
+  "createdAt" : "2020-04-27T21:55:29.157714",
+  "modifiedAt" : "2020-04-27T21:55:29.158796",
+  "id" : "TDD_TEMP_ID",
+  "nickname" : "TDD_NICKNAME",
+  "profile_photo" : "TDD_PHOTO",
+  "password" : "{bcrypt}$2a$10$Am0zfigvWHMSEQURQB8eseGG4YDUIV51nnYMF71iSg19FJ7ju0uaS",
+  "roles" : [ "USER" ],
   "serviceAccessToken" : null,
   "serviceRefreshToken" : null,
-  "nickname" : "TEST_NICKNAME",
-  "profile_photo" : "TEST_PROFILEPT",
-  "password" : "{bcrypt}$2a$10$0FpLKgV.7SFkEeULyar9H..b2JTxdD8vR5oAn9DdgI1/ae3aCaylq",
-  "roles" : [ "USER", "ADMIN" ],
   "_links" : {
     "self" : {
       "href" : "http://localhost:8080/api/account"
     },
     "profile" : {
-      "href" : "/docs/index.html#resource-getAccountInfo"
+      "href" : "/docs/index.html#resource-getAccount"
     }
   }
 }</code></pre>
 </div>
 </div>
+</div>
+<div class="sect3">
+<h4 id="resources-get-an-account_response_fields"><a class="link" href="#resources-get-an-account_response_fields">Response fields</a></h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Kakao 고유 아이디</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>serviceAccessToken</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Null</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">자체 Service Access Token</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>serviceRefreshToken</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Null</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">자체 Service Refresh Token</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>password</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">내부 Security Value, 고정값:1234</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>profile_photo</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">KaKao 회원 프로필 사진</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>nickname</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Kakao 닉네임</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>roles</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">회원 권한</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>createdAt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">가입 시간</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="resources-get-an-account_links"><a class="link" href="#resources-get-an-account_links">Links</a></h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Relation</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>self</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">현재 링크</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>profile</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">도큐먼트 링크</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
@@ -1062,14 +1157,16 @@ Location: http://localhost:8080/api/post/upload
 <div class="sect2">
 <h3 id="resources-post-list"><a class="link" href="#resources-post-list">Post List 조회</a></h3>
 <div class="paragraph">
-<p><code>GET</code> 요청을 사용해서 Post List를 받아올 수 있다.</p>
+<p><code>GET</code> 요청을 사용해서 Post List를 받아올 수 있다.<br>
+만약, 정렬이나 페이지를 조정하고 싶다면, 주소 뒤에 파라미터를 넘긴다.<br>
+<code>ex</code> /api/post/page=0&amp;size=10&amp;sort=ename,desc<br></p>
 </div>
 <div class="sect3">
 <h4 id="resources-post-list_http_request"><a class="link" href="#resources-post-list_http_request">HTTP request</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /api/post/ HTTP/1.1
-Authorization: Bearer a3b6d853-d9d3-41cd-93c9-0df340679b06
+Authorization: Bearer fa0835f3-0fe3-48ae-b4fe-44e4b7796bab
 Host: localhost:8080</code></pre>
 </div>
 </div>
@@ -1079,9 +1176,9 @@ Host: localhost:8080</code></pre>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
-Content-Length: 5280
 Pragma: no-cache
 X-XSS-Protection: 1; mode=block
+Content-Length: 4738
 Expires: 0
 X-Frame-Options: DENY
 X-Content-Type-Options: nosniff
@@ -1091,185 +1188,135 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 {
   "_embedded" : {
     "postList" : [ {
-      "createdAt" : "2020-04-25T17:51:02.226135",
-      "modifiedAt" : "2020-04-25T17:51:02.226135",
-      "userId" : null,
+      "createdAt" : "2020-04-27T23:32:25.694791",
+      "modifiedAt" : "2020-04-27T23:32:25.694791",
+      "userId" : "TDD_USER_ID",
       "id" : 1,
-      "hashTag" : null,
-      "nickname" : "!#$$#",
-      "profile_photo" : "#$#$",
+      "hashTag" : "일상",
+      "nickname" : "Kakao Nickname",
+      "profile_photo" : "Kakao profile photo",
       "selfLike" : false,
       "commentCount" : 0,
       "likeCount" : 0,
-      "article" : "TEST",
-      "filePath" : "PATHJ",
-      "_links" : {
-        "self" : {
-          "href" : "http://localhost:8080/api/post"
-        }
-      }
+      "article" : "작성내용",
+      "filePath" : "S3 image 주소"
     }, {
-      "createdAt" : "2020-04-25T17:51:02.257661",
-      "modifiedAt" : "2020-04-25T17:51:02.257661",
-      "userId" : null,
+      "createdAt" : "2020-04-27T23:32:25.729363",
+      "modifiedAt" : "2020-04-27T23:32:25.729363",
+      "userId" : "TDD_USER_ID",
       "id" : 2,
-      "hashTag" : null,
-      "nickname" : "!#$$#",
-      "profile_photo" : "#$#$",
+      "hashTag" : "일상",
+      "nickname" : "Kakao Nickname",
+      "profile_photo" : "Kakao profile photo",
       "selfLike" : false,
       "commentCount" : 0,
       "likeCount" : 0,
-      "article" : "TEST",
-      "filePath" : "PATHJ",
-      "_links" : {
-        "self" : {
-          "href" : "http://localhost:8080/api/post"
-        }
-      }
+      "article" : "작성내용",
+      "filePath" : "S3 image 주소"
     }, {
-      "createdAt" : "2020-04-25T17:51:02.26718",
-      "modifiedAt" : "2020-04-25T17:51:02.26718",
-      "userId" : null,
+      "createdAt" : "2020-04-27T23:32:25.742787",
+      "modifiedAt" : "2020-04-27T23:32:25.742787",
+      "userId" : "TDD_USER_ID",
       "id" : 3,
-      "hashTag" : null,
-      "nickname" : "!#$$#",
-      "profile_photo" : "#$#$",
+      "hashTag" : "일상",
+      "nickname" : "Kakao Nickname",
+      "profile_photo" : "Kakao profile photo",
       "selfLike" : false,
       "commentCount" : 0,
       "likeCount" : 0,
-      "article" : "TEST",
-      "filePath" : "PATHJ",
-      "_links" : {
-        "self" : {
-          "href" : "http://localhost:8080/api/post"
-        }
-      }
+      "article" : "작성내용",
+      "filePath" : "S3 image 주소"
     }, {
-      "createdAt" : "2020-04-25T17:51:02.276878",
-      "modifiedAt" : "2020-04-25T17:51:02.276878",
-      "userId" : null,
+      "createdAt" : "2020-04-27T23:32:25.753132",
+      "modifiedAt" : "2020-04-27T23:32:25.753132",
+      "userId" : "TDD_USER_ID",
       "id" : 4,
-      "hashTag" : null,
-      "nickname" : "!#$$#",
-      "profile_photo" : "#$#$",
+      "hashTag" : "일상",
+      "nickname" : "Kakao Nickname",
+      "profile_photo" : "Kakao profile photo",
       "selfLike" : false,
       "commentCount" : 0,
       "likeCount" : 0,
-      "article" : "TEST",
-      "filePath" : "PATHJ",
-      "_links" : {
-        "self" : {
-          "href" : "http://localhost:8080/api/post"
-        }
-      }
+      "article" : "작성내용",
+      "filePath" : "S3 image 주소"
     }, {
-      "createdAt" : "2020-04-25T17:51:02.286004",
-      "modifiedAt" : "2020-04-25T17:51:02.286004",
-      "userId" : null,
+      "createdAt" : "2020-04-27T23:32:25.765681",
+      "modifiedAt" : "2020-04-27T23:32:25.765681",
+      "userId" : "TDD_USER_ID",
       "id" : 5,
-      "hashTag" : null,
-      "nickname" : "!#$$#",
-      "profile_photo" : "#$#$",
+      "hashTag" : "일상",
+      "nickname" : "Kakao Nickname",
+      "profile_photo" : "Kakao profile photo",
       "selfLike" : false,
       "commentCount" : 0,
       "likeCount" : 0,
-      "article" : "TEST",
-      "filePath" : "PATHJ",
-      "_links" : {
-        "self" : {
-          "href" : "http://localhost:8080/api/post"
-        }
-      }
+      "article" : "작성내용",
+      "filePath" : "S3 image 주소"
     }, {
-      "createdAt" : "2020-04-25T17:51:02.29566",
-      "modifiedAt" : "2020-04-25T17:51:02.29566",
-      "userId" : null,
+      "createdAt" : "2020-04-27T23:32:25.778985",
+      "modifiedAt" : "2020-04-27T23:32:25.778985",
+      "userId" : "TDD_USER_ID",
       "id" : 6,
-      "hashTag" : null,
-      "nickname" : "!#$$#",
-      "profile_photo" : "#$#$",
+      "hashTag" : "일상",
+      "nickname" : "Kakao Nickname",
+      "profile_photo" : "Kakao profile photo",
       "selfLike" : false,
       "commentCount" : 0,
       "likeCount" : 0,
-      "article" : "TEST",
-      "filePath" : "PATHJ",
-      "_links" : {
-        "self" : {
-          "href" : "http://localhost:8080/api/post"
-        }
-      }
+      "article" : "작성내용",
+      "filePath" : "S3 image 주소"
     }, {
-      "createdAt" : "2020-04-25T17:51:02.310846",
-      "modifiedAt" : "2020-04-25T17:51:02.310846",
-      "userId" : null,
+      "createdAt" : "2020-04-27T23:32:25.789975",
+      "modifiedAt" : "2020-04-27T23:32:25.789975",
+      "userId" : "TDD_USER_ID",
       "id" : 7,
-      "hashTag" : null,
-      "nickname" : "!#$$#",
-      "profile_photo" : "#$#$",
+      "hashTag" : "일상",
+      "nickname" : "Kakao Nickname",
+      "profile_photo" : "Kakao profile photo",
       "selfLike" : false,
       "commentCount" : 0,
       "likeCount" : 0,
-      "article" : "TEST",
-      "filePath" : "PATHJ",
-      "_links" : {
-        "self" : {
-          "href" : "http://localhost:8080/api/post"
-        }
-      }
+      "article" : "작성내용",
+      "filePath" : "S3 image 주소"
     }, {
-      "createdAt" : "2020-04-25T17:51:02.327621",
-      "modifiedAt" : "2020-04-25T17:51:02.327621",
-      "userId" : null,
+      "createdAt" : "2020-04-27T23:32:25.8017",
+      "modifiedAt" : "2020-04-27T23:32:25.8017",
+      "userId" : "TDD_USER_ID",
       "id" : 8,
-      "hashTag" : null,
-      "nickname" : "!#$$#",
-      "profile_photo" : "#$#$",
+      "hashTag" : "일상",
+      "nickname" : "Kakao Nickname",
+      "profile_photo" : "Kakao profile photo",
       "selfLike" : false,
       "commentCount" : 0,
       "likeCount" : 0,
-      "article" : "TEST",
-      "filePath" : "PATHJ",
-      "_links" : {
-        "self" : {
-          "href" : "http://localhost:8080/api/post"
-        }
-      }
+      "article" : "작성내용",
+      "filePath" : "S3 image 주소"
     }, {
-      "createdAt" : "2020-04-25T17:51:02.341585",
-      "modifiedAt" : "2020-04-25T17:51:02.341585",
-      "userId" : null,
+      "createdAt" : "2020-04-27T23:32:25.81546",
+      "modifiedAt" : "2020-04-27T23:32:25.81546",
+      "userId" : "TDD_USER_ID",
       "id" : 9,
-      "hashTag" : null,
-      "nickname" : "!#$$#",
-      "profile_photo" : "#$#$",
+      "hashTag" : "일상",
+      "nickname" : "Kakao Nickname",
+      "profile_photo" : "Kakao profile photo",
       "selfLike" : false,
       "commentCount" : 0,
       "likeCount" : 0,
-      "article" : "TEST",
-      "filePath" : "PATHJ",
-      "_links" : {
-        "self" : {
-          "href" : "http://localhost:8080/api/post"
-        }
-      }
+      "article" : "작성내용",
+      "filePath" : "S3 image 주소"
     }, {
-      "createdAt" : "2020-04-25T17:51:02.355588",
-      "modifiedAt" : "2020-04-25T17:51:02.355588",
-      "userId" : null,
+      "createdAt" : "2020-04-27T23:32:25.830381",
+      "modifiedAt" : "2020-04-27T23:32:25.830381",
+      "userId" : "TDD_USER_ID",
       "id" : 10,
-      "hashTag" : null,
-      "nickname" : "!#$$#",
-      "profile_photo" : "#$#$",
+      "hashTag" : "일상",
+      "nickname" : "Kakao Nickname",
+      "profile_photo" : "Kakao profile photo",
       "selfLike" : false,
       "commentCount" : 0,
       "likeCount" : 0,
-      "article" : "TEST",
-      "filePath" : "PATHJ",
-      "_links" : {
-        "self" : {
-          "href" : "http://localhost:8080/api/post"
-        }
-      }
+      "article" : "작성내용",
+      "filePath" : "S3 image 주소"
     } ]
   },
   "_links" : {
@@ -1318,7 +1365,62 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>_embedded</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Post 페이지정보들</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Post 페이지정보들[기본리턴속성임]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_embedded.postList[0].userId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">작성자 Kakao ID</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_embedded.postList[0].nickname</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">작성자 Kakao Nickname</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_embedded.postList[0].profile_photo</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">작성자 KaKao Profile Photo</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_embedded.postList[0].id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Post ID</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_embedded.postList[0].hashTag</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Post HashTag</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_embedded.postList[0].selfLike</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">작성자가 해당 Post에 좋아요를 눌렀는지 여부</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_embedded.postList[0].commentCount</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">댓글 수</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_embedded.postList[0].likeCount</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">좋아요 수</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_embedded.postList[0].article</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Post 내용</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_embedded.postList[0].filePath</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S3 image file path</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>page</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Paging 정보들</p></td>
 </tr>
 </tbody>
 </table>
@@ -1366,7 +1468,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-04-25 17:55:00 +0900
+Last updated 2020-04-27 23:49:36 +0900
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/github.min.css">
