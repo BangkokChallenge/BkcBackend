@@ -1,0 +1,22 @@
+[source,http,options="nowrap"]
+----
+HTTP/1.1 200 OK
+Pragma: no-cache
+X-XSS-Protection: 1; mode=block
+Expires: 0
+X-Frame-Options: DENY
+X-Content-Type-Options: nosniff
+Content-Type: application/json;charset=UTF-8
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Content-Length: 202
+
+{
+  "id" : 19,
+  "content" : "test",
+  "createdAt" : "2020-04-30 00:55:41",
+  "modifiedAt" : "2020-04-30 00:55:41",
+  "postId" : 11,
+  "accountId" : "TDD_TEMP_ID",
+  "accountNickName" : "TDD_NICKNAME"
+}
+----

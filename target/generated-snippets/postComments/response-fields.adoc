@@ -1,0 +1,32 @@
+|===
+|Path|Type|Description
+
+|`+id+`
+|`+Number+`
+|comment 아이디
+
+|`+content+`
+|`+String+`
+|comment 내용
+
+|`+createdAt+`
+|`+String+`
+|comment 작성시간
+
+|`+modifiedAt+`
+|`+String+`
+|comment 수정시간
+
+|`+postId+`
+|`+Number+`
+|Post 아이디
+
+|`+accountId+`
+|`+String+`
+|작성자 Kakao ID
+
+|`+accountNickName+`
+|`+String+`
+|작성자 Kakao Nickname
+
+|===
