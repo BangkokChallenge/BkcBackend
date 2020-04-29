@@ -1,0 +1,5 @@
+[source,bash]
+----
+$ curl 'http://localhost:8080/api/post/11/comment' -i -X GET \
+    -H 'Authorization: Bearer bc2f9657-e060-4c0f-9f94-b2e662f0cb21'
+----

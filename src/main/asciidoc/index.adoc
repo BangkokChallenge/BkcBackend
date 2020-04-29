@@ -130,3 +130,26 @@ operation::uploadPost[snippets='http-request,http-response,response-fields,links
 `ex` /api/post/page=0&size=10&sort=ename,desc +
 
 operation::getPosts[snippets='http-request,http-response,response-fields,links']
+
+[[resources-post]]
+== Comment 정보
+
+Comment는 Post의 comment를 만들거나 조회할 때 사용한다.
+
+[[resources-comment-list]]
+=== Comment 등록
+
+`POST` 요청을 통해서 Comment를 등록 할 수 있다. +
+`ex` /api/post/1/comment +
+
+operation::postComments[snippets='http-request,http-response,response-fields']
+
+
+[[resources-post-list]]
+=== Comment List 조회
+
+`GET` 요청을 사용해서 Comment List를 받아올 수 있다. +
+`ex` /api/post/1/comment +
+
+operation::getComments[snippets='http-request,http-response,response-fields']
+
