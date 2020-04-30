@@ -106,5 +106,22 @@ git push master
 ### Todo
 - Docs적용 :  http://woowabros.github.io/experience/2018/12/28/spring-rest-docs.html
 AWs 키 바꾸기 
-    
+
+
+### shell scrip 만들기
+##### 파일 생성  
+~~~
+$ touch shellname.sh
+$ vi shellname.sh
+#!/bin/sh
+echo "Hello Shell"
+$ sh shellname.sh < 실행
+~~~
+
+##### 만약 finder에서 파일을 더블클릭하여 실행하고 싶다면 이름뒤에 .command를 붙여줍니다.<br>
+~~~
+$ mv shellname.sh shellname.sh.command
+~~~
+
+
      

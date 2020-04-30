@@ -6,4 +6,4 @@ COPY target/demo-*.jar app.jar
 ENV DBPATH jdbc:postgresql://54.180.180.121:5432/postgres
 ENV DBUSER postgres
 ENV DBPWD pass
-ENTRYPOINT ["java","-jar","app.jar"]
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-Dspring.profiles.active=deploy","-jar","app.jar"]
