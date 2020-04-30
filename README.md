@@ -97,7 +97,7 @@
 
 ### git ignore 안먹을 때
 ~~~
-git rm --cached .
+git rm -r --cached .
 git add .
 git commit -m "~~~~"
 git push master  
