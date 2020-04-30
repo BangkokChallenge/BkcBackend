@@ -6,4 +6,4 @@ COPY target/demo-*.jar app.jar
 ENV DBPATH ${DBPATH}
 ENV DBUSER ${DBUSER}
 ENV DBPWD ${DBPWD}
-ENTRYPOINT ["java","-jar","app.jar"]
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-Dspring.profiles.active=deploy","-jar","app.jar"]
