@@ -11,6 +11,8 @@ import org.springframework.security.oauth2.common.util.Jackson2JsonParser;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import us.dev.backend.Account.Account;
 import us.dev.backend.Account.AccountRole;
 import us.dev.backend.Account.AccountService;
@@ -18,6 +20,7 @@ import us.dev.backend.common.AppProperties;
 import us.dev.backend.common.BaseControllerTest;
 import us.dev.backend.common.TestDescription;
 
+import java.util.Arrays;
 import java.util.Set;
 
 import static org.junit.Assert.*;
@@ -26,8 +29,7 @@ import static org.springframework.restdocs.hypermedia.HypermediaDocumentation.li
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.payload.PayloadDocumentation.*;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.httpBasic;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -46,35 +48,37 @@ public class PostControllerTest extends BaseControllerTest {
     @TestDescription("Post upload 테스트")
     public void uploadPost() throws Exception {
         //given
+        String inputHashTag[] = {"일상","조아조앙"};
+
+
+        /* Form data */
         MockMultipartFile file = new MockMultipartFile("file", "hello.txt", MediaType.TEXT_PLAIN_VALUE, "Hello, World!".getBytes());
-        PostDto postDto = PostDto.builder()
-                .id(11)
-                .article("TEST")
-                .build();
+
+        MultiValueMap<String,String> map = new LinkedMultiValueMap<>();
+
+        map.add("article","테스트내용");
+        map.add("hashTag","일상");
+
 
         //TODO 파일업로드 테스트 작성해야함.
         //나눠야할 수도 있음. controller 부분.
         //when&then
-        mockMvc.perform(MockMvcRequestBuilders.fileUpload("/api/post/upload").file(file)
-                .header(HttpHeaders.AUTHORIZATION, getBearerToken())
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(postDto)))
+        mockMvc.perform(multipart("/api/post/upload").file(file).params(map)
+                .header(HttpHeaders.AUTHORIZATION, getBearerToken()))
                 .andDo(print())
                 .andExpect(status().isCreated())
-                .andExpect(jsonPath("id").exists())
+                .andExpect(jsonPath("article").exists())
                 .andDo(document("uploadPost",
                         links(
                                 linkWithRel("self").description("도큐먼트 링크"),
                                 linkWithRel("profile").description("도큐먼트 링크")
-                        ),
-                        relaxedRequestFields(
-                                fieldWithPath("article").description("Name of new event")
                         ),
                         relaxedResponseFields(
                                 fieldWithPath("createdAt").description("Post 생성 날짜"),
                                 fieldWithPath("modifiedAt").description("Post 수정 날짜"),
                                 fieldWithPath("userId").description("사용자 id"),
                                 fieldWithPath("id").description("Post id"),
+                                fieldWithPath("article").description("Post 작성글"),
                                 fieldWithPath("hashTag").description("Hash Tage"),
                                 fieldWithPath("filePath").description("file path"),
                                 fieldWithPath("selfLike").description("좋아요 여부"),

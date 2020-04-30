@@ -95,15 +95,24 @@ operation::indexAddr[snippets='httpie-request,response-body,http-response,links'
 
 
 [[resources-create-Account]]
-=== 유저정보 생성
+=== 유저 회원가입
 
-`GET` 요청을 사용해서 새 유저정보를 만들 수 있다. +
+`POST` 요청을 사용해서 새 유저정보를 만들 수 있다. +
 매커니즘은 카카오에 로그인을 하고, 그 값으로 자체 Token을 만들어 Return 한다.
 
 operation::createAccount[snippets='http-request,http-response,response-fields,links']
 
-[[resources-get-an-account]]
-=== 유저정보 조회
+[[resources-login-Account]]
+=== 유저 로그인
+
+서비스 토큰이 있다면 로그인 진행, 없다면 회원가입으로 진행.
+
+[[resources-logout-Account]]
+=== 유저 로그아웃
+로그아웃 -> 토큰 만료화 ?
+
+[[resources-get-Account]]
+=== 유저 정보가져오기
 
 `Get` 요청을 사용해서 유저정보 하나를 조회할 수 있다.
 
@@ -114,7 +123,7 @@ operation::getAccount[snippets='http-request,http-response,response-fields,links
 
 Post는 Post를 만들거나 조회할 때 사용한다.
 
-[[resources-post-list]]
+[[resources-post-upload]]
 === Post Upload
 
 `POST` 요청을 통해서 Post를 Upload 할 수 있다.
@@ -127,7 +136,7 @@ operation::uploadPost[snippets='http-request,http-response,response-fields,links
 
 `GET` 요청을 사용해서 Post List를 받아올 수 있다. +
 만약, 정렬이나 페이지를 조정하고 싶다면, 주소 뒤에 파라미터를 넘긴다. +
-`ex` /api/post/page=0&size=10&sort=ename,desc +
+`ex` /api/post?page=0&size=10&sort=ename,desc +
 
 operation::getPosts[snippets='http-request,http-response,response-fields,links']
 

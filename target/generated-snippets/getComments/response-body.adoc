@@ -32,87 +32,9 @@
   "postId" : 11,
   "accountId" : "1345427499",
   "accountNickName" : "조홍제"
-}, {
-  "id" : 5,
-  "content" : "test",
-  "createdAt" : "2020-04-29 15:41:44",
-  "modifiedAt" : "2020-04-29 15:41:44",
-  "postId" : 11,
-  "accountId" : "TEST_ID",
-  "accountNickName" : "TEST_NICKNAME"
-}, {
-  "id" : 6,
-  "content" : "test",
-  "createdAt" : "2020-04-29 15:42:42",
-  "modifiedAt" : "2020-04-29 15:42:42",
-  "postId" : 11,
-  "accountId" : "TEST_ID",
-  "accountNickName" : "TEST_NICKNAME"
-}, {
-  "id" : 7,
-  "content" : "test",
-  "createdAt" : "2020-04-29 15:43:43",
-  "modifiedAt" : "2020-04-29 15:43:43",
-  "postId" : 11,
-  "accountId" : "TEST_ID",
-  "accountNickName" : "TEST_NICKNAME"
-}, {
-  "id" : 8,
-  "content" : "test",
-  "createdAt" : "2020-04-29 15:44:25",
-  "modifiedAt" : "2020-04-29 15:44:25",
-  "postId" : 11,
-  "accountId" : "TEST_ID",
-  "accountNickName" : "TEST_NICKNAME"
-}, {
-  "id" : 9,
-  "content" : "test",
-  "createdAt" : "2020-04-29 15:45:00",
-  "modifiedAt" : "2020-04-29 15:45:00",
-  "postId" : 11,
-  "accountId" : "TEST_ID",
-  "accountNickName" : "TEST_NICKNAME"
-}, {
-  "id" : 10,
-  "content" : "test",
-  "createdAt" : "2020-04-29 15:48:59",
-  "modifiedAt" : "2020-04-29 15:48:59",
-  "postId" : 11,
-  "accountId" : "TEST_ID",
-  "accountNickName" : "TEST_NICKNAME"
-}, {
-  "id" : 11,
-  "content" : "test",
-  "createdAt" : "2020-04-29 15:50:44",
-  "modifiedAt" : "2020-04-29 15:50:44",
-  "postId" : 11,
-  "accountId" : "TEST_ID",
-  "accountNickName" : "TEST_NICKNAME"
-}, {
-  "id" : 12,
-  "content" : "test",
-  "createdAt" : "2020-04-29 15:51:37",
-  "modifiedAt" : "2020-04-29 15:51:37",
-  "postId" : 11,
-  "accountId" : "TEST_ID",
-  "accountNickName" : "TEST_NICKNAME"
-}, {
-  "id" : 13,
-  "content" : "test",
-  "createdAt" : "2020-04-29 15:56:01",
-  "modifiedAt" : "2020-04-29 15:56:01",
-  "postId" : 11,
-  "accountId" : "TEST_ID",
-  "accountNickName" : "TEST_NICKNAME"
-}, {
-  "id" : 14,
-  "content" : "test",
-  "createdAt" : "2020-04-30 00:23:18",
-  "modifiedAt" : "2020-04-30 00:23:18",
-  "postId" : 11,
-  "accountId" : "TEST_ID",
-  "accountNickName" : "TEST_NICKNAME"
-}, {
+},{
+    ...생략...
+},{
   "id" : 15,
   "content" : "test",
   "createdAt" : "2020-04-30 00:28:50",

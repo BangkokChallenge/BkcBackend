@@ -1,9 +1,7 @@
 package us.dev.backend.Post;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.data.web.PagedResourcesAssembler;
@@ -15,11 +13,15 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.MultiValueMap;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import us.dev.backend.Account.*;
+import us.dev.backend.Comment.Comment;
 import us.dev.backend.Comment.CommentRepository;
+import us.dev.backend.Like.Like;
+import us.dev.backend.Like.LikeRepository;
 import us.dev.backend.common.ErrorsResource;
 import us.dev.backend.configs.AppConfig;
 
@@ -38,13 +40,13 @@ public class PostController {
     PostRepository postRepository;
 
     @Autowired
-    PostService postService;
-
-    @Autowired
     AccountRepository accountRepository;
 
     @Autowired
     CommentRepository commentRepository;
+
+    @Autowired
+    LikeRepository likeRepository;
 
     @Autowired
     S3Service s3Service;
@@ -53,10 +55,10 @@ public class PostController {
     AppConfig appConfig;
 
     @PostMapping("/upload")
-    public ResponseEntity createPost(PostDto postDto, MultipartFile file,
-                                       Authentication authentication) throws IOException {
-        String filePath = s3Service.upload(file);
+    public ResponseEntity createPost(MultipartFile file, PostDto postDto,
+                                     Authentication authentication) throws IOException {
 
+        /* 현재 접속중인 사용자 정보 얻어오기 (Bearer Token 기반) */
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         Optional<Account> optionalAccount = this.accountRepository.findById(userDetails.getUsername());
         if(optionalAccount.isEmpty()) {
@@ -64,19 +66,19 @@ public class PostController {
         }
         Account newAccount = optionalAccount.get();
 
-        System.out.println(filePath);
+        String filePath = s3Service.upload(file);
+        /* 저장할 POST Setting */
 
         Post post = this.appConfig.modelMapper().map(postDto, Post.class);
         post.setUserId(newAccount.getId());
         post.setNickname(newAccount.getNickname());
         post.setProfile_photo(newAccount.getNickname());
         post.setFilePath(filePath);
+        post.setCommentCount(0);
+        post.setLikeCount(0);
 
-        long commentCount = commentRepository.countByPost(post.id);
-        long likeCount = 0;
-
-        post.setCommentCount(commentCount);
-
+        //TODO
+        //Hashtag 저장해야함. 1:다
 
         Post newPost = postRepository.save(post);
 
@@ -84,7 +86,7 @@ public class PostController {
         URI createdUri = selfLinkBuilder.toUri();
 
         PostResource postResource = new PostResource(newPost);
-        postResource.add(new Link("/docs/index.html#resource-createPost").withRel("profile"));
+        postResource.add(new Link("/docs/index.html#resource-post-upload").withRel("profile"));
 
         return ResponseEntity.created(createdUri).body(postResource);
 
@@ -100,29 +102,6 @@ public class PostController {
 
         return ResponseEntity.ok(pagedResources);
     }
-
-
-    //TODO
-    @PutMapping("/changeLS/{id}")
-    public ResponseEntity changeLikeStatus(@PathVariable Integer id) {
-
-        Optional<Post> optionalPost = postRepository.findById(id);
-        Post getPost = optionalPost.get();
-        if(getPost.selfLike) {
-            getPost.setSelfLike(false);
-        }
-        else if(getPost.selfLike) {
-            getPost.setSelfLike(true);
-        }
-
-        Post newPost = postRepository.save(getPost);
-
-        PostResource postResource = new PostResource(newPost);
-        postResource.add(new Link("/docs/index.html#resource-changeLikeStatus").withRel("profile"));
-
-        return ResponseEntity.ok(newPost);
-    }
-
 
 
     private ResponseEntity badRequest(Errors errors) {
