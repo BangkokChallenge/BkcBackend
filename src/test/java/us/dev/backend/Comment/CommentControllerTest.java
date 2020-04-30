@@ -84,8 +84,8 @@ public class CommentControllerTest extends BaseControllerTest {
                                 fieldWithPath("[0].createdAt").description("comment 작성시간"),
                                 fieldWithPath("[0].modifiedAt").description("comment 수정시간"),
                                 fieldWithPath("[0].postId").description("Post 아이디"),
-                                fieldWithPath("[0].accountId").description("작성자 Kakao ID"),
-                                fieldWithPath("[0].accountNickName").description("작성자 Kakao Nickname")
+                                fieldWithPath("[0].userId").description("작성자 Kakao ID"),
+                                fieldWithPath("[0].nickname").description("작성자 Kakao Nickname")
                         )
                         )
                 );
@@ -113,8 +113,8 @@ public class CommentControllerTest extends BaseControllerTest {
                                 fieldWithPath("createdAt").description("comment 작성시간"),
                                 fieldWithPath("modifiedAt").description("comment 수정시간"),
                                 fieldWithPath("postId").description("Post 아이디"),
-                                fieldWithPath("accountId").description("작성자 Kakao ID"),
-                                fieldWithPath("accountNickName").description("작성자 Kakao Nickname")
+                                fieldWithPath("userId").description("작성자 Kakao ID"),
+                                fieldWithPath("nickname").description("작성자 Kakao Nickname")
                         )
                         )
                 );
