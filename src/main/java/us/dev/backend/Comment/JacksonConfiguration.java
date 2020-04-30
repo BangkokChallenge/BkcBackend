@@ -8,14 +8,14 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class JacksonConfiguration {
 
-    @Bean
-    public ObjectMapper objectMapper() {
-        ObjectMapper objectMapper = new ObjectMapper();
-
-        SimpleModule simpleModule = new SimpleModule();
-        simpleModule.addSerializer(Comment.class, new CommentSerializer());
-        objectMapper.registerModule(simpleModule);
-
-        return objectMapper;
-    }
+//    @Bean
+//    public ObjectMapper objectMapper() {
+//        ObjectMapper objectMapper = new ObjectMapper();
+//
+//        SimpleModule simpleModule = new SimpleModule();
+//        simpleModule.addSerializer(Comment.class, new CommentSerializer());
+//        objectMapper.registerModule(simpleModule);
+//
+//        return objectMapper;
+//    }
 }

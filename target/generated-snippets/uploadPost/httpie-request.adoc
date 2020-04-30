@@ -1,11 +1,8 @@
 [source,bash]
 ----
-$ echo '{
-  "id" : 11,
-  "article" : "TEST",
-  "selfLike" : false
-}' | http --form POST 'http://localhost:8080/api/post/upload' \
+$ http --form POST 'http://localhost:8080/api/post/upload' \
     'file'@'hello.txt' \
-    'Content-Type:application/json;charset=UTF-8' \
-    'Authorization:Bearer 1a581763-b550-4ba1-b27f-ccdf51e4aa04'
+    'Authorization:Bearer 38420381-76fb-4852-b3cf-e974825a00d6' \
+    'article=테스트내용' \
+    'hashTag=일상'
 ----

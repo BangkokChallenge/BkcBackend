@@ -17,8 +17,12 @@
 |`+Number+`
 |Post id
 
+|`+article+`
+|`+String+`
+|Post 작성글
+
 |`+hashTag+`
-|`+Null+`
+|`+String+`
 |Hash Tage
 
 |`+filePath+`

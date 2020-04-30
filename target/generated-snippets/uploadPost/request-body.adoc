@@ -1,8 +1,4 @@
 [source,options="nowrap"]
 ----
-{
-  "id" : 11,
-  "article" : "TEST",
-  "selfLike" : false
-}
+
 ----

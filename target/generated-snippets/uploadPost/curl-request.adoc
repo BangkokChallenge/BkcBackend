@@ -1,12 +1,9 @@
 [source,bash]
 ----
 $ curl 'http://localhost:8080/api/post/upload' -i -X POST \
-    -H 'Content-Type: application/json;charset=UTF-8' \
-    -H 'Authorization: Bearer 1a581763-b550-4ba1-b27f-ccdf51e4aa04' \
+    -H 'Content-Type: multipart/form-data;charset=UTF-8' \
+    -H 'Authorization: Bearer 38420381-76fb-4852-b3cf-e974825a00d6' \
     -F 'file=@hello.txt;type=text/plain' \
-    -d '{
-  "id" : 11,
-  "article" : "TEST",
-  "selfLike" : false
-}'
+    -F 'article=테스트내용' \
+    -F 'hashTag=일상'
 ----
