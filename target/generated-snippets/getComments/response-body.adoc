@@ -1,0 +1,46 @@
+[source,options="nowrap"]
+----
+[ {
+  "id" : 2,
+  "content" : "test",
+  "createdAt" : "2020-04-29 15:12:36",
+  "modifiedAt" : "2020-04-29 15:12:36",
+  "postId" : 11,
+  "accountId" : "TEST_ID",
+  "accountNickName" : "TEST_NICKNAME"
+}, {
+  "id" : 3,
+  "content" : "test",
+  "createdAt" : "2020-04-29 15:13:05",
+  "modifiedAt" : "2020-04-29 15:13:05",
+  "postId" : 11,
+  "accountId" : "TEST_ID",
+  "accountNickName" : "TEST_NICKNAME"
+}, {
+  "id" : 4,
+  "content" : "test",
+  "createdAt" : "2020-04-29 15:17:10",
+  "modifiedAt" : "2020-04-29 15:17:10",
+  "postId" : 11,
+  "accountId" : "TEST_ID",
+  "accountNickName" : "TEST_NICKNAME"
+}, {
+  "id" : 1,
+  "content" : "hihi223",
+  "createdAt" : "2020-04-28 20:05:42",
+  "modifiedAt" : "2020-04-29 15:27:06",
+  "postId" : 11,
+  "accountId" : "1345427499",
+  "accountNickName" : "조홍제"
+},{
+    ...생략...
+},{
+  "id" : 15,
+  "content" : "test",
+  "createdAt" : "2020-04-30 00:28:50",
+  "modifiedAt" : "2020-04-30 00:28:50",
+  "postId" : 11,
+  "accountId" : "TEST_ID",
+  "accountNickName" : "TEST_NICKNAME"
+} ]
+----

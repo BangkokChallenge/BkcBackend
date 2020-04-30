@@ -32,11 +32,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     PasswordEncoder passwordEncoder;
 
-//    @Bean
-//    public TokenStore tokenStore() {
-//        return new InMemoryTokenStore();
-//    }
-
     /* 토큰 정보 영속화 */
     @Bean
     public TokenStore tokenStore(DataSource dataSource) {

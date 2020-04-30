@@ -1,5 +1,7 @@
 package us.dev.backend.Comment;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -27,9 +29,9 @@ public class CommentService {
 
 
     @Transactional
-    public Comment save(Integer postId, CommentDto commentDto) {
+    public Comment save(Integer postId, CommentDto commentDto, String userId) {
         Post post = postRepository.findById(postId).orElseThrow(() -> new IllegalArgumentException("해당 post가 없습니다. id=" + postId));
-        Account account = accountRepository.findById(commentDto.getAccountId()).orElseThrow(() -> new IllegalArgumentException("해당 user가 없습니다. id=" + postId));
+        Account account = accountRepository.findById(userId).orElseThrow(() -> new IllegalArgumentException("해당 user가 없습니다. id=" + userId));
 
         String content = commentDto.getContent();
         Comment comment = Comment.builder()
@@ -37,37 +39,43 @@ public class CommentService {
                 .post(post)
                 .account(account)
                 .build();
-        Comment postedComment = commentRepository.save(comment);
-        return postedComment;
+        return commentRepository.save(comment);
     }
 
-    public ResponseEntity findById(Integer postId, Long commentId) {
-        Comment comment = commentRepository.findById(commentId).orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id=" + commentId));
-        return ResponseEntity.ok().body(comment);
+    public Comment findById(Integer postId, Long commentId) {
+        return commentRepository.findById(commentId).orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id=" + commentId));
     }
 
     @Transactional(readOnly = true)
     public List<Comment> findAllComments(Integer postId) {
         Post post = postRepository.findById(postId).orElseThrow(() -> new IllegalArgumentException("해당 post가 없습니다. id=" + postId));
-
-        List<Comment> comments = commentRepository.findAllByPost(post);
-        return comments;
+        return commentRepository.findAllByPost(post);
     }
 
     @Transactional
-    public void delete(Integer postId, Long commentId) {
+    public void delete(Integer postId, Long commentId, String userId) {
         Comment comment = commentRepository.findById(commentId).orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id=" + commentId));
-        commentRepository.delete(comment);
+        Account account = accountRepository.findById(userId).orElseThrow(() -> new IllegalArgumentException("해당 user가 없습니다. id=" + userId));
+        if (account.equals(comment.getAccount())) {
+            commentRepository.delete(comment);
+        } else {
+            throw new IllegalArgumentException("해당 user가 없습니다. id=" + userId);
+        }
     }
 
     @Transactional
-    public ResponseEntity update(Integer postId,
-                                 Long commentId,
-                                 CommentDto commentDto) {
+    public Comment update(Integer postId,
+                          Long commentId,
+                          CommentDto commentDto,
+                          String userId) {
 
         Comment comment = commentRepository.findById(commentId).orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id=" + commentId));
-        Comment updatedComment = comment.update(commentDto.getContent());
-        return ResponseEntity.ok().body(updatedComment);
+        Account account = accountRepository.findById(userId).orElseThrow(() -> new IllegalArgumentException("해당 user가 없습니다. id=" + userId));
+        if (account.equals(comment.getAccount())) {
+            return comment.update(commentDto.getContent());
+        } else {
+            throw new IllegalArgumentException("해당 user가 없습니다. id=" + userId);
+        }
     }
 }
 

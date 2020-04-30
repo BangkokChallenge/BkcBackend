@@ -24,6 +24,8 @@ public class Post extends BaseTimeEntity {
     @Id @GeneratedValue
     Integer id;
 
+    String article;
+
     String hashTag;
 
     String nickname;
@@ -35,7 +37,6 @@ public class Post extends BaseTimeEntity {
     long commentCount;
     long likeCount;
 
-    String article;
 
     String filePath;
 
