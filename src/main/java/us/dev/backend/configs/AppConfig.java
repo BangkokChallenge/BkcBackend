@@ -21,6 +21,7 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 import us.dev.backend.Account.Account;
+import us.dev.backend.Account.AccountRepository;
 import us.dev.backend.Account.AccountRole;
 import us.dev.backend.Account.AccountService;
 import us.dev.backend.Post.Post;
@@ -28,10 +29,7 @@ import us.dev.backend.Post.PostRepository;
 import us.dev.backend.common.AppProperties;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.IntStream;
 
 @Configuration
@@ -79,6 +77,9 @@ public class AppConfig {
             @Autowired
             PostRepository postRepository;
 
+            @Autowired
+            AccountRepository accountRepository;
+
             @Override
             public void run(ApplicationArguments args) throws Exception {
                 Account account = Account.builder()
@@ -114,6 +115,15 @@ public class AppConfig {
                 System.out.println(getaccess_Token);
                 System.out.println("***REFRESH_TOKEN***");
                 System.out.println(getrefrsh_Token);
+
+                Optional<Account> getOptional = accountRepository.findById("TDD_TEMP_ID");
+                Account newAccount = getOptional.get();
+                newAccount.setServiceAccessToken(getaccess_Token);
+                newAccount.setServiceRefreshToken(getrefrsh_Token);
+                accountService.saveAccount(newAccount);
+
+
+
 
                 /* test data 여러개 집어넣기 */
                 IntStream.rangeClosed(1, 40).forEach(index ->
