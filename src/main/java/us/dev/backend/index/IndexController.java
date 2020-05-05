@@ -1,6 +1,7 @@
 package us.dev.backend.index;
 
 import org.springframework.hateoas.ResourceSupport;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import us.dev.backend.Account.AccountController;
@@ -8,6 +9,7 @@ import us.dev.backend.Account.AccountController;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 
 @RestController
+@CrossOrigin("*")
 public class IndexController {
 
     @GetMapping("/api")

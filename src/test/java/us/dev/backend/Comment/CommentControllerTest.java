@@ -56,7 +56,7 @@ public class CommentControllerTest extends BaseControllerTest {
         accountRepository.save(account);
         Post post = Post.builder()
                 .id(11)
-                .userId("TDD_USER_ID")
+                .accountId("TDD_USER_ID")
                 .article("작성내용")
                 .filePath("S3 image 주소")
                 .profile_photo("Kakao profile photo")

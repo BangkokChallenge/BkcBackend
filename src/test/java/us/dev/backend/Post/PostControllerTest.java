@@ -109,7 +109,7 @@ public class PostControllerTest extends BaseControllerTest {
                         ),
                         relaxedResponseFields(
                                 fieldWithPath("_embedded").description("Post 페이지정보들[기본리턴속성임]"),
-                                fieldWithPath("_embedded.postList[0].userId").description("작성자 Kakao ID"),
+                                fieldWithPath("_embedded.postList[0].accountId").description("작성자 Kakao ID"),
                                 fieldWithPath("_embedded.postList[0].nickname").description("작성자 Kakao Nickname"),
                                 fieldWithPath("_embedded.postList[0].profile_photo").description("작성자 KaKao Profile Photo"),
                                 fieldWithPath("_embedded.postList[0].id").description("Post ID"),

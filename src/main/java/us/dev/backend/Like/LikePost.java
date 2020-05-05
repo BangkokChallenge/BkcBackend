@@ -1,29 +1,27 @@
 package us.dev.backend.Like;
 
 import lombok.*;
+import us.dev.backend.Post.Post;
 import us.dev.backend.common.BaseTimeEntity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-@EqualsAndHashCode(of = "id")
+@EqualsAndHashCode(callSuper = false)
 @Entity
-public class Like extends BaseTimeEntity {
+public class LikePost extends BaseTimeEntity {
 
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     Integer id;
 
     Integer postId;
 
-    Integer accountId;
+    String accountId;
 
     boolean likeTrueAndFalse;
-
 
 }
