@@ -523,6 +523,17 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ul>
 </li>
+<li><a href="#resources-like">좋아요 정보</a>
+<ul class="sectlevel2">
+<li><a href="#resources-changeState-like">Like 상태 변경</a>
+<ul class="sectlevel3">
+<li><a href="#resources-changeState-like_http_request">HTTP request</a></li>
+<li><a href="#resources-changeState-like_http_response">Example response</a></li>
+<li><a href="#resources-changeState-like_response_fields">Response fields</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1211,7 +1222,7 @@ Location: http://localhost:8080/api/post/upload
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /api/post/ HTTP/1.1
-Authorization: Bearer fa0835f3-0fe3-48ae-b4fe-44e4b7796bab
+Authorization: Bearer 0d4bc031-df8e-4ddd-bc0c-567559151ba8
 Host: localhost:8080</code></pre>
 </div>
 </div>
@@ -1223,144 +1234,534 @@ Host: localhost:8080</code></pre>
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
 Pragma: no-cache
 X-XSS-Protection: 1; mode=block
-Content-Length: 4738
 Expires: 0
 X-Frame-Options: DENY
 X-Content-Type-Options: nosniff
 Content-Type: application/hal+json;charset=UTF-8
 Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Content-Length: 17368
 
 {
   "_embedded" : {
     "postList" : [ {
-      "createdAt" : "2020-04-27T23:32:25.694791",
-      "modifiedAt" : "2020-04-27T23:32:25.694791",
-      "userId" : "TDD_USER_ID",
+      "createdAt" : "2020-05-06T01:38:16.825003",
+      "modifiedAt" : "2020-05-06T01:38:16.825003",
+      "accountId" : "TDD_USER_ID",
       "id" : 1,
+      "article" : "작성내용",
       "hashTag" : "일상",
       "nickname" : "Kakao Nickname",
       "profile_photo" : "Kakao profile photo",
       "selfLike" : false,
       "commentCount" : 0,
       "likeCount" : 0,
-      "article" : "작성내용",
       "filePath" : "S3 image 주소"
     }, {
-      "createdAt" : "2020-04-27T23:32:25.729363",
-      "modifiedAt" : "2020-04-27T23:32:25.729363",
-      "userId" : "TDD_USER_ID",
-      "id" : 2,
-      "hashTag" : "일상",
-      "nickname" : "Kakao Nickname",
-      "profile_photo" : "Kakao profile photo",
-      "selfLike" : false,
-      "commentCount" : 0,
-      "likeCount" : 0,
-      "article" : "작성내용",
-      "filePath" : "S3 image 주소"
-    }, {
-      "createdAt" : "2020-04-27T23:32:25.742787",
-      "modifiedAt" : "2020-04-27T23:32:25.742787",
-      "userId" : "TDD_USER_ID",
+      "createdAt" : "2020-05-06T01:38:16.884139",
+      "modifiedAt" : "2020-05-06T01:38:16.884139",
+      "accountId" : "TDD_USER_ID",
       "id" : 3,
+      "article" : "작성내용",
       "hashTag" : "일상",
       "nickname" : "Kakao Nickname",
       "profile_photo" : "Kakao profile photo",
       "selfLike" : false,
       "commentCount" : 0,
       "likeCount" : 0,
-      "article" : "작성내용",
       "filePath" : "S3 image 주소"
     }, {
-      "createdAt" : "2020-04-27T23:32:25.753132",
-      "modifiedAt" : "2020-04-27T23:32:25.753132",
-      "userId" : "TDD_USER_ID",
-      "id" : 4,
-      "hashTag" : "일상",
-      "nickname" : "Kakao Nickname",
-      "profile_photo" : "Kakao profile photo",
-      "selfLike" : false,
-      "commentCount" : 0,
-      "likeCount" : 0,
-      "article" : "작성내용",
-      "filePath" : "S3 image 주소"
-    }, {
-      "createdAt" : "2020-04-27T23:32:25.765681",
-      "modifiedAt" : "2020-04-27T23:32:25.765681",
-      "userId" : "TDD_USER_ID",
+      "createdAt" : "2020-05-06T01:38:16.918588",
+      "modifiedAt" : "2020-05-06T01:38:16.918588",
+      "accountId" : "TDD_USER_ID",
       "id" : 5,
+      "article" : "작성내용",
       "hashTag" : "일상",
       "nickname" : "Kakao Nickname",
       "profile_photo" : "Kakao profile photo",
       "selfLike" : false,
       "commentCount" : 0,
       "likeCount" : 0,
-      "article" : "작성내용",
       "filePath" : "S3 image 주소"
     }, {
-      "createdAt" : "2020-04-27T23:32:25.778985",
-      "modifiedAt" : "2020-04-27T23:32:25.778985",
-      "userId" : "TDD_USER_ID",
-      "id" : 6,
-      "hashTag" : "일상",
-      "nickname" : "Kakao Nickname",
-      "profile_photo" : "Kakao profile photo",
-      "selfLike" : false,
-      "commentCount" : 0,
-      "likeCount" : 0,
-      "article" : "작성내용",
-      "filePath" : "S3 image 주소"
-    }, {
-      "createdAt" : "2020-04-27T23:32:25.789975",
-      "modifiedAt" : "2020-04-27T23:32:25.789975",
-      "userId" : "TDD_USER_ID",
+      "createdAt" : "2020-05-06T01:38:16.947446",
+      "modifiedAt" : "2020-05-06T01:38:16.947446",
+      "accountId" : "TDD_USER_ID",
       "id" : 7,
+      "article" : "작성내용",
       "hashTag" : "일상",
       "nickname" : "Kakao Nickname",
       "profile_photo" : "Kakao profile photo",
       "selfLike" : false,
       "commentCount" : 0,
       "likeCount" : 0,
-      "article" : "작성내용",
       "filePath" : "S3 image 주소"
     }, {
-      "createdAt" : "2020-04-27T23:32:25.8017",
-      "modifiedAt" : "2020-04-27T23:32:25.8017",
-      "userId" : "TDD_USER_ID",
-      "id" : 8,
-      "hashTag" : "일상",
-      "nickname" : "Kakao Nickname",
-      "profile_photo" : "Kakao profile photo",
-      "selfLike" : false,
-      "commentCount" : 0,
-      "likeCount" : 0,
-      "article" : "작성내용",
-      "filePath" : "S3 image 주소"
-    }, {
-      "createdAt" : "2020-04-27T23:32:25.81546",
-      "modifiedAt" : "2020-04-27T23:32:25.81546",
-      "userId" : "TDD_USER_ID",
+      "createdAt" : "2020-05-06T01:38:16.974105",
+      "modifiedAt" : "2020-05-06T01:38:16.974105",
+      "accountId" : "TDD_USER_ID",
       "id" : 9,
+      "article" : "작성내용",
       "hashTag" : "일상",
       "nickname" : "Kakao Nickname",
       "profile_photo" : "Kakao profile photo",
       "selfLike" : false,
       "commentCount" : 0,
       "likeCount" : 0,
-      "article" : "작성내용",
       "filePath" : "S3 image 주소"
     }, {
-      "createdAt" : "2020-04-27T23:32:25.830381",
-      "modifiedAt" : "2020-04-27T23:32:25.830381",
-      "userId" : "TDD_USER_ID",
-      "id" : 10,
+      "createdAt" : "2020-05-06T01:38:17.003371",
+      "modifiedAt" : "2020-05-06T01:38:17.003371",
+      "accountId" : "TDD_USER_ID",
+      "id" : 11,
+      "article" : "작성내용",
       "hashTag" : "일상",
       "nickname" : "Kakao Nickname",
       "profile_photo" : "Kakao profile photo",
       "selfLike" : false,
       "commentCount" : 0,
       "likeCount" : 0,
+      "filePath" : "S3 image 주소"
+    }, {
+      "createdAt" : "2020-05-06T01:38:17.03034",
+      "modifiedAt" : "2020-05-06T01:38:17.03034",
+      "accountId" : "TDD_USER_ID",
+      "id" : 13,
       "article" : "작성내용",
+      "hashTag" : "일상",
+      "nickname" : "Kakao Nickname",
+      "profile_photo" : "Kakao profile photo",
+      "selfLike" : false,
+      "commentCount" : 0,
+      "likeCount" : 0,
+      "filePath" : "S3 image 주소"
+    }, {
+      "createdAt" : "2020-05-06T01:38:17.049382",
+      "modifiedAt" : "2020-05-06T01:38:17.049382",
+      "accountId" : "TDD_USER_ID",
+      "id" : 15,
+      "article" : "작성내용",
+      "hashTag" : "일상",
+      "nickname" : "Kakao Nickname",
+      "profile_photo" : "Kakao profile photo",
+      "selfLike" : false,
+      "commentCount" : 0,
+      "likeCount" : 0,
+      "filePath" : "S3 image 주소"
+    }, {
+      "createdAt" : "2020-05-06T01:38:17.068303",
+      "modifiedAt" : "2020-05-06T01:38:17.068303",
+      "accountId" : "TDD_USER_ID",
+      "id" : 17,
+      "article" : "작성내용",
+      "hashTag" : "일상",
+      "nickname" : "Kakao Nickname",
+      "profile_photo" : "Kakao profile photo",
+      "selfLike" : false,
+      "commentCount" : 0,
+      "likeCount" : 0,
+      "filePath" : "S3 image 주소"
+    }, {
+      "createdAt" : "2020-05-06T01:38:17.086672",
+      "modifiedAt" : "2020-05-06T01:38:17.086672",
+      "accountId" : "TDD_USER_ID",
+      "id" : 19,
+      "article" : "작성내용",
+      "hashTag" : "일상",
+      "nickname" : "Kakao Nickname",
+      "profile_photo" : "Kakao profile photo",
+      "selfLike" : false,
+      "commentCount" : 0,
+      "likeCount" : 0,
+      "filePath" : "S3 image 주소"
+    }, {
+      "createdAt" : "2020-05-06T01:38:17.109341",
+      "modifiedAt" : "2020-05-06T01:38:17.109341",
+      "accountId" : "TDD_USER_ID",
+      "id" : 21,
+      "article" : "작성내용",
+      "hashTag" : "일상",
+      "nickname" : "Kakao Nickname",
+      "profile_photo" : "Kakao profile photo",
+      "selfLike" : false,
+      "commentCount" : 0,
+      "likeCount" : 0,
+      "filePath" : "S3 image 주소"
+    }, {
+      "createdAt" : "2020-05-06T01:38:17.140981",
+      "modifiedAt" : "2020-05-06T01:38:17.140981",
+      "accountId" : "TDD_USER_ID",
+      "id" : 23,
+      "article" : "작성내용",
+      "hashTag" : "일상",
+      "nickname" : "Kakao Nickname",
+      "profile_photo" : "Kakao profile photo",
+      "selfLike" : false,
+      "commentCount" : 0,
+      "likeCount" : 0,
+      "filePath" : "S3 image 주소"
+    }, {
+      "createdAt" : "2020-05-06T01:38:17.169925",
+      "modifiedAt" : "2020-05-06T01:38:17.169925",
+      "accountId" : "TDD_USER_ID",
+      "id" : 25,
+      "article" : "작성내용",
+      "hashTag" : "일상",
+      "nickname" : "Kakao Nickname",
+      "profile_photo" : "Kakao profile photo",
+      "selfLike" : false,
+      "commentCount" : 0,
+      "likeCount" : 0,
+      "filePath" : "S3 image 주소"
+    }, {
+      "createdAt" : "2020-05-06T01:38:17.196422",
+      "modifiedAt" : "2020-05-06T01:38:17.196422",
+      "accountId" : "TDD_USER_ID",
+      "id" : 27,
+      "article" : "작성내용",
+      "hashTag" : "일상",
+      "nickname" : "Kakao Nickname",
+      "profile_photo" : "Kakao profile photo",
+      "selfLike" : false,
+      "commentCount" : 0,
+      "likeCount" : 0,
+      "filePath" : "S3 image 주소"
+    }, {
+      "createdAt" : "2020-05-06T01:38:17.226988",
+      "modifiedAt" : "2020-05-06T01:38:17.226988",
+      "accountId" : "TDD_USER_ID",
+      "id" : 29,
+      "article" : "작성내용",
+      "hashTag" : "일상",
+      "nickname" : "Kakao Nickname",
+      "profile_photo" : "Kakao profile photo",
+      "selfLike" : false,
+      "commentCount" : 0,
+      "likeCount" : 0,
+      "filePath" : "S3 image 주소"
+    }, {
+      "createdAt" : "2020-05-06T01:38:17.24691",
+      "modifiedAt" : "2020-05-06T01:38:17.24691",
+      "accountId" : "TDD_USER_ID",
+      "id" : 31,
+      "article" : "작성내용",
+      "hashTag" : "일상",
+      "nickname" : "Kakao Nickname",
+      "profile_photo" : "Kakao profile photo",
+      "selfLike" : false,
+      "commentCount" : 0,
+      "likeCount" : 0,
+      "filePath" : "S3 image 주소"
+    }, {
+      "createdAt" : "2020-05-06T01:38:17.269998",
+      "modifiedAt" : "2020-05-06T01:38:17.269998",
+      "accountId" : "TDD_USER_ID",
+      "id" : 33,
+      "article" : "작성내용",
+      "hashTag" : "일상",
+      "nickname" : "Kakao Nickname",
+      "profile_photo" : "Kakao profile photo",
+      "selfLike" : false,
+      "commentCount" : 0,
+      "likeCount" : 0,
+      "filePath" : "S3 image 주소"
+    }, {
+      "createdAt" : "2020-05-06T01:38:17.298698",
+      "modifiedAt" : "2020-05-06T01:38:17.298698",
+      "accountId" : "TDD_USER_ID",
+      "id" : 35,
+      "article" : "작성내용",
+      "hashTag" : "일상",
+      "nickname" : "Kakao Nickname",
+      "profile_photo" : "Kakao profile photo",
+      "selfLike" : false,
+      "commentCount" : 0,
+      "likeCount" : 0,
+      "filePath" : "S3 image 주소"
+    }, {
+      "createdAt" : "2020-05-06T01:38:17.323968",
+      "modifiedAt" : "2020-05-06T01:38:17.323968",
+      "accountId" : "TDD_USER_ID",
+      "id" : 37,
+      "article" : "작성내용",
+      "hashTag" : "일상",
+      "nickname" : "Kakao Nickname",
+      "profile_photo" : "Kakao profile photo",
+      "selfLike" : false,
+      "commentCount" : 0,
+      "likeCount" : 0,
+      "filePath" : "S3 image 주소"
+    }, {
+      "createdAt" : "2020-05-06T01:38:17.349619",
+      "modifiedAt" : "2020-05-06T01:38:17.349619",
+      "accountId" : "TDD_USER_ID",
+      "id" : 39,
+      "article" : "작성내용",
+      "hashTag" : "일상",
+      "nickname" : "Kakao Nickname",
+      "profile_photo" : "Kakao profile photo",
+      "selfLike" : false,
+      "commentCount" : 0,
+      "likeCount" : 0,
+      "filePath" : "S3 image 주소"
+    }, {
+      "createdAt" : "2020-05-06T01:38:17.376958",
+      "modifiedAt" : "2020-05-06T01:38:17.376958",
+      "accountId" : "TDD_USER_ID",
+      "id" : 41,
+      "article" : "작성내용",
+      "hashTag" : "일상",
+      "nickname" : "Kakao Nickname",
+      "profile_photo" : "Kakao profile photo",
+      "selfLike" : false,
+      "commentCount" : 0,
+      "likeCount" : 0,
+      "filePath" : "S3 image 주소"
+    }, {
+      "createdAt" : "2020-05-06T01:38:17.405637",
+      "modifiedAt" : "2020-05-06T01:38:17.405637",
+      "accountId" : "TDD_USER_ID",
+      "id" : 43,
+      "article" : "작성내용",
+      "hashTag" : "일상",
+      "nickname" : "Kakao Nickname",
+      "profile_photo" : "Kakao profile photo",
+      "selfLike" : false,
+      "commentCount" : 0,
+      "likeCount" : 0,
+      "filePath" : "S3 image 주소"
+    }, {
+      "createdAt" : "2020-05-06T01:38:17.42618",
+      "modifiedAt" : "2020-05-06T01:38:17.42618",
+      "accountId" : "TDD_USER_ID",
+      "id" : 45,
+      "article" : "작성내용",
+      "hashTag" : "일상",
+      "nickname" : "Kakao Nickname",
+      "profile_photo" : "Kakao profile photo",
+      "selfLike" : false,
+      "commentCount" : 0,
+      "likeCount" : 0,
+      "filePath" : "S3 image 주소"
+    }, {
+      "createdAt" : "2020-05-06T01:38:17.444356",
+      "modifiedAt" : "2020-05-06T01:38:17.444356",
+      "accountId" : "TDD_USER_ID",
+      "id" : 47,
+      "article" : "작성내용",
+      "hashTag" : "일상",
+      "nickname" : "Kakao Nickname",
+      "profile_photo" : "Kakao profile photo",
+      "selfLike" : false,
+      "commentCount" : 0,
+      "likeCount" : 0,
+      "filePath" : "S3 image 주소"
+    }, {
+      "createdAt" : "2020-05-06T01:38:17.46545",
+      "modifiedAt" : "2020-05-06T01:38:17.46545",
+      "accountId" : "TDD_USER_ID",
+      "id" : 49,
+      "article" : "작성내용",
+      "hashTag" : "일상",
+      "nickname" : "Kakao Nickname",
+      "profile_photo" : "Kakao profile photo",
+      "selfLike" : false,
+      "commentCount" : 0,
+      "likeCount" : 0,
+      "filePath" : "S3 image 주소"
+    }, {
+      "createdAt" : "2020-05-06T01:38:17.481727",
+      "modifiedAt" : "2020-05-06T01:38:17.481727",
+      "accountId" : "TDD_USER_ID",
+      "id" : 51,
+      "article" : "작성내용",
+      "hashTag" : "일상",
+      "nickname" : "Kakao Nickname",
+      "profile_photo" : "Kakao profile photo",
+      "selfLike" : false,
+      "commentCount" : 0,
+      "likeCount" : 0,
+      "filePath" : "S3 image 주소"
+    }, {
+      "createdAt" : "2020-05-06T01:38:17.506375",
+      "modifiedAt" : "2020-05-06T01:38:17.506375",
+      "accountId" : "TDD_USER_ID",
+      "id" : 53,
+      "article" : "작성내용",
+      "hashTag" : "일상",
+      "nickname" : "Kakao Nickname",
+      "profile_photo" : "Kakao profile photo",
+      "selfLike" : false,
+      "commentCount" : 0,
+      "likeCount" : 0,
+      "filePath" : "S3 image 주소"
+    }, {
+      "createdAt" : "2020-05-06T01:38:17.525359",
+      "modifiedAt" : "2020-05-06T01:38:17.525359",
+      "accountId" : "TDD_USER_ID",
+      "id" : 55,
+      "article" : "작성내용",
+      "hashTag" : "일상",
+      "nickname" : "Kakao Nickname",
+      "profile_photo" : "Kakao profile photo",
+      "selfLike" : false,
+      "commentCount" : 0,
+      "likeCount" : 0,
+      "filePath" : "S3 image 주소"
+    }, {
+      "createdAt" : "2020-05-06T01:38:17.554003",
+      "modifiedAt" : "2020-05-06T01:38:17.554003",
+      "accountId" : "TDD_USER_ID",
+      "id" : 57,
+      "article" : "작성내용",
+      "hashTag" : "일상",
+      "nickname" : "Kakao Nickname",
+      "profile_photo" : "Kakao profile photo",
+      "selfLike" : false,
+      "commentCount" : 0,
+      "likeCount" : 0,
+      "filePath" : "S3 image 주소"
+    }, {
+      "createdAt" : "2020-05-06T01:38:17.578645",
+      "modifiedAt" : "2020-05-06T01:38:17.578645",
+      "accountId" : "TDD_USER_ID",
+      "id" : 59,
+      "article" : "작성내용",
+      "hashTag" : "일상",
+      "nickname" : "Kakao Nickname",
+      "profile_photo" : "Kakao profile photo",
+      "selfLike" : false,
+      "commentCount" : 0,
+      "likeCount" : 0,
+      "filePath" : "S3 image 주소"
+    }, {
+      "createdAt" : "2020-05-06T01:38:17.605356",
+      "modifiedAt" : "2020-05-06T01:38:17.605356",
+      "accountId" : "TDD_USER_ID",
+      "id" : 61,
+      "article" : "작성내용",
+      "hashTag" : "일상",
+      "nickname" : "Kakao Nickname",
+      "profile_photo" : "Kakao profile photo",
+      "selfLike" : false,
+      "commentCount" : 0,
+      "likeCount" : 0,
+      "filePath" : "S3 image 주소"
+    }, {
+      "createdAt" : "2020-05-06T01:38:17.628947",
+      "modifiedAt" : "2020-05-06T01:38:17.628947",
+      "accountId" : "TDD_USER_ID",
+      "id" : 63,
+      "article" : "작성내용",
+      "hashTag" : "일상",
+      "nickname" : "Kakao Nickname",
+      "profile_photo" : "Kakao profile photo",
+      "selfLike" : false,
+      "commentCount" : 0,
+      "likeCount" : 0,
+      "filePath" : "S3 image 주소"
+    }, {
+      "createdAt" : "2020-05-06T01:38:17.647765",
+      "modifiedAt" : "2020-05-06T01:38:17.647765",
+      "accountId" : "TDD_USER_ID",
+      "id" : 65,
+      "article" : "작성내용",
+      "hashTag" : "일상",
+      "nickname" : "Kakao Nickname",
+      "profile_photo" : "Kakao profile photo",
+      "selfLike" : false,
+      "commentCount" : 0,
+      "likeCount" : 0,
+      "filePath" : "S3 image 주소"
+    }, {
+      "createdAt" : "2020-05-06T01:38:17.667533",
+      "modifiedAt" : "2020-05-06T01:38:17.667533",
+      "accountId" : "TDD_USER_ID",
+      "id" : 67,
+      "article" : "작성내용",
+      "hashTag" : "일상",
+      "nickname" : "Kakao Nickname",
+      "profile_photo" : "Kakao profile photo",
+      "selfLike" : false,
+      "commentCount" : 0,
+      "likeCount" : 0,
+      "filePath" : "S3 image 주소"
+    }, {
+      "createdAt" : "2020-05-06T01:38:17.690703",
+      "modifiedAt" : "2020-05-06T01:38:17.690703",
+      "accountId" : "TDD_USER_ID",
+      "id" : 69,
+      "article" : "작성내용",
+      "hashTag" : "일상",
+      "nickname" : "Kakao Nickname",
+      "profile_photo" : "Kakao profile photo",
+      "selfLike" : false,
+      "commentCount" : 0,
+      "likeCount" : 0,
+      "filePath" : "S3 image 주소"
+    }, {
+      "createdAt" : "2020-05-06T01:38:17.709375",
+      "modifiedAt" : "2020-05-06T01:38:17.709375",
+      "accountId" : "TDD_USER_ID",
+      "id" : 71,
+      "article" : "작성내용",
+      "hashTag" : "일상",
+      "nickname" : "Kakao Nickname",
+      "profile_photo" : "Kakao profile photo",
+      "selfLike" : false,
+      "commentCount" : 0,
+      "likeCount" : 0,
+      "filePath" : "S3 image 주소"
+    }, {
+      "createdAt" : "2020-05-06T01:38:17.73393",
+      "modifiedAt" : "2020-05-06T01:38:17.73393",
+      "accountId" : "TDD_USER_ID",
+      "id" : 73,
+      "article" : "작성내용",
+      "hashTag" : "일상",
+      "nickname" : "Kakao Nickname",
+      "profile_photo" : "Kakao profile photo",
+      "selfLike" : false,
+      "commentCount" : 0,
+      "likeCount" : 0,
+      "filePath" : "S3 image 주소"
+    }, {
+      "createdAt" : "2020-05-06T01:38:17.750664",
+      "modifiedAt" : "2020-05-06T01:38:17.750664",
+      "accountId" : "TDD_USER_ID",
+      "id" : 75,
+      "article" : "작성내용",
+      "hashTag" : "일상",
+      "nickname" : "Kakao Nickname",
+      "profile_photo" : "Kakao profile photo",
+      "selfLike" : false,
+      "commentCount" : 0,
+      "likeCount" : 0,
+      "filePath" : "S3 image 주소"
+    }, {
+      "createdAt" : "2020-05-06T01:38:17.780196",
+      "modifiedAt" : "2020-05-06T01:38:17.780196",
+      "accountId" : "TDD_USER_ID",
+      "id" : 77,
+      "article" : "작성내용",
+      "hashTag" : "일상",
+      "nickname" : "Kakao Nickname",
+      "profile_photo" : "Kakao profile photo",
+      "selfLike" : false,
+      "commentCount" : 0,
+      "likeCount" : 0,
+      "filePath" : "S3 image 주소"
+    }, {
+      "createdAt" : "2020-05-06T01:38:17.807397",
+      "modifiedAt" : "2020-05-06T01:38:17.807397",
+      "accountId" : "TDD_USER_ID",
+      "id" : 79,
+      "article" : "작성내용",
+      "hashTag" : "일상",
+      "nickname" : "Kakao Nickname",
+      "profile_photo" : "Kakao profile photo",
+      "selfLike" : false,
+      "commentCount" : 0,
+      "likeCount" : 0,
       "filePath" : "S3 image 주소"
     } ]
   },
@@ -1375,7 +1776,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
       "href" : "http://localhost:8080/api/post?page=1&amp;size=10"
     },
     "last" : {
-      "href" : "http://localhost:8080/api/post?page=1&amp;size=10"
+      "href" : "http://localhost:8080/api/post?page=3&amp;size=10"
     },
     "profile" : {
       "href" : "/docs/index.html#resource-post-list"
@@ -1383,8 +1784,8 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
   },
   "page" : {
     "size" : 10,
-    "totalElements" : 11,
-    "totalPages" : 2,
+    "totalElements" : 40,
+    "totalPages" : 4,
     "number" : 0
   }
 }</code></pre>
@@ -1413,7 +1814,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 <td class="tableblock halign-left valign-top"><p class="tableblock">Post 페이지정보들[기본리턴속성임]</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_embedded.postList[0].userId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_embedded.postList[0].accountId</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">작성자 Kakao ID</p></td>
 </tr>
@@ -1830,10 +2231,106 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="resources-like"><a class="link" href="#resources-like">좋아요 정보</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>사용자가 좋아요를 누르면 Table에 반영시킬 수 있다.</p>
+</div>
+<div class="sect2">
+<h3 id="resources-changeState-like"><a class="link" href="#resources-changeState-like">Like 상태 변경</a></h3>
+<div class="paragraph">
+<p><code>PUT</code> 요청에 PostId를 이용하여 현재 이용중인 사용자가 해당 Post에 좋아요 상태를 반영할 수 있다.<br></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code>http://localhost:8080/api/like/{postId}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>ex</code> True = 좋아요 활성화 상태, False = 좋아요 비활성화 상태<br></p>
+</div>
+<div class="sect3">
+<h4 id="resources-changeState-like_http_request"><a class="link" href="#resources-changeState-like_http_request">HTTP request</a></h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">PUT /api/like/1 HTTP/1.1
+Authorization: Bearer 0d4bc031-df8e-4ddd-bc0c-567559151ba8
+Host: localhost:8080</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="resources-changeState-like_http_response"><a class="link" href="#resources-changeState-like_http_response">Example response</a></h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
+Content-Length: 184
+Pragma: no-cache
+X-XSS-Protection: 1; mode=block
+Expires: 0
+X-Frame-Options: DENY
+X-Content-Type-Options: nosniff
+Content-Type: application/hal+json;charset=UTF-8
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+
+{
+  "createdAt" : "2020-05-06T01:53:42.139216",
+  "modifiedAt" : "2020-05-06T01:53:42.139216",
+  "id" : 81,
+  "postId" : 1,
+  "accountId" : "TDD_TEMP_ID",
+  "likeTrueAndFalse" : true
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="resources-changeState-like_response_fields"><a class="link" href="#resources-changeState-like_response_fields">Response fields</a></h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">LikePost PK</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>accountId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">좋아요를 누른 사용자 카카오 아이디</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>postId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">좋아요가 반영된 Post 아이디</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>likeTrueAndFalse</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">변경된 좋아요 상태</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-05-01 01:53:26 +0900
+Last updated 2020-05-06 02:11:26 +0900
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/github.min.css">

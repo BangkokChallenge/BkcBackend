@@ -34,7 +34,6 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 
 @Controller
 @RequestMapping(value = "/api/account", produces = MediaTypes.HAL_JSON_UTF8_VALUE)
-@CrossOrigin("*")
 public class AccountController {
 
     @Autowired

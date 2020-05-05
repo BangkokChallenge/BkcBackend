@@ -9,7 +9,6 @@ import us.dev.backend.Account.AccountController;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 
 @RestController
-@CrossOrigin("*")
 public class IndexController {
 
     @GetMapping("/api")

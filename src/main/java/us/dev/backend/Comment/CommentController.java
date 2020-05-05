@@ -12,7 +12,6 @@ import java.util.List;
 @RequiredArgsConstructor  // final이 선언된 모든 필드를 인자값으로 하는 생성자를 생성해준다. 그래서 commentService를 사용할 수 있는것!
 @RestController
 @RequestMapping(value = "/api/post")
-@CrossOrigin("*")
 public class CommentController {
     private final CommentService commentService;
 
