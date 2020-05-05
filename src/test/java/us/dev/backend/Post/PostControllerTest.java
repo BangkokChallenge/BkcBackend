@@ -56,8 +56,8 @@ public class PostControllerTest extends BaseControllerTest {
 
         MultiValueMap<String,String> map = new LinkedMultiValueMap<>();
 
-        map.add("article","테스트내용");
         map.add("hashTag","일상");
+        map.add("article","테스트내용");
 
 
         //TODO 파일업로드 테스트 작성해야함.
