@@ -21,7 +21,6 @@
 /Users/wisdomose/Desktop/Project_for_git/Bkchallenge/src/main/java/us/dev/backend/configs/RestTemplateLoggingRequestInterceptor.java
 /Users/wisdomose/Desktop/Project_for_git/Bkchallenge/src/main/java/us/dev/backend/Account/AccountService.java
 /Users/wisdomose/Desktop/Project_for_git/Bkchallenge/src/main/java/us/dev/backend/common/AppProperties.java
-/Users/wisdomose/Desktop/Project_for_git/Bkchallenge/src/main/java/us/dev/backend/Like/Like.java
 /Users/wisdomose/Desktop/Project_for_git/Bkchallenge/src/main/java/us/dev/backend/Post/Post.java
 /Users/wisdomose/Desktop/Project_for_git/Bkchallenge/src/main/java/us/dev/backend/Comment/CommentSerializer.java
 /Users/wisdomose/Desktop/Project_for_git/Bkchallenge/src/main/java/us/dev/backend/Post/PostDto.java
@@ -34,6 +33,7 @@
 /Users/wisdomose/Desktop/Project_for_git/Bkchallenge/src/main/java/us/dev/backend/index/IndexController.java
 /Users/wisdomose/Desktop/Project_for_git/Bkchallenge/src/main/java/us/dev/backend/Account/AccountRole.java
 /Users/wisdomose/Desktop/Project_for_git/Bkchallenge/src/main/java/us/dev/backend/Comment/Comment.java
+/Users/wisdomose/Desktop/Project_for_git/Bkchallenge/src/main/java/us/dev/backend/Like/LikePost.java
 /Users/wisdomose/Desktop/Project_for_git/Bkchallenge/src/main/java/us/dev/backend/Post/S3Service.java
 /Users/wisdomose/Desktop/Project_for_git/Bkchallenge/src/main/java/us/dev/backend/Account/AccountController.java
 /Users/wisdomose/Desktop/Project_for_git/Bkchallenge/src/main/java/us/dev/backend/Account/AccountDtoKey.java
