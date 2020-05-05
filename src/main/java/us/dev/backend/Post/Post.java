@@ -1,15 +1,10 @@
 package us.dev.backend.Post;
 
 import lombok.*;
-import org.hibernate.annotations.ColumnDefault;
-import org.springframework.hateoas.core.Relation;
 import us.dev.backend.common.BaseTimeEntity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Min;
-import java.util.Date;
 
 @Builder
 @AllArgsConstructor
@@ -19,9 +14,10 @@ import java.util.Date;
 @EqualsAndHashCode(callSuper = false)
 @Entity
 public class Post extends BaseTimeEntity {
-    String userId;
 
-    @Id @GeneratedValue
+    String accountId;
+
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     Integer id;
 
     String article;
@@ -30,6 +26,7 @@ public class Post extends BaseTimeEntity {
 
     String nickname;
     String profile_photo;
+
 
     boolean selfLike;
 

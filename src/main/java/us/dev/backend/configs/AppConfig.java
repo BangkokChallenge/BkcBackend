@@ -1,7 +1,6 @@
 package us.dev.backend.configs;
 
 import org.modelmapper.ModelMapper;
-import org.modelmapper.internal.util.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -24,11 +23,12 @@ import us.dev.backend.Account.Account;
 import us.dev.backend.Account.AccountRepository;
 import us.dev.backend.Account.AccountRole;
 import us.dev.backend.Account.AccountService;
+import us.dev.backend.Like.LikePost;
+import us.dev.backend.Like.LikeRepository;
 import us.dev.backend.Post.Post;
 import us.dev.backend.Post.PostRepository;
 import us.dev.backend.common.AppProperties;
 
-import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.IntStream;
 
@@ -80,6 +80,9 @@ public class AppConfig {
             @Autowired
             AccountRepository accountRepository;
 
+            @Autowired
+            LikeRepository likeRepository;
+
             @Override
             public void run(ApplicationArguments args) throws Exception {
                 Account account = Account.builder()
@@ -126,18 +129,28 @@ public class AppConfig {
 
 
                 /* test data 여러개 집어넣기 */
-                IntStream.rangeClosed(1, 40).forEach(index ->
-                        postRepository.save(Post.builder()
-                                .id(11)
-                                .userId("TDD_USER_ID")
-                                .article("작성내용")
-                                .filePath("S3 image 주소")
-                                .profile_photo("Kakao profile photo")
-                                .nickname("Kakao Nickname")
-                                .hashTag("일상")
-                                .build()));
+                IntStream.rangeClosed(1, 40).forEach(index -> {
+
+                    Post initPost = Post.builder()
+                            .accountId("TDD_USER_ID")
+                            .article("작성내용")
+                            .filePath("S3 image 주소")
+                            .profile_photo("Kakao profile photo")
+                            .nickname("Kakao Nickname")
+                            .hashTag("일상")
+                            .build();
+
+                    Post newPost = postRepository.save(initPost);
+                    LikePost initLike = LikePost.builder()
+                            .accountId(newPost.getAccountId())
+                            .likeTrueAndFalse(false)
+                            .postId(newPost.getId())
+                            .build();
+
+                    likeRepository.save(initLike);
 
 
+                });
             }
         };
     }

@@ -5,7 +5,7 @@
 |`+Object+`
 |Post 페이지정보들[기본리턴속성임]
 
-|`+_embedded.postList[0].userId+`
+|`+_embedded.postList[0].accountId+`
 |`+String+`
 |작성자 Kakao ID
 

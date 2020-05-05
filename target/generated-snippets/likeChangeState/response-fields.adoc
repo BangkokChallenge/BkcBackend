@@ -1,0 +1,20 @@
+|===
+|Path|Type|Description
+
+|`+id+`
+|`+Number+`
+|LikePost PK
+
+|`+accountId+`
+|`+String+`
+|좋아요를 누른 사용자 카카오 아이디
+
+|`+postId+`
+|`+Number+`
+|좋아요가 반영된 Post 아이디
+
+|`+likeTrueAndFalse+`
+|`+Boolean+`
+|변경된 좋아요 상태
+
+|===
