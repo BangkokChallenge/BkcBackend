@@ -19,7 +19,6 @@ import java.util.Optional;
 
 @Controller
 @RequestMapping(value = "/api/like", produces = MediaTypes.HAL_JSON_UTF8_VALUE)
-@CrossOrigin("*")
 public class LikeController {
 
     @Autowired

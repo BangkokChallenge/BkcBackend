@@ -31,7 +31,6 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 
 @Controller
 @RequestMapping(value = "/api/post")
-@CrossOrigin("*")
 public class PostController {
 
     @Autowired
@@ -120,7 +119,7 @@ public class PostController {
 
         });
 
-        Page<Post> postFeed = new PageImpl<>(postList,pageable,postList.size());
+        Page<Post> postFeed = new PageImpl<>(postList.subList(0,10),pageable,postList.size());
 
         var pagedResources = assembler.toResource(postFeed);
         pagedResources.add(new Link("/docs/index.html#resource-post-list").withRel("profile"));
