@@ -61,7 +61,7 @@ public class CommentControllerTest extends BaseControllerTest {
                 .filePath("S3 image 주소")
                 .profile_photo("Kakao profile photo")
                 .nickname("Kakao Nickname")
-                .hashTag("일상")
+//                .hashTag("일상")
                 .build();
         postRepository.save(post);
         Comment comment = Comment.builder()
