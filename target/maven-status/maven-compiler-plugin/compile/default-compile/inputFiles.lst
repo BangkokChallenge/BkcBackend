@@ -17,7 +17,6 @@
 /Users/wisdomose/Desktop/Project_for_git/Bkchallenge/src/main/java/us/dev/backend/Account/AccountRepository.java
 /Users/wisdomose/Desktop/Project_for_git/Bkchallenge/src/main/java/us/dev/backend/Comment/CommentRepository.java
 /Users/wisdomose/Desktop/Project_for_git/Bkchallenge/src/main/java/us/dev/backend/configs/ResourceServerConfig.java
-/Users/wisdomose/Desktop/Project_for_git/Bkchallenge/src/main/java/us/dev/backend/configs/CorsConfig.java
 /Users/wisdomose/Desktop/Project_for_git/Bkchallenge/src/main/java/us/dev/backend/configs/RestTemplateLoggingRequestInterceptor.java
 /Users/wisdomose/Desktop/Project_for_git/Bkchallenge/src/main/java/us/dev/backend/Account/AccountService.java
 /Users/wisdomose/Desktop/Project_for_git/Bkchallenge/src/main/java/us/dev/backend/common/AppProperties.java
