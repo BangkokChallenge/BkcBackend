@@ -1,0 +1,4 @@
+[source,bash]
+----
+$ http GET 'http://localhost:8080/oauth/check_token?token=f6a427fd-aa46-4e31-bfda-f6cb5c6241f2'
+----

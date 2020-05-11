@@ -105,11 +105,22 @@ operation::createAccount[snippets='http-request,http-response,response-fields,li
 [[resources-login-Account]]
 === 유저 로그인
 
-서비스 토큰이 있다면 로그인 진행, 없다면 회원가입으로 진행.
+1. 앱/웹에 접속 +
+2. 플랫폼의 내부저장공간에 Service Token 값 확인 +
+3. Service Token에 값이 있다면(Access,Refresh) AccessToken이 유효한지 확인 +
+    - 유효하다면, `그대로 진행한다.` +
+    - 유효하지않다면, Refresh 한다. +
+4. Service Token 값이 없다면(NULL) +
+    - 유저 회원가입` 을 진행한다.
+
+operation::checkTokenSuccess[snippets='http-request,http-response,response-fields']
+
+operation::checkTokenBad[snippets='http-request,http-response,response-fields']
 
 [[resources-logout-Account]]
 === 유저 로그아웃
-로그아웃 -> 토큰 만료화 ?
+
+
 
 [[resources-get-Account]]
 === 유저 정보가져오기

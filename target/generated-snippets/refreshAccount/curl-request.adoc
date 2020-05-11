@@ -1,0 +1,9 @@
+[source,bash]
+----
+$ curl 'http://localhost:8080/api/account/refresh' -i -X POST \
+    -H 'Content-Type: application/json;charset=UTF-8' \
+    -d '{
+  "id" : "TDD_TEMP_ID",
+  "key" : "d228390d-9682-4627-b783-0b40fe8da865"
+}'
+----

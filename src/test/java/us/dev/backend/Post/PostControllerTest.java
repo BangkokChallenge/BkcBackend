@@ -56,12 +56,10 @@ public class PostControllerTest extends BaseControllerTest {
 
         MultiValueMap<String,String> map = new LinkedMultiValueMap<>();
 
-        map.add("hashTag","일상");
         map.add("article","테스트내용");
+        map.add("hashTag","일상");
 
 
-        //TODO 파일업로드 테스트 작성해야함.
-        //나눠야할 수도 있음. controller 부분.
         //when&then
         mockMvc.perform(multipart("/api/post/upload").file(file).params(map)
                 .header(HttpHeaders.AUTHORIZATION, getBearerToken()))

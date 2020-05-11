@@ -1,0 +1,6 @@
+[source,http,options="nowrap"]
+----
+GET /oauth/check_token?token=f6a427fd-aa46-4e31-bfda-f6cb5c6241f2 HTTP/1.1
+Host: localhost:8080
+
+----

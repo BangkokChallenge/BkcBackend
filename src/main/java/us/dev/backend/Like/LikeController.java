@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.MediaTypes;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -31,9 +32,12 @@ public class LikeController {
     LikeRepository likeRepository;
 
     @PutMapping("/{postId}")
-    public ResponseEntity changeLikeState(@PathVariable Integer postId, Authentication authentication) {
-        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-        Optional<Account> optionalAccount = this.accountRepository.findById(userDetails.getUsername());
+    public ResponseEntity changeLikeState(@PathVariable Integer postId) {
+        /* 현재 사용자 받아오기 */
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String getUsername = authentication.getName();
+
+        Optional<Account> optionalAccount = this.accountRepository.findById(getUsername);
         if(optionalAccount.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
@@ -51,7 +55,8 @@ public class LikeController {
                     .build();
             this.likeRepository.save(newLike);
 
-            likeCountPlusAndMinus(postId,true);
+            long getLikeCount = likeCountPlusAndMinus(postId,true);
+            newLike.setLikeCount(getLikeCount);
             return ResponseEntity.ok(newLike);
 
         } // 있으면 상태값 반대로해서 저장.
@@ -68,11 +73,13 @@ public class LikeController {
 
                 likeCountPlusAndMinus(postId,true);
             }
+            long getLikeCount = likeCountPlusAndMinus(postId,true);
+            getLike.setLikeCount(getLikeCount);
             return ResponseEntity.ok(getLike);
         }
     }
 
-    public void likeCountPlusAndMinus(Integer postId, boolean flag) {
+    public long likeCountPlusAndMinus(Integer postId, boolean flag) {
         Optional<Post> getPostOptional = this.postRepository.findById(postId);
         Post getPost = getPostOptional.get();
 
@@ -86,6 +93,7 @@ public class LikeController {
             getPost.setLikeCount(getPost.getLikeCount()-1);
             postRepository.save(getPost);
         }
+        return getPost.getLikeCount();
     }
 
 }

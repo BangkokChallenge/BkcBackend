@@ -10,6 +10,7 @@ import org.springframework.hateoas.Link;
 import org.springframework.hateoas.mvc.ControllerLinkBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
@@ -52,12 +53,12 @@ public class PostController {
     AppConfig appConfig;
 
     @PostMapping("/upload")
-    public ResponseEntity createPost(MultipartFile file, PostDto postDto,
-                                     Authentication authentication) throws IOException {
+    public ResponseEntity createPost(MultipartFile file, PostDto postDto) throws IOException {
+        /* 현재 사용자 받아오기 */
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String getUsername = authentication.getName();
 
-        /* 현재 접속중인 사용자 정보 얻어오기 (Bearer Token 기반) */
-        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-        Optional<Account> optionalAccount = this.accountRepository.findById(userDetails.getUsername());
+        Optional<Account> optionalAccount = this.accountRepository.findById(getUsername);
         if(optionalAccount.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
@@ -99,7 +100,7 @@ public class PostController {
     @GetMapping
     public ResponseEntity getPosts(@PageableDefault Pageable pageable, PagedResourcesAssembler<Post> assembler) {
         //TODO 개수 제한하는 방법 알아야함. 다받으면 개수가 너무많음.
-        List<Post> postList = this.postRepository.findAll();
+        List<Post> postList = this.postRepository.findAllByOrderByCreatedAtDesc();
 
         postList.stream().forEach(post -> {
 

@@ -1,0 +1,36 @@
+|===
+|Path|Type|Description
+
+|`+id+`
+|`+String+`
+|Kakao 고유 아이디
+
+|`+serviceAccessToken+`
+|`+String+`
+|자체 Service Access Token
+
+|`+serviceRefreshToken+`
+|`+String+`
+|자체 Service Refresh Token
+
+|`+password+`
+|`+String+`
+|내부 Security Value, 고정값:1234
+
+|`+profile_photo+`
+|`+String+`
+|KaKao 회원 프로필 사진
+
+|`+nickname+`
+|`+String+`
+|Kakao 닉네임
+
+|`+roles+`
+|`+Array+`
+|회원 권한
+
+|`+createdAt+`
+|`+String+`
+|가입 시간
+
+|===

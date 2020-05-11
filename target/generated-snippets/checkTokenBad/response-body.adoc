@@ -1,0 +1,7 @@
+[source,options="nowrap"]
+----
+{
+  "error" : "invalid_token",
+  "error_description" : "Token was not recognised"
+}
+----
