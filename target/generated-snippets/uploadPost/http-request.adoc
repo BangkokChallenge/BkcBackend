@@ -2,17 +2,17 @@
 ----
 POST /api/post/upload HTTP/1.1
 Content-Type: multipart/form-data;charset=UTF-8; boundary=6o2knFse3p53ty9dmcQvWAIx1zInP11uCfbm
+Authorization: Bearer a792003f-2a6b-431d-a06f-f54bf886e603
 Host: localhost:8080
-Authorization: Bearer 38420381-76fb-4852-b3cf-e974825a00d6
 
+--6o2knFse3p53ty9dmcQvWAIx1zInP11uCfbm
+Content-Disposition: form-data; name=hashTag
+
+일상,기쁨,희망,사랑
 --6o2knFse3p53ty9dmcQvWAIx1zInP11uCfbm
 Content-Disposition: form-data; name=article
 
 테스트내용
---6o2knFse3p53ty9dmcQvWAIx1zInP11uCfbm
-Content-Disposition: form-data; name=hashTag
-
-일상
 --6o2knFse3p53ty9dmcQvWAIx1zInP11uCfbm
 Content-Disposition: form-data; name=file; filename=hello.txt
 Content-Type: text/plain

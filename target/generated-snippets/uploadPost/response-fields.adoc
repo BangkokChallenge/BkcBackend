@@ -9,7 +9,7 @@
 |`+String+`
 |Post 수정 날짜
 
-|`+userId+`
+|`+accountId+`
 |`+String+`
 |사용자 id
 
@@ -22,7 +22,7 @@
 |Post 작성글
 
 |`+hashTag+`
-|`+String+`
+|`+Array+`
 |Hash Tage
 
 |`+filePath+`
