@@ -1,4 +1,10 @@
-create table oauth_client_details (
+drop table if exists oauth_access_token;
+drop table if exists oauth_refresh_token;
+drop table if exists oauth_approvals;
+drop table if exists oauth_client_details;
+drop table if exists oauth_client_token;
+
+create table if not exists oauth_client_details (
   client_id VARCHAR(256) PRIMARY KEY,
   resource_ids VARCHAR(256),
   client_secret VARCHAR(256),
@@ -12,7 +18,7 @@ create table oauth_client_details (
   autoapprove VARCHAR(256)
 );
 
-create table oauth_client_token (
+create table if not exists oauth_client_token (
   token_id VARCHAR(256),
   token bytea,
   authentication_id VARCHAR(256),
@@ -36,11 +42,11 @@ create table if not exists oauth_refresh_token (
   authentication bytea
 );
 
-create table oauth_code (
+create table if not exists oauth_code (
   code VARCHAR(256), authentication bytea
 );
 
-create table oauth_approvals (
+create table if not exists oauth_approvals (
   userId VARCHAR(256),
   clientId VARCHAR(256),
   scope VARCHAR(256),
@@ -48,4 +54,6 @@ create table oauth_approvals (
   expiresAt TIMESTAMP,
   lastModifiedAt TIMESTAMP
 );
+
+
 

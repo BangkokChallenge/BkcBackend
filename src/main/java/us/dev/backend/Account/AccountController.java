@@ -140,6 +140,63 @@ public class AccountController {
 
     }
 
+
+    @PostMapping("/refresh")
+    public ResponseEntity refreshAccount(@RequestBody AccountDtoKey accountDtoKey) throws Exception{
+
+        Optional<Account> getOptionalAccount = accountRepository.findById(accountDtoKey.getId());
+        if(getOptionalAccount.isEmpty()) {
+            throw new IllegalArgumentException("해당 Refresh Token이 없음.");
+        }
+
+        Account getAccount = getOptionalAccount.get();
+
+        /* 자체 Oauth2 인증 */
+        HttpHeaders headers = new HttpHeaders();
+        headers.setBasicAuth(appProperties.getClientId(),appProperties.getClientSecret());
+        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+
+        MultiValueMap<String,String> parameters = new LinkedMultiValueMap<>();
+        parameters.add("grant_type","refresh_token");
+        parameters.add("refresh_token",accountDtoKey.getKey());
+        HttpEntity<MultiValueMap<String,String>> requestEntity = new HttpEntity<>(parameters,headers);
+
+        Jackson2JsonParser parser2 = new Jackson2JsonParser();
+
+        //restTemplate = appConfig.customizeRestTemplate();
+        RestTemplate restTemplate = new RestTemplate();
+        String response = restTemplate.postForObject(appProperties.getGetOauthURL(),requestEntity,String.class);
+        restTemplate.setInterceptors(Arrays.asList(new RestTemplateLoggingRequestInterceptor()));
+
+        String getaccess_Token = parser2.parseMap(response).get("access_token").toString();
+        String getrefrsh_Token = parser2.parseMap(response).get("refresh_token").toString();
+
+
+        /* Token 제대로 읽었는지 확인 */
+        if(getaccess_Token == null || getrefrsh_Token == null ) {
+            return ResponseEntity.notFound().build();
+        }
+        getAccount.setServiceAccessToken(getaccess_Token);
+        getAccount.setServiceRefreshToken(getrefrsh_Token);
+
+
+        /* 마지막으로 최종 저장  */
+        this.accountRepository.save(getAccount);
+
+
+        /* HATEOUS */
+        ControllerLinkBuilder selfLinkBuilder = linkTo(AccountController.class).slash("/login/{key}");
+        URI createdUri = selfLinkBuilder.toUri();
+
+        AccountResource accountResource = new AccountResource(getAccount);
+        accountResource.add(linkTo(AccountController.class).withRel("account"));
+
+        accountResource.add(new Link("/docs/index.html#resource-refreshAccount").withRel("profile"));
+        return ResponseEntity.created(createdUri).body(accountResource);
+
+    }
+
+
     /* 회원정보 가져오기 */
     @GetMapping("/{id}")
     public ResponseEntity getAccountInfo(@PathVariable String id) throws Exception{

@@ -1,0 +1,16 @@
+[source,http,options="nowrap"]
+----
+HTTP/1.1 400 Bad Request
+Pragma: no-cache
+X-XSS-Protection: 1; mode=block
+X-Frame-Options: DENY
+X-Content-Type-Options: nosniff
+Content-Length: 83
+Cache-Control: no-store
+Content-Type: application/json;charset=UTF-8
+
+{
+  "error" : "invalid_token",
+  "error_description" : "Token was not recognised"
+}
+----

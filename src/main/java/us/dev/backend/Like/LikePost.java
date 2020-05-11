@@ -24,4 +24,7 @@ public class LikePost extends BaseTimeEntity {
 
     boolean likeTrueAndFalse;
 
+    @Transient
+    long likeCount;
+
 }

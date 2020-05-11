@@ -38,7 +38,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     /* 토큰 정보 영속화 */
     @Bean
-    public TokenStore tokenStore(DataSource dataSource) {
+    public TokenStore tokenStore(@Qualifier("dataSource") DataSource dataSource) {
         return new JdbcTokenStore(dataSource);
     }
 

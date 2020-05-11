@@ -1,0 +1,8 @@
+|===
+|Path|Type|Description
+
+|`+key+`
+|`+String+`
+|플랫폼 내 저장된 방콕 Refresh Token
+
+|===

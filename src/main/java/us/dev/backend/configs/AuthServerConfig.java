@@ -1,7 +1,9 @@
 package us.dev.backend.configs;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
@@ -9,6 +11,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.A
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
+import org.springframework.security.oauth2.provider.token.RemoteTokenServices;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import us.dev.backend.Account.AccountService;
 import us.dev.backend.common.AppProperties;
@@ -45,7 +48,10 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
     /* OAuth2 인증서버 자체의 보안을 설정하는 부분 -> PasswordEncoder를 통한 암호화. */
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
-        security.passwordEncoder(passwordEncoder);
+        security.passwordEncoder(passwordEncoder)
+            .tokenKeyAccess("permitAll()")
+            .checkTokenAccess("permitAll()");
+        // Token 정보를 API(/oauth/check_token)를 활성화 시킨다. ( 기본은 denyAll )
     }
 
     /*
@@ -61,8 +67,8 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
                         .authorizedGrantTypes("password","refresh_token")
                         .scopes("read","write")
                         .secret(this.passwordEncoder.encode(appProperties.getClientSecret()))
-                        .accessTokenValiditySeconds(10 * 60 * 60)
-                        .refreshTokenValiditySeconds(6 * 10 * 60);
+                        .accessTokenValiditySeconds(24 * 60 * 60 * 7)
+                        .refreshTokenValiditySeconds(24 * 60 * 60 * 7 * 2);
     }
 
     /* Oauth2서버가 작동하기 위한 EndPoint에 대한 정보를 설정 */
@@ -71,6 +77,17 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
         endpoints.authenticationManager(authenticationManager)
                 .userDetailsService(accountService)
                 .tokenStore(tokenStore);
+    }
+
+    @Primary
+    @Bean
+    public RemoteTokenServices tokenService() {
+        RemoteTokenServices tokenService = new RemoteTokenServices();
+        tokenService.setCheckTokenEndpointUrl(
+                "http://localhost:8080/oauth/check_token");
+        tokenService.setClientId(appProperties.getClientId());
+        tokenService.setClientSecret(appProperties.getClientSecret());
+        return tokenService;
     }
 
 }

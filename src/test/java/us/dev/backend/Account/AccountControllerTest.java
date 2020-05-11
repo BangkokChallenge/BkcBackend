@@ -8,6 +8,8 @@ import us.dev.backend.common.BaseControllerTest;
 import us.dev.backend.common.TestDescription;
 import us.dev.backend.configs.AppConfig;
 
+import java.util.Optional;
+
 import static org.springframework.restdocs.hypermedia.HypermediaDocumentation.linkWithRel;
 import static org.springframework.restdocs.hypermedia.HypermediaDocumentation.links;
 import static org.springframework.restdocs.payload.PayloadDocumentation.*;
@@ -26,6 +28,9 @@ public class AccountControllerTest extends BaseControllerTest{
 
     @Autowired
     AccountService accountService;
+
+    @Autowired
+    AccountRepository accountRepository;
 
     @Autowired
     AppConfig appConfig;
@@ -69,6 +74,52 @@ public class AccountControllerTest extends BaseControllerTest{
         ;
     }
 
+    @Test
+    @TestDescription("Refesh token 날려서 Account info update test")
+    public void refreshAccount() throws Exception {
+        //given
+        Optional<Account> getOptionalAccount = this.accountRepository.findById("TDD_TEMP_ID");
+        Account getAccount = getOptionalAccount.get();
+
+        AccountDtoKey accountDtoKey = AccountDtoKey.builder()
+                .id("TDD_TEMP_ID")
+                .key(getAccount.getServiceRefreshToken())
+                .build();
+
+
+        //when&then
+
+        mockMvc.perform(post("/api/account/refresh")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(accountDtoKey)))
+                .andDo(print())
+                .andExpect(status().isCreated())
+                .andExpect(jsonPath("id").exists())
+                .andDo(document("refreshAccount",
+                        links(
+                                linkWithRel("self").description("현재 링크"),
+                                linkWithRel("account").description("Account 링크"),
+                                linkWithRel("profile").description("도큐먼트 링크")
+                        ),
+                        relaxedRequestFields(
+                                fieldWithPath("key").description("플랫폼 내 저장된 방콕 Refresh Token")
+                        ),
+                        relaxedResponseFields(
+                                fieldWithPath("id").description("Kakao 고유 아이디"),
+                                fieldWithPath("serviceAccessToken").description("자체 Service Access Token"),
+                                fieldWithPath("serviceRefreshToken").description("자체 Service Refresh Token"),
+                                fieldWithPath("password").description("내부 Security Value, 고정값:1234"),
+                                fieldWithPath("profile_photo").description("KaKao 회원 프로필 사진"),
+                                fieldWithPath("nickname").description("Kakao 닉네임"),
+                                fieldWithPath("roles").description("회원 권한"),
+                                fieldWithPath("createdAt").description("가입 시간")
+                        )
+                ))
+        ;
+
+
+    }
+
 
     @Test
     @TestDescription("회원정보가져오기 테스트")
@@ -93,6 +144,42 @@ public class AccountControllerTest extends BaseControllerTest{
                                 fieldWithPath("nickname").description("Kakao 닉네임"),
                                 fieldWithPath("roles").description("회원 권한"),
                                 fieldWithPath("createdAt").description("가입 시간")
+                        ))
+                )
+        ;
+    }
+
+    @Test
+    @TestDescription("해당 토큰이 유효한지 확인하는 테스트 유효한지 ? 해당 토큰으로 정보가져와서 : /api/account/login으로 진행")
+    public void checkTokenSucess() throws Exception {
+        //given
+        this.mockMvc.perform(get("/oauth/check_token?token={getAccessToken}",getAccessToken()))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("active").exists())
+                .andDo(document("checkTokenSuccess",
+                        relaxedResponseFields(
+                                fieldWithPath("active").description("활성화 여부"),
+                                fieldWithPath("exp").description("만료 시간"),
+                                fieldWithPath("user_name").description("사용자 Kakao ID"),
+                                fieldWithPath("authorities").description("해당 사용자의 권한")
+                        ))
+                )
+        ;
+    }
+
+    @Test
+    @TestDescription("해당 토큰이 유효한지 확인하는 테스트 유효한지 ? 해당 토큰으로 정보가져와서 : /api/account/login으로 진행")
+    public void checkTokenBad() throws Exception {
+        //given
+        this.mockMvc.perform(get("/oauth/check_token?token=tempBadToken"))
+                .andDo(print())
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("error").exists())
+                .andDo(document("checkTokenBad",
+                        relaxedResponseFields(
+                                fieldWithPath("error").description("에러 여부"),
+                                fieldWithPath("error_description").description("에러 설명")
                         ))
                 )
         ;

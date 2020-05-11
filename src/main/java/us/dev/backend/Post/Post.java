@@ -6,6 +6,7 @@ import us.dev.backend.common.BaseTimeEntity;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +19,7 @@ import java.util.List;
 @Entity
 public class Post extends BaseTimeEntity {
 
+    @NotNull
     String accountId;
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,6 +28,8 @@ public class Post extends BaseTimeEntity {
     String article;
 
     String nickname;
+
+    @NotNull
     String profile_photo;
 
 
@@ -33,9 +37,11 @@ public class Post extends BaseTimeEntity {
 
     @Min(0)
     long commentCount;
+
+    @Min(0)
     long likeCount;
 
-
+    @NotNull
     String filePath;
 
     @Builder.Default

@@ -1,0 +1,20 @@
+|===
+|Path|Type|Description
+
+|`+active+`
+|`+Boolean+`
+|활성화 여부
+
+|`+exp+`
+|`+Number+`
+|만료 시간
+
+|`+user_name+`
+|`+String+`
+|사용자 Kakao ID
+
+|`+authorities+`
+|`+Array+`
+|해당 사용자의 권한
+
+|===
