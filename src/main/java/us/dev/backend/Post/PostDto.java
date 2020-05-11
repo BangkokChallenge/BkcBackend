@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -13,6 +15,5 @@ public class PostDto {
 
     String article;
 
-    String hashTag;
-
+    List<String> hashTag;
 }

@@ -1,12 +1,12 @@
 [source,options="nowrap"]
 ----
 {
-  "id" : 19,
+  "id" : 1,
   "content" : "test",
-  "createdAt" : "2020-04-30 00:55:41",
-  "modifiedAt" : "2020-04-30 00:55:41",
+  "createdAt" : "2020-05-11 20:28:00",
+  "modifiedAt" : "2020-05-11 20:28:00",
   "postId" : 11,
   "accountId" : "TDD_TEMP_ID",
-  "accountNickName" : "TDD_NICKNAME"
+  "nickname" : "TDD_NICKNAME"
 }
 ----

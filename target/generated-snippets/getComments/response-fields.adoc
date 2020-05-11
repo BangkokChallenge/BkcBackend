@@ -25,7 +25,7 @@
 |`+String+`
 |작성자 Kakao ID
 
-|`+[0].accountNickName+`
+|`+[0].nickname+`
 |`+String+`
 |작성자 Kakao Nickname
 

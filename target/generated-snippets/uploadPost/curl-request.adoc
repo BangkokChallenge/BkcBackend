@@ -2,8 +2,8 @@
 ----
 $ curl 'http://localhost:8080/api/post/upload' -i -X POST \
     -H 'Content-Type: multipart/form-data;charset=UTF-8' \
-    -H 'Authorization: Bearer 38420381-76fb-4852-b3cf-e974825a00d6' \
+    -H 'Authorization: Bearer a792003f-2a6b-431d-a06f-f54bf886e603' \
     -F 'file=@hello.txt;type=text/plain' \
-    -F 'article=테스트내용' \
-    -F 'hashTag=일상'
+    -F 'hashTag=일상,기쁨,희망,사랑' \
+    -F 'article=테스트내용'
 ----

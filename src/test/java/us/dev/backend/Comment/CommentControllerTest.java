@@ -61,7 +61,7 @@ public class CommentControllerTest extends BaseControllerTest {
                 .filePath("S3 image 주소")
                 .profile_photo("Kakao profile photo")
                 .nickname("Kakao Nickname")
-                .hashTag("일상")
+//                .hashTag("일상")
                 .build();
         postRepository.save(post);
         Comment comment = Comment.builder()
@@ -84,7 +84,7 @@ public class CommentControllerTest extends BaseControllerTest {
                                 fieldWithPath("[0].createdAt").description("comment 작성시간"),
                                 fieldWithPath("[0].modifiedAt").description("comment 수정시간"),
                                 fieldWithPath("[0].postId").description("Post 아이디"),
-                                fieldWithPath("[0].userId").description("작성자 Kakao ID"),
+                                fieldWithPath("[0].accountId").description("작성자 Kakao ID"),
                                 fieldWithPath("[0].nickname").description("작성자 Kakao Nickname")
                         )
                         )
@@ -113,7 +113,7 @@ public class CommentControllerTest extends BaseControllerTest {
                                 fieldWithPath("createdAt").description("comment 작성시간"),
                                 fieldWithPath("modifiedAt").description("comment 수정시간"),
                                 fieldWithPath("postId").description("Post 아이디"),
-                                fieldWithPath("userId").description("작성자 Kakao ID"),
+                                fieldWithPath("accountId").description("작성자 Kakao ID"),
                                 fieldWithPath("nickname").description("작성자 Kakao Nickname")
                         )
                         )
