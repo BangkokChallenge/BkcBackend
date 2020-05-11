@@ -76,7 +76,7 @@ public class PostController {
         List<HashTag> hashTags = new ArrayList<>();
         for (String stringHashTag : postDto.getHashTag()) {
             HashTag hashTag = new HashTag();
-            hashTag.setContent(stringHashTag);
+            hashTag.setContent("#"+stringHashTag);
             hashTag.setAccount(newAccount);
             hashTags.add(hashTag);
         }
@@ -89,8 +89,7 @@ public class PostController {
         post.setLikeCount(0);
 
         //TODO
-        // 코멘트숫자빠져있음
-        // 해시태그에도 포스트를 저장해야되는데??
+        // 해시태그에도 포스트를 저장해야되는데?? 나중에 생각하자
         Post newPost = postRepository.save(post);
 
         LikePost newLike = LikePost.builder()

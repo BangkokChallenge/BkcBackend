@@ -1,13 +1,11 @@
 package us.dev.backend.HashTag;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.*;
 import us.dev.backend.Account.Account;
-import us.dev.backend.Post.Post;
 import us.dev.backend.common.BaseTimeEntity;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Builder
 @AllArgsConstructor
@@ -15,6 +13,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
+@JsonSerialize(using = HashTagSerializer.class)
 public class HashTag extends BaseTimeEntity {
 
     @Id
@@ -24,9 +23,9 @@ public class HashTag extends BaseTimeEntity {
     @Column(columnDefinition = "TEXT", nullable = false)
     String content;
 
-    @Builder.Default
-    @ManyToMany(mappedBy = "hashTag")
-    List<Post> post = new ArrayList<>();
+//    @Builder.Default
+//    @ManyToMany(mappedBy = "hashTag")
+//    List<Post> post = new ArrayList<>();
 
     @ManyToOne
     Account account;
