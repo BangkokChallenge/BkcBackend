@@ -3,6 +3,6 @@
 $ echo '{
   "content" : "test"
 }' | http POST 'http://localhost:8080/api/post/11/comment' \
-    'Content-Type:application/json;charset=UTF-8' \
-    'Authorization:Bearer bc2f9657-e060-4c0f-9f94-b2e662f0cb21'
+    'Authorization:Bearer a792003f-2a6b-431d-a06f-f54bf886e603' \
+    'Content-Type:application/json;charset=UTF-8'
 ----

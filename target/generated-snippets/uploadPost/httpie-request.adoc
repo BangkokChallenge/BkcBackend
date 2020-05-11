@@ -2,7 +2,7 @@
 ----
 $ http --form POST 'http://localhost:8080/api/post/upload' \
     'file'@'hello.txt' \
-    'Authorization:Bearer 38420381-76fb-4852-b3cf-e974825a00d6' \
-    'article=테스트내용' \
-    'hashTag=일상'
+    'Authorization:Bearer a792003f-2a6b-431d-a06f-f54bf886e603' \
+    'hashTag=일상,기쁨,희망,사랑' \
+    'article=테스트내용'
 ----

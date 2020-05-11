@@ -23,6 +23,7 @@ import us.dev.backend.Account.Account;
 import us.dev.backend.Account.AccountRepository;
 import us.dev.backend.Account.AccountRole;
 import us.dev.backend.Account.AccountService;
+import us.dev.backend.HashTag.HashTag;
 import us.dev.backend.Like.LikePost;
 import us.dev.backend.Like.LikeRepository;
 import us.dev.backend.Post.Post;
@@ -130,6 +131,9 @@ public class AppConfig {
 
                 /* test data 여러개 집어넣기 */
                 IntStream.rangeClosed(1, 40).forEach(index -> {
+                    List<HashTag> hashTags = new ArrayList<>();
+
+                    // .hashTag에 init 정보 넣어주셈.
 
                     Post initPost = Post.builder()
                             .accountId("Kakao_FIX_ID")
@@ -137,7 +141,7 @@ public class AppConfig {
                             .filePath("https://jayass3cloud.s3.ap-northeast-2.amazonaws.com/IMG_8456.jpg")
                             .profile_photo("http://k.kakaocdn.net/dn/oMYoX/btqDheA1EpU/CiRZnaTetvs2OfkeRcTQL0/img_640x640.jpg")
                             .nickname("Kakao Nickname")
-                            .hashTag("미안하다 이거보여주려고 어그로 끌었다.")
+                            //.hashTag({"a","b"})
                             .build();
 
                     Post newPost = postRepository.save(initPost);

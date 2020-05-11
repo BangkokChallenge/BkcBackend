@@ -14,10 +14,14 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
-import us.dev.backend.Account.*;
+import us.dev.backend.Account.Account;
+import us.dev.backend.Account.AccountRepository;
 import us.dev.backend.Comment.CommentRepository;
+import us.dev.backend.HashTag.HashTag;
 import us.dev.backend.Like.LikePost;
 import us.dev.backend.Like.LikeRepository;
 import us.dev.backend.common.ErrorsResource;
@@ -25,6 +29,7 @@ import us.dev.backend.configs.AppConfig;
 
 import java.io.IOException;
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -59,7 +64,8 @@ public class PostController {
         String getUsername = authentication.getName();
 
         Optional<Account> optionalAccount = this.accountRepository.findById(getUsername);
-        if(optionalAccount.isEmpty()) {
+
+        if (optionalAccount.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
         Account newAccount = optionalAccount.get();
@@ -68,6 +74,15 @@ public class PostController {
         /* 저장할 POST Setting */
 
         Post post = this.appConfig.modelMapper().map(postDto, Post.class);
+
+        List<HashTag> hashTags = new ArrayList<>();
+        for (String stringHashTag : postDto.getHashTag()) {
+            HashTag hashTag = new HashTag();
+            hashTag.setContent("#"+stringHashTag);
+            hashTag.setAccount(newAccount);
+            hashTags.add(hashTag);
+        }
+        post.setHashTag(hashTags);
         post.setAccountId(newAccount.getId());
         post.setNickname(newAccount.getNickname());
         post.setProfile_photo(newAccount.getNickname());
@@ -76,7 +91,7 @@ public class PostController {
         post.setLikeCount(0);
 
         //TODO
-        //Hashtag 저장해야함. 1:다
+        // 해시태그에도 포스트를 저장해야되는데?? 나중에 생각하자
         Post newPost = postRepository.save(post);
 
         LikePost newLike = LikePost.builder()
@@ -104,23 +119,21 @@ public class PostController {
 
         postList.stream().forEach(post -> {
 
-            LikePost getLike = this.likeRepository.findByAccountIdAndPostId(post.getAccountId(),post.getId());
+            LikePost getLike = this.likeRepository.findByAccountIdAndPostId(post.getAccountId(), post.getId());
 
-            if(getLike == null) {
+            if (getLike == null) {
                 post.setSelfLike(false);
-            }
-            else {
-                if(getLike.isLikeTrueAndFalse()) {
+            } else {
+                if (getLike.isLikeTrueAndFalse()) {
                     post.setSelfLike(true);
-                }
-                else {
+                } else {
                     post.setSelfLike(false);
                 }
             }
 
         });
 
-        Page<Post> postFeed = new PageImpl<>(postList.subList(0,10),pageable,postList.size());
+        Page<Post> postFeed = new PageImpl<>(postList.subList(0, 10), pageable, postList.size());
 
         var pagedResources = assembler.toResource(postFeed);
         pagedResources.add(new Link("/docs/index.html#resource-post-list").withRel("profile"));

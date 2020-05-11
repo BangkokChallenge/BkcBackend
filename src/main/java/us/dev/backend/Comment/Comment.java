@@ -1,8 +1,10 @@
 package us.dev.backend.Comment;
 
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.*;
 import us.dev.backend.Account.Account;
+import us.dev.backend.HashTag.HashTagSerializer;
 import us.dev.backend.Post.Post;
 import us.dev.backend.common.BaseTimeEntity;
 
@@ -19,6 +21,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
+@JsonSerialize(using = CommentSerializer.class)
 public class Comment extends BaseTimeEntity {
 
     @Id // 테이블의 pk 필드를 나타낸다.

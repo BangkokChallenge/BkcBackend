@@ -48,7 +48,6 @@ public class PostControllerTest extends BaseControllerTest {
     @TestDescription("Post upload 테스트")
     public void uploadPost() throws Exception {
         //given
-        String inputHashTag[] = {"일상","조아조앙"};
 
 
         /* Form data */
@@ -56,8 +55,8 @@ public class PostControllerTest extends BaseControllerTest {
 
         MultiValueMap<String,String> map = new LinkedMultiValueMap<>();
 
+        map.add("hashTag","일상,기쁨,희망,사랑");
         map.add("article","테스트내용");
-        map.add("hashTag","일상");
 
 
         //when&then
@@ -74,7 +73,7 @@ public class PostControllerTest extends BaseControllerTest {
                         relaxedResponseFields(
                                 fieldWithPath("createdAt").description("Post 생성 날짜"),
                                 fieldWithPath("modifiedAt").description("Post 수정 날짜"),
-                                fieldWithPath("userId").description("사용자 id"),
+                                fieldWithPath("accountId").description("사용자 id"),
                                 fieldWithPath("id").description("Post id"),
                                 fieldWithPath("article").description("Post 작성글"),
                                 fieldWithPath("hashTag").description("Hash Tage"),
