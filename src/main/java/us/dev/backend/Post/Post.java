@@ -20,7 +20,7 @@ public class Post extends BaseTimeEntity {
 
     String accountId;
 
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
 
     String article;
