@@ -13,6 +13,8 @@ import javax.validation.constraints.NotNull;
 @Data
 public class AccountDtoKey {
 
+    String id;
+
     @NotNull
     String key;
 }

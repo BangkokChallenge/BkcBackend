@@ -1,0 +1,13 @@
+|===
+|Relation|Description
+
+|`+self+`
+|현재 링크
+
+|`+account+`
+|Account 링크
+
+|`+profile+`
+|도큐먼트 링크
+
+|===

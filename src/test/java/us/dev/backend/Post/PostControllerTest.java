@@ -59,8 +59,6 @@ public class PostControllerTest extends BaseControllerTest {
         map.add("article","테스트내용");
 
 
-        //TODO 파일업로드 테스트 작성해야함.
-        //나눠야할 수도 있음. controller 부분.
         //when&then
         mockMvc.perform(multipart("/api/post/upload").file(file).params(map)
                 .header(HttpHeaders.AUTHORIZATION, getBearerToken()))

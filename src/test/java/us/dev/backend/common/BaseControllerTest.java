@@ -52,22 +52,23 @@ public class BaseControllerTest {
     @Autowired
     protected AccountService accountService;
 
-    @Before
-    public void createTddAccount() {
-        Account account = Account.builder()
-                .id("TDD_TEMP_ID")
-                .password("1234")
-                .nickname("TDD_NICKNAME")
-                .roles(Set.of(AccountRole.USER))
-                .profile_photo("TDD_PHOTO")
-                .build();
-
-        accountService.saveAccount(account);
-    }
+//    @Before
+//    public void createTddAccount() {
+//        Account account = Account.builder()
+//                .id("TDD_TEMP_ID")
+//                .password("1234")
+//                .nickname("TDD_NICKNAME")
+//                .roles(Set.of(AccountRole.USER))
+//                .profile_photo("TDD_PHOTO")
+//                .build();
+//
+//        accountService.saveAccount(account);
+//    }
 
     public String getBearerToken() throws Exception {
         return "Bearer " + getAccessToken();
     }
+
 
     public String getAccessToken() throws Exception{
         ResultActions perform = this.mockMvc.perform(post("/oauth/token")
@@ -83,5 +84,21 @@ public class BaseControllerTest {
         var responseBody = perform.andReturn().getResponse().getContentAsString();
         Jackson2JsonParser parser = new Jackson2JsonParser();
         return parser.parseMap(responseBody).get("access_token").toString();
+    }
+
+    public String getRefreshToken() throws Exception{
+        ResultActions perform = this.mockMvc.perform(post("/oauth/token")
+                .with(httpBasic(appProperties.getClientId(),appProperties.getClientSecret())) //basic Auth 라는 header를 만듦.
+                .param("username","TDD_TEMP_ID")
+                .param("password","1234")
+                .param("grant_type","password"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("refresh_token").exists()
+                );
+
+        var responseBody = perform.andReturn().getResponse().getContentAsString();
+        Jackson2JsonParser parser = new Jackson2JsonParser();
+        return parser.parseMap(responseBody).get("refresh_token").toString();
     }
 }

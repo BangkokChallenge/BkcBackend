@@ -15,7 +15,7 @@ import java.util.Set;
 @Data
 public class AccountDto {
 
-    @Id
+    @Id @NotNull
     private String id;
 
 

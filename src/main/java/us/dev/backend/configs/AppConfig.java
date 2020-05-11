@@ -137,10 +137,9 @@ public class AppConfig {
                     hashTag.setAccount(newAccount);
                     hashTags.add(hashTag);
 
-
                     Post initPost = Post.builder()
                             .accountId("Kakao_FIX_ID")
-                            .article("미안하다 이거 보여주려고 어그로끌었다.. 나루토 사스케 싸움수준 ㄹㅇ실화냐? 진짜 세계관최강자들의 싸움이다.. 그찐따같던 나루토가 맞나? 진짜 나루토는 전설이다....")
+                            .article("미안하다 이거 보여주려고 어그로끌었다.. 나루토 사스케 싸움수준 ㄹㅇ실화냐? 진짜 세계관최강자들의 싸움이다.. 그찐따같던 나루토가 맞나? 진짜 나루토는 전설이다.")
                             .filePath("https://jayass3cloud.s3.ap-northeast-2.amazonaws.com/IMG_8456.jpg")
                             .profile_photo("http://k.kakaocdn.net/dn/oMYoX/btqDheA1EpU/CiRZnaTetvs2OfkeRcTQL0/img_640x640.jpg")
                             .nickname("Kakao Nickname")
