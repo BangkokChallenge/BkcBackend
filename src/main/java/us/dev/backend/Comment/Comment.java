@@ -4,11 +4,11 @@ package us.dev.backend.Comment;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.*;
 import us.dev.backend.Account.Account;
-import us.dev.backend.HashTag.HashTagSerializer;
 import us.dev.backend.Post.Post;
 import us.dev.backend.common.BaseTimeEntity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 //@Getter
 //@NoArgsConstructor // 롬복의 어노테이션, 기본 생성자 자동 추가
@@ -29,7 +29,8 @@ public class Comment extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(columnDefinition = "TEXT", nullable = false)
+    @Column(columnDefinition = "TEXT")
+    @NotBlank(message = "content를 입력해주세요.")
     private String content;
 
     @ManyToOne
