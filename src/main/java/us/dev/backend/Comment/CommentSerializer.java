@@ -20,6 +20,7 @@ public class CommentSerializer extends JsonSerializer<Comment> {
         jsonGenerator.writeObjectField("modifiedAt", DATE_FORMAT.format(comment.getModifiedAt()));
         jsonGenerator.writeNumberField("postId", comment.getPost().getId());
         jsonGenerator.writeStringField("accountId", comment.getAccount().getId());
+        jsonGenerator.writeStringField("profile_photo", comment.getAccount().getProfile_photo());
         jsonGenerator.writeStringField("nickname", comment.getAccount().getNickname());
         jsonGenerator.writeEndObject();
     }
