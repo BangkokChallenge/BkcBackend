@@ -25,6 +25,10 @@
 |`+String+`
 |작성자 Kakao ID
 
+|`+[0].profile_photo+`
+|`+String+`
+|작성자 Kakao Profile Photo
+
 |`+[0].nickname+`
 |`+String+`
 |작성자 Kakao Nickname
