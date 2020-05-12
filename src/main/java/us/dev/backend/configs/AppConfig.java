@@ -98,19 +98,19 @@ public class AppConfig {
 
                 /* 시작하자마자 Oauth Token 받기 (테스트용) */
                 HttpHeaders headers = new HttpHeaders();
-                headers.setBasicAuth(appProperties.getClientId(),appProperties.getClientSecret());
+                headers.setBasicAuth(appProperties.getClientId(), appProperties.getClientSecret());
                 headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
 
-                MultiValueMap<String,String> parameters = new LinkedMultiValueMap<>();
-                parameters.add("grant_type","password");
-                parameters.add("username","TDD_TEMP_ID");
-                parameters.add("password","1234");
-                HttpEntity<MultiValueMap<String,String>> requestEntity = new HttpEntity<>(parameters,headers);
+                MultiValueMap<String, String> parameters = new LinkedMultiValueMap<>();
+                parameters.add("grant_type", "password");
+                parameters.add("username", "TDD_TEMP_ID");
+                parameters.add("password", "1234");
+                HttpEntity<MultiValueMap<String, String>> requestEntity = new HttpEntity<>(parameters, headers);
 
                 Jackson2JsonParser parser2 = new Jackson2JsonParser();
 
                 RestTemplate restTemplate = new RestTemplate();
-                String response = restTemplate.postForObject(appProperties.getGetOauthURL(),requestEntity,String.class);
+                String response = restTemplate.postForObject(appProperties.getGetOauthURL(), requestEntity, String.class);
 
                 String getaccess_Token = parser2.parseMap(response).get("access_token").toString();
                 String getrefrsh_Token = parser2.parseMap(response).get("refresh_token").toString();
@@ -132,8 +132,10 @@ public class AppConfig {
                 /* test data 여러개 집어넣기 */
                 IntStream.rangeClosed(1, 40).forEach(index -> {
                     List<HashTag> hashTags = new ArrayList<>();
-
-                    // .hashTag에 init 정보 넣어주셈.
+                    HashTag hashTag = new HashTag();
+                    hashTag.setContent("#힐링");
+                    hashTag.setAccount(newAccount);
+                    hashTags.add(hashTag);
 
                     Post initPost = Post.builder()
                             .accountId("Kakao_FIX_ID")
@@ -141,7 +143,7 @@ public class AppConfig {
                             .filePath("https://jayass3cloud.s3.ap-northeast-2.amazonaws.com/IMG_8456.jpg")
                             .profile_photo("http://k.kakaocdn.net/dn/oMYoX/btqDheA1EpU/CiRZnaTetvs2OfkeRcTQL0/img_640x640.jpg")
                             .nickname("Kakao Nickname")
-                            //.hashTag({"a","b"})
+                            .hashTag(hashTags)
                             .build();
 
                     Post newPost = postRepository.save(initPost);
