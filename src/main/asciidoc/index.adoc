@@ -113,14 +113,23 @@ operation::createAccount[snippets='http-request,http-response,response-fields,li
 4. Service Token 값이 없다면(NULL) +
     - 유저 회원가입` 을 진행한다.
 
+[[resources-check-Token]]
+=== 토큰 확인
+
 operation::checkTokenSuccess[snippets='http-request,http-response,response-fields']
 
 operation::checkTokenBad[snippets='http-request,http-response,response-fields']
 
+[[resources-refresh-Account]]
+=== Refresh Token으로 AccessToken 갱신하기
+
+operation::refreshAccount[snippets='http-request,http-response,response-fields,links']
+
+
 [[resources-logout-Account]]
 === 유저 로그아웃
 
-
+해당 플랫폼에서 쿠키/데이터 삭제 진행.
 
 [[resources-get-Account]]
 === 유저 정보가져오기

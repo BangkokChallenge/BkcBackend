@@ -1,11 +1,11 @@
 /Users/wisdomose/Desktop/Project_for_git/Bkchallenge/src/main/java/us/dev/backend/Account/AccountResource.java
 /Users/wisdomose/Desktop/Project_for_git/Bkchallenge/src/main/java/us/dev/backend/Post/PostService.java
+/Users/wisdomose/Desktop/Project_for_git/Bkchallenge/src/main/java/us/dev/backend/HashTag/HashTag.java
 /Users/wisdomose/Desktop/Project_for_git/Bkchallenge/src/main/java/us/dev/backend/BackendApplication.java
 /Users/wisdomose/Desktop/Project_for_git/Bkchallenge/src/main/java/us/dev/backend/common/TestDescription.java
 /Users/wisdomose/Desktop/Project_for_git/Bkchallenge/src/main/java/us/dev/backend/Account/Account.java
 /Users/wisdomose/Desktop/Project_for_git/Bkchallenge/src/main/java/us/dev/backend/configs/AuthServerConfig.java
 /Users/wisdomose/Desktop/Project_for_git/Bkchallenge/src/main/java/us/dev/backend/Like/LikeController.java
-/Users/wisdomose/Desktop/Project_for_git/Bkchallenge/src/main/java/us/dev/backend/Comment/JacksonConfiguration.java
 /Users/wisdomose/Desktop/Project_for_git/Bkchallenge/src/main/java/us/dev/backend/Post/PostRepository.java
 /Users/wisdomose/Desktop/Project_for_git/Bkchallenge/src/main/java/us/dev/backend/configs/JasycriptConfig.java
 /Users/wisdomose/Desktop/Project_for_git/Bkchallenge/src/main/java/us/dev/backend/configs/JasycriptInfo.java
@@ -23,6 +23,7 @@
 /Users/wisdomose/Desktop/Project_for_git/Bkchallenge/src/main/java/us/dev/backend/Post/Post.java
 /Users/wisdomose/Desktop/Project_for_git/Bkchallenge/src/main/java/us/dev/backend/Comment/CommentSerializer.java
 /Users/wisdomose/Desktop/Project_for_git/Bkchallenge/src/main/java/us/dev/backend/Post/PostDto.java
+/Users/wisdomose/Desktop/Project_for_git/Bkchallenge/src/main/java/us/dev/backend/HashTag/HashTagSerializer.java
 /Users/wisdomose/Desktop/Project_for_git/Bkchallenge/src/main/java/us/dev/backend/Post/PostController.java
 /Users/wisdomose/Desktop/Project_for_git/Bkchallenge/src/main/java/us/dev/backend/common/ErrorsSerializer.java
 /Users/wisdomose/Desktop/Project_for_git/Bkchallenge/src/main/java/us/dev/backend/common/BaseTimeEntity.java
@@ -37,4 +38,3 @@
 /Users/wisdomose/Desktop/Project_for_git/Bkchallenge/src/main/java/us/dev/backend/Account/AccountController.java
 /Users/wisdomose/Desktop/Project_for_git/Bkchallenge/src/main/java/us/dev/backend/Account/AccountDtoKey.java
 /Users/wisdomose/Desktop/Project_for_git/Bkchallenge/src/main/java/us/dev/backend/configs/AppConfig.java
-/Users/wisdomose/Desktop/Project_for_git/Bkchallenge/src/main/java/us/dev/backend/Post/PostHashTag.java
