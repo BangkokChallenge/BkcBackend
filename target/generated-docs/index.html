@@ -1383,8 +1383,8 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">POST /api/post/upload HTTP/1.1
+Authorization: Bearer ae4af41c-681f-450d-869b-b9eb2a159269
 Content-Type: multipart/form-data;charset=UTF-8; boundary=6o2knFse3p53ty9dmcQvWAIx1zInP11uCfbm
-Authorization: Bearer a792003f-2a6b-431d-a06f-f54bf886e603
 Host: localhost:8080
 
 --6o2knFse3p53ty9dmcQvWAIx1zInP11uCfbm
@@ -1415,13 +1415,13 @@ Expires: 0
 X-Frame-Options: DENY
 X-Content-Type-Options: nosniff
 Content-Type: application/hal+json;charset=UTF-8
-Content-Length: 1076
 Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Location: http://localhost:8080/api/post/upload
+Content-Length: 1080
 
 {
-  "createdAt" : "2020-05-11 20:26:05",
-  "modifiedAt" : "2020-05-11 20:26:05",
+  "createdAt" : "2020-05-13 00:25:08",
+  "modifiedAt" : "2020-05-13 00:25:08",
   "accountId" : "TDD_TEMP_ID",
   "id" : 41,
   "article" : "테스트내용",
@@ -1432,25 +1432,25 @@ Location: http://localhost:8080/api/post/upload
   "likeCount" : 0,
   "filePath" : "https://jayass3cloud.s3.ap-northeast-2.amazonaws.com/hello.txt",
   "hashTag" : [ {
-    "id" : 1,
+    "id" : 41,
     "content" : "#일상",
-    "createdAt" : "2020-05-11 20:26:05",
-    "modifiedAt" : "2020-05-11 20:26:05"
+    "createdAt" : "2020-05-13 00:25:08",
+    "modifiedAt" : "2020-05-13 00:25:08"
   }, {
-    "id" : 2,
+    "id" : 42,
     "content" : "#기쁨",
-    "createdAt" : "2020-05-11 20:26:05",
-    "modifiedAt" : "2020-05-11 20:26:05"
+    "createdAt" : "2020-05-13 00:25:08",
+    "modifiedAt" : "2020-05-13 00:25:08"
   }, {
-    "id" : 3,
+    "id" : 43,
     "content" : "#희망",
-    "createdAt" : "2020-05-11 20:26:05",
-    "modifiedAt" : "2020-05-11 20:26:05"
+    "createdAt" : "2020-05-13 00:25:08",
+    "modifiedAt" : "2020-05-13 00:25:08"
   }, {
-    "id" : 4,
+    "id" : 44,
     "content" : "#사랑",
-    "createdAt" : "2020-05-11 20:26:05",
-    "modifiedAt" : "2020-05-11 20:26:05"
+    "createdAt" : "2020-05-13 00:25:08",
+    "modifiedAt" : "2020-05-13 00:25:08"
   } ],
   "_links" : {
     "self" : {
@@ -1571,7 +1571,7 @@ Location: http://localhost:8080/api/post/upload
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /api/post/ HTTP/1.1
-Authorization: Bearer 0d4bc031-df8e-4ddd-bc0c-567559151ba8
+Authorization: Bearer fbf7cd72-8e6a-4c4e-85c7-184526930d1d
 Host: localhost:8080</code></pre>
 </div>
 </div>
@@ -1587,141 +1587,191 @@ Expires: 0
 X-Frame-Options: DENY
 X-Content-Type-Options: nosniff
 Content-Type: application/hal+json;charset=UTF-8
-Content-Length: 4774
 Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Content-Length: 9343
 
 {
   "_embedded" : {
     "postList" : [ {
-      "createdAt" : "2020-05-06T04:00:54.750224",
-      "modifiedAt" : "2020-05-06T04:00:54.750224",
-      "accountId" : "TDD_USER_ID",
-      "id" : 1,
-      "article" : "작성내용",
-      "hashTag" : "일상",
+      "createdAt" : "2020-05-13 01:08:00",
+      "modifiedAt" : "2020-05-13 01:08:00",
+      "accountId" : "Kakao_FIX_ID",
+      "id" : 40,
+      "article" : "미안하다 이거 보여주려고 어그로끌었다.. 나루토 사스케 싸움수준 ㄹㅇ실화냐? 진짜 세계관최강자들의 싸움이다.. 그찐따같던 나루토가 맞나? 진짜 나루토는 전설이다.",
       "nickname" : "Kakao Nickname",
-      "profile_photo" : "Kakao profile photo",
+      "profile_photo" : "http://k.kakaocdn.net/dn/oMYoX/btqDheA1EpU/CiRZnaTetvs2OfkeRcTQL0/img_640x640.jpg",
       "selfLike" : false,
       "commentCount" : 0,
       "likeCount" : 0,
-      "filePath" : "S3 image 주소"
+      "filePath" : "https://jayass3cloud.s3.ap-northeast-2.amazonaws.com/IMG_8456.jpg",
+      "hashTag" : [ {
+        "id" : 40,
+        "content" : "#힐링",
+        "createdAt" : "2020-05-13 01:08:00",
+        "modifiedAt" : "2020-05-13 01:08:00"
+      } ]
     }, {
-      "createdAt" : "2020-05-06T04:00:54.839467",
-      "modifiedAt" : "2020-05-06T04:00:54.839467",
-      "accountId" : "TDD_USER_ID",
-      "id" : 3,
-      "article" : "작성내용",
-      "hashTag" : "일상",
+      "createdAt" : "2020-05-13 01:08:00",
+      "modifiedAt" : "2020-05-13 01:08:00",
+      "accountId" : "Kakao_FIX_ID",
+      "id" : 39,
+      "article" : "미안하다 이거 보여주려고 어그로끌었다.. 나루토 사스케 싸움수준 ㄹㅇ실화냐? 진짜 세계관최강자들의 싸움이다.. 그찐따같던 나루토가 맞나? 진짜 나루토는 전설이다.",
       "nickname" : "Kakao Nickname",
-      "profile_photo" : "Kakao profile photo",
+      "profile_photo" : "http://k.kakaocdn.net/dn/oMYoX/btqDheA1EpU/CiRZnaTetvs2OfkeRcTQL0/img_640x640.jpg",
       "selfLike" : false,
       "commentCount" : 0,
       "likeCount" : 0,
-      "filePath" : "S3 image 주소"
+      "filePath" : "https://jayass3cloud.s3.ap-northeast-2.amazonaws.com/IMG_8456.jpg",
+      "hashTag" : [ {
+        "id" : 39,
+        "content" : "#힐링",
+        "createdAt" : "2020-05-13 01:08:00",
+        "modifiedAt" : "2020-05-13 01:08:00"
+      } ]
     }, {
-      "createdAt" : "2020-05-06T04:00:54.870255",
-      "modifiedAt" : "2020-05-06T04:00:54.870255",
-      "accountId" : "TDD_USER_ID",
-      "id" : 5,
-      "article" : "작성내용",
-      "hashTag" : "일상",
+      "createdAt" : "2020-05-13 01:08:00",
+      "modifiedAt" : "2020-05-13 01:08:00",
+      "accountId" : "Kakao_FIX_ID",
+      "id" : 38,
+      "article" : "미안하다 이거 보여주려고 어그로끌었다.. 나루토 사스케 싸움수준 ㄹㅇ실화냐? 진짜 세계관최강자들의 싸움이다.. 그찐따같던 나루토가 맞나? 진짜 나루토는 전설이다.",
       "nickname" : "Kakao Nickname",
-      "profile_photo" : "Kakao profile photo",
+      "profile_photo" : "http://k.kakaocdn.net/dn/oMYoX/btqDheA1EpU/CiRZnaTetvs2OfkeRcTQL0/img_640x640.jpg",
       "selfLike" : false,
       "commentCount" : 0,
       "likeCount" : 0,
-      "filePath" : "S3 image 주소"
+      "filePath" : "https://jayass3cloud.s3.ap-northeast-2.amazonaws.com/IMG_8456.jpg",
+      "hashTag" : [ {
+        "id" : 38,
+        "content" : "#힐링",
+        "createdAt" : "2020-05-13 01:08:00",
+        "modifiedAt" : "2020-05-13 01:08:00"
+      } ]
     }, {
-      "createdAt" : "2020-05-06T04:00:54.905788",
-      "modifiedAt" : "2020-05-06T04:00:54.905788",
-      "accountId" : "TDD_USER_ID",
-      "id" : 7,
-      "article" : "작성내용",
-      "hashTag" : "일상",
+      "createdAt" : "2020-05-13 01:08:00",
+      "modifiedAt" : "2020-05-13 01:08:00",
+      "accountId" : "Kakao_FIX_ID",
+      "id" : 37,
+      "article" : "미안하다 이거 보여주려고 어그로끌었다.. 나루토 사스케 싸움수준 ㄹㅇ실화냐? 진짜 세계관최강자들의 싸움이다.. 그찐따같던 나루토가 맞나? 진짜 나루토는 전설이다.",
       "nickname" : "Kakao Nickname",
-      "profile_photo" : "Kakao profile photo",
+      "profile_photo" : "http://k.kakaocdn.net/dn/oMYoX/btqDheA1EpU/CiRZnaTetvs2OfkeRcTQL0/img_640x640.jpg",
       "selfLike" : false,
       "commentCount" : 0,
       "likeCount" : 0,
-      "filePath" : "S3 image 주소"
+      "filePath" : "https://jayass3cloud.s3.ap-northeast-2.amazonaws.com/IMG_8456.jpg",
+      "hashTag" : [ {
+        "id" : 37,
+        "content" : "#힐링",
+        "createdAt" : "2020-05-13 01:08:00",
+        "modifiedAt" : "2020-05-13 01:08:00"
+      } ]
     }, {
-      "createdAt" : "2020-05-06T04:00:54.929966",
-      "modifiedAt" : "2020-05-06T04:00:54.929966",
-      "accountId" : "TDD_USER_ID",
-      "id" : 9,
-      "article" : "작성내용",
-      "hashTag" : "일상",
+      "createdAt" : "2020-05-13 01:08:00",
+      "modifiedAt" : "2020-05-13 01:08:00",
+      "accountId" : "Kakao_FIX_ID",
+      "id" : 36,
+      "article" : "미안하다 이거 보여주려고 어그로끌었다.. 나루토 사스케 싸움수준 ㄹㅇ실화냐? 진짜 세계관최강자들의 싸움이다.. 그찐따같던 나루토가 맞나? 진짜 나루토는 전설이다.",
       "nickname" : "Kakao Nickname",
-      "profile_photo" : "Kakao profile photo",
+      "profile_photo" : "http://k.kakaocdn.net/dn/oMYoX/btqDheA1EpU/CiRZnaTetvs2OfkeRcTQL0/img_640x640.jpg",
       "selfLike" : false,
       "commentCount" : 0,
       "likeCount" : 0,
-      "filePath" : "S3 image 주소"
+      "filePath" : "https://jayass3cloud.s3.ap-northeast-2.amazonaws.com/IMG_8456.jpg",
+      "hashTag" : [ {
+        "id" : 36,
+        "content" : "#힐링",
+        "createdAt" : "2020-05-13 01:08:00",
+        "modifiedAt" : "2020-05-13 01:08:00"
+      } ]
     }, {
-      "createdAt" : "2020-05-06T04:00:54.9484",
-      "modifiedAt" : "2020-05-06T04:00:54.9484",
-      "accountId" : "TDD_USER_ID",
-      "id" : 11,
-      "article" : "작성내용",
-      "hashTag" : "일상",
+      "createdAt" : "2020-05-13 01:08:00",
+      "modifiedAt" : "2020-05-13 01:08:00",
+      "accountId" : "Kakao_FIX_ID",
+      "id" : 35,
+      "article" : "미안하다 이거 보여주려고 어그로끌었다.. 나루토 사스케 싸움수준 ㄹㅇ실화냐? 진짜 세계관최강자들의 싸움이다.. 그찐따같던 나루토가 맞나? 진짜 나루토는 전설이다.",
       "nickname" : "Kakao Nickname",
-      "profile_photo" : "Kakao profile photo",
+      "profile_photo" : "http://k.kakaocdn.net/dn/oMYoX/btqDheA1EpU/CiRZnaTetvs2OfkeRcTQL0/img_640x640.jpg",
       "selfLike" : false,
       "commentCount" : 0,
       "likeCount" : 0,
-      "filePath" : "S3 image 주소"
+      "filePath" : "https://jayass3cloud.s3.ap-northeast-2.amazonaws.com/IMG_8456.jpg",
+      "hashTag" : [ {
+        "id" : 35,
+        "content" : "#힐링",
+        "createdAt" : "2020-05-13 01:08:00",
+        "modifiedAt" : "2020-05-13 01:08:00"
+      } ]
     }, {
-      "createdAt" : "2020-05-06T04:00:54.966866",
-      "modifiedAt" : "2020-05-06T04:00:54.966866",
-      "accountId" : "TDD_USER_ID",
-      "id" : 13,
-      "article" : "작성내용",
-      "hashTag" : "일상",
+      "createdAt" : "2020-05-13 01:08:00",
+      "modifiedAt" : "2020-05-13 01:08:00",
+      "accountId" : "Kakao_FIX_ID",
+      "id" : 34,
+      "article" : "미안하다 이거 보여주려고 어그로끌었다.. 나루토 사스케 싸움수준 ㄹㅇ실화냐? 진짜 세계관최강자들의 싸움이다.. 그찐따같던 나루토가 맞나? 진짜 나루토는 전설이다.",
       "nickname" : "Kakao Nickname",
-      "profile_photo" : "Kakao profile photo",
+      "profile_photo" : "http://k.kakaocdn.net/dn/oMYoX/btqDheA1EpU/CiRZnaTetvs2OfkeRcTQL0/img_640x640.jpg",
       "selfLike" : false,
       "commentCount" : 0,
       "likeCount" : 0,
-      "filePath" : "S3 image 주소"
+      "filePath" : "https://jayass3cloud.s3.ap-northeast-2.amazonaws.com/IMG_8456.jpg",
+      "hashTag" : [ {
+        "id" : 34,
+        "content" : "#힐링",
+        "createdAt" : "2020-05-13 01:08:00",
+        "modifiedAt" : "2020-05-13 01:08:00"
+      } ]
     }, {
-      "createdAt" : "2020-05-06T04:00:54.991415",
-      "modifiedAt" : "2020-05-06T04:00:54.991415",
-      "accountId" : "TDD_USER_ID",
-      "id" : 15,
-      "article" : "작성내용",
-      "hashTag" : "일상",
+      "createdAt" : "2020-05-13 01:08:00",
+      "modifiedAt" : "2020-05-13 01:08:00",
+      "accountId" : "Kakao_FIX_ID",
+      "id" : 33,
+      "article" : "미안하다 이거 보여주려고 어그로끌었다.. 나루토 사스케 싸움수준 ㄹㅇ실화냐? 진짜 세계관최강자들의 싸움이다.. 그찐따같던 나루토가 맞나? 진짜 나루토는 전설이다.",
       "nickname" : "Kakao Nickname",
-      "profile_photo" : "Kakao profile photo",
+      "profile_photo" : "http://k.kakaocdn.net/dn/oMYoX/btqDheA1EpU/CiRZnaTetvs2OfkeRcTQL0/img_640x640.jpg",
       "selfLike" : false,
       "commentCount" : 0,
       "likeCount" : 0,
-      "filePath" : "S3 image 주소"
+      "filePath" : "https://jayass3cloud.s3.ap-northeast-2.amazonaws.com/IMG_8456.jpg",
+      "hashTag" : [ {
+        "id" : 33,
+        "content" : "#힐링",
+        "createdAt" : "2020-05-13 01:08:00",
+        "modifiedAt" : "2020-05-13 01:08:00"
+      } ]
     }, {
-      "createdAt" : "2020-05-06T04:00:55.079255",
-      "modifiedAt" : "2020-05-06T04:00:55.079255",
-      "accountId" : "TDD_USER_ID",
-      "id" : 17,
-      "article" : "작성내용",
-      "hashTag" : "일상",
+      "createdAt" : "2020-05-13 01:08:00",
+      "modifiedAt" : "2020-05-13 01:08:00",
+      "accountId" : "Kakao_FIX_ID",
+      "id" : 32,
+      "article" : "미안하다 이거 보여주려고 어그로끌었다.. 나루토 사스케 싸움수준 ㄹㅇ실화냐? 진짜 세계관최강자들의 싸움이다.. 그찐따같던 나루토가 맞나? 진짜 나루토는 전설이다.",
       "nickname" : "Kakao Nickname",
-      "profile_photo" : "Kakao profile photo",
+      "profile_photo" : "http://k.kakaocdn.net/dn/oMYoX/btqDheA1EpU/CiRZnaTetvs2OfkeRcTQL0/img_640x640.jpg",
       "selfLike" : false,
       "commentCount" : 0,
       "likeCount" : 0,
-      "filePath" : "S3 image 주소"
+      "filePath" : "https://jayass3cloud.s3.ap-northeast-2.amazonaws.com/IMG_8456.jpg",
+      "hashTag" : [ {
+        "id" : 32,
+        "content" : "#힐링",
+        "createdAt" : "2020-05-13 01:08:00",
+        "modifiedAt" : "2020-05-13 01:08:00"
+      } ]
     }, {
-      "createdAt" : "2020-05-06T04:00:55.110021",
-      "modifiedAt" : "2020-05-06T04:00:55.110021",
-      "accountId" : "TDD_USER_ID",
-      "id" : 19,
-      "article" : "작성내용",
-      "hashTag" : "일상",
+      "createdAt" : "2020-05-13 01:08:00",
+      "modifiedAt" : "2020-05-13 01:08:00",
+      "accountId" : "Kakao_FIX_ID",
+      "id" : 31,
+      "article" : "미안하다 이거 보여주려고 어그로끌었다.. 나루토 사스케 싸움수준 ㄹㅇ실화냐? 진짜 세계관최강자들의 싸움이다.. 그찐따같던 나루토가 맞나? 진짜 나루토는 전설이다.",
       "nickname" : "Kakao Nickname",
-      "profile_photo" : "Kakao profile photo",
+      "profile_photo" : "http://k.kakaocdn.net/dn/oMYoX/btqDheA1EpU/CiRZnaTetvs2OfkeRcTQL0/img_640x640.jpg",
       "selfLike" : false,
       "commentCount" : 0,
       "likeCount" : 0,
-      "filePath" : "S3 image 주소"
+      "filePath" : "https://jayass3cloud.s3.ap-northeast-2.amazonaws.com/IMG_8456.jpg",
+      "hashTag" : [ {
+        "id" : 31,
+        "content" : "#힐링",
+        "createdAt" : "2020-05-13 01:08:00",
+        "modifiedAt" : "2020-05-13 01:08:00"
+      } ]
     } ]
   },
   "_links" : {
@@ -1794,7 +1844,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>_embedded.postList[0].hashTag</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Post HashTag</p></td>
 </tr>
 <tr>
@@ -1887,13 +1937,13 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">POST /api/post/11/comment HTTP/1.1
-Authorization: Bearer a792003f-2a6b-431d-a06f-f54bf886e603
+Authorization: Bearer fbf7cd72-8e6a-4c4e-85c7-184526930d1d
 Content-Type: application/json;charset=UTF-8
 Content-Length: 24
 Host: localhost:8080
 
 {
-  "content" : "test"
+  "content" : "hihi"
 }</code></pre>
 </div>
 </div>
@@ -1908,17 +1958,18 @@ X-XSS-Protection: 1; mode=block
 Expires: 0
 X-Frame-Options: DENY
 X-Content-Type-Options: nosniff
-Content-Length: 194
+Content-Length: 227
 Content-Type: application/json;charset=UTF-8
 Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 
 {
   "id" : 1,
-  "content" : "test",
-  "createdAt" : "2020-05-11 20:28:00",
-  "modifiedAt" : "2020-05-11 20:28:00",
+  "content" : "hihi",
+  "createdAt" : "2020-05-13 01:23:43",
+  "modifiedAt" : "2020-05-13 01:23:43",
   "postId" : 11,
   "accountId" : "TDD_TEMP_ID",
+  "profile_photo" : "TDD_PHOTO",
   "nickname" : "TDD_NICKNAME"
 }</code></pre>
 </div>
@@ -1971,6 +2022,11 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 <td class="tableblock halign-left valign-top"><p class="tableblock">작성자 Kakao ID</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>profile_photo</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">작성자 Kakao Profile Photo</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>nickname</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">작성자 Kakao Nickname</p></td>
@@ -1990,7 +2046,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /api/post/11/comment HTTP/1.1
-Authorization: Bearer a792003f-2a6b-431d-a06f-f54bf886e603
+Authorization: Bearer fbf7cd72-8e6a-4c4e-85c7-184526930d1d
 Host: localhost:8080</code></pre>
 </div>
 </div>
@@ -2000,7 +2056,6 @@ Host: localhost:8080</code></pre>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
-Content-Length: 195
 Pragma: no-cache
 X-XSS-Protection: 1; mode=block
 Expires: 0
@@ -2008,14 +2063,16 @@ X-Frame-Options: DENY
 X-Content-Type-Options: nosniff
 Content-Type: application/json;charset=UTF-8
 Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Content-Length: 233
 
 [ {
   "id" : 1,
   "content" : "test",
-  "createdAt" : "2020-05-11 20:27:16",
-  "modifiedAt" : "2020-05-11 20:27:16",
+  "createdAt" : "2020-05-13 01:01:26",
+  "modifiedAt" : "2020-05-13 01:01:26",
   "postId" : 11,
   "accountId" : "TEST_ID",
+  "profile_photo" : "TEST_PROFILEPT",
   "nickname" : "TEST_NICKNAME"
 } ]</code></pre>
 </div>
@@ -2068,6 +2125,11 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 <td class="tableblock halign-left valign-top"><p class="tableblock">작성자 Kakao ID</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0].profile_photo</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">작성자 Kakao Profile Photo</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>[0].nickname</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">작성자 Kakao Nickname</p></td>
@@ -2102,7 +2164,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">PUT /api/like/1 HTTP/1.1
-Authorization: Bearer 0d4bc031-df8e-4ddd-bc0c-567559151ba8
+Authorization: Bearer 2c215f61-5f16-4d4b-ba75-a9743db0da23
 Host: localhost:8080</code></pre>
 </div>
 </div>
@@ -2112,7 +2174,6 @@ Host: localhost:8080</code></pre>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
-Content-Length: 184
 Pragma: no-cache
 X-XSS-Protection: 1; mode=block
 Expires: 0
@@ -2120,14 +2181,16 @@ X-Frame-Options: DENY
 X-Content-Type-Options: nosniff
 Content-Type: application/hal+json;charset=UTF-8
 Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Content-Length: 189
 
 {
-  "createdAt" : "2020-05-06T01:53:42.139216",
-  "modifiedAt" : "2020-05-06T01:53:42.139216",
-  "id" : 81,
+  "createdAt" : "2020-05-13 00:29:32",
+  "modifiedAt" : "2020-05-13 00:29:32",
+  "id" : 41,
   "postId" : 1,
   "accountId" : "TDD_TEMP_ID",
-  "likeTrueAndFalse" : true
+  "likeTrueAndFalse" : true,
+  "likeCount" : 1
 }</code></pre>
 </div>
 </div>

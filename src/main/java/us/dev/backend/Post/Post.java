@@ -32,7 +32,7 @@ public class Post extends BaseTimeEntity {
     @NotNull
     String profile_photo;
 
-
+    @Transient
     boolean selfLike;
 
     @Min(0)

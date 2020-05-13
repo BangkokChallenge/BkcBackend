@@ -1,5 +1,7 @@
 package us.dev.backend.configs;
 
+import lombok.RequiredArgsConstructor;
+import org.apache.catalina.filters.CorsFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,9 +15,11 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.token.RemoteTokenServices;
 import org.springframework.security.oauth2.provider.token.TokenStore;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import us.dev.backend.Account.AccountService;
 import us.dev.backend.common.AppProperties;
-
 
 @Configuration
 @EnableAuthorizationServer
@@ -78,6 +82,7 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
                 .userDetailsService(accountService)
                 .tokenStore(tokenStore);
     }
+
 
     @Primary
     @Bean
