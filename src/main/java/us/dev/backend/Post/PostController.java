@@ -85,13 +85,11 @@ public class PostController {
         post.setHashTag(hashTags);
         post.setAccountId(newAccount.getId());
         post.setNickname(newAccount.getNickname());
-        post.setProfile_photo(newAccount.getNickname());
+        post.setProfile_photo(newAccount.getProfile_photo());
         post.setFilePath(filePath);
         post.setCommentCount(0);
         post.setLikeCount(0);
 
-        //TODO
-        // 해시태그에도 포스트를 저장해야되는데?? 나중에 생각하자
         Post newPost = postRepository.save(post);
 
         LikePost newLike = LikePost.builder()
@@ -114,7 +112,6 @@ public class PostController {
 
     @GetMapping
     public ResponseEntity getPosts(@PageableDefault Pageable pageable, PagedResourcesAssembler<Post> assembler) {
-        //TODO 개수 제한하는 방법 알아야함. 다받으면 개수가 너무많음.
         List<Post> postList = this.postRepository.findAllByOrderByCreatedAtDesc();
 
         postList.stream().forEach(post -> {
@@ -133,7 +130,11 @@ public class PostController {
 
         });
 
-        Page<Post> postFeed = new PageImpl<>(postList.subList(0, 10), pageable, postList.size());
+        //TODO 이부분 첫번째 인자를 고쳐야함 0-10 이라 10개 고정인듯
+        //TODO 맨뒤(3번쨰) 인자를 통해서 리턴하는 최대 개수를 설정할 수 있음
+        int pageStart = pageable.getPageNumber()*10;
+        int pageEnd = pageStart + 10;
+        Page<Post> postFeed = new PageImpl<>(postList.subList(pageStart,pageEnd), pageable, postList.size());
 
         var pagedResources = assembler.toResource(postFeed);
         pagedResources.add(new Link("/docs/index.html#resource-post-list").withRel("profile"));

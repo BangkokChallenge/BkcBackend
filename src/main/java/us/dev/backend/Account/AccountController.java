@@ -6,6 +6,7 @@ import com.google.gson.JsonParser;
 import org.apache.tomcat.util.json.JSONParser;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.configurationprocessor.json.JSONArray;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.MediaTypes;
@@ -17,6 +18,7 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.RestTemplate;
 import us.dev.backend.common.AppProperties;
 import us.dev.backend.common.ErrorsResource;
@@ -25,10 +27,7 @@ import us.dev.backend.configs.RestTemplateLoggingRequestInterceptor;
 
 import javax.validation.Valid;
 import java.net.URI;
-import java.util.Arrays;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 

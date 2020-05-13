@@ -37,6 +37,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
                     .antMatchers("/docs/**").permitAll()
                     .antMatchers("/api/account/login").permitAll()
                     .antMatchers("/api/account/refresh").permitAll()
+                    .antMatchers("/api/account/checkToken").permitAll()
                 .requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
                 .anyRequest()
                     .authenticated()
