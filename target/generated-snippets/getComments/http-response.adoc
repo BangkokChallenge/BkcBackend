@@ -1,7 +1,6 @@
 [source,http,options="nowrap"]
 ----
 HTTP/1.1 200 OK
-Content-Length: 195
 Pragma: no-cache
 X-XSS-Protection: 1; mode=block
 Expires: 0
@@ -9,14 +8,16 @@ X-Frame-Options: DENY
 X-Content-Type-Options: nosniff
 Content-Type: application/json;charset=UTF-8
 Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Content-Length: 233
 
 [ {
   "id" : 1,
   "content" : "test",
-  "createdAt" : "2020-05-11 20:27:16",
-  "modifiedAt" : "2020-05-11 20:27:16",
+  "createdAt" : "2020-05-13 01:01:26",
+  "modifiedAt" : "2020-05-13 01:01:26",
   "postId" : 11,
   "accountId" : "TEST_ID",
+  "profile_photo" : "TEST_PROFILEPT",
   "nickname" : "TEST_NICKNAME"
 } ]
 ----

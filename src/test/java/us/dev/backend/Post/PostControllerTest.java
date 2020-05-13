@@ -1,35 +1,24 @@
 package us.dev.backend.Post;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.hateoas.MediaTypes;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockMultipartFile;
-import org.springframework.security.oauth2.common.util.Jackson2JsonParser;
-import org.springframework.test.context.TestPropertySource;
-import org.springframework.test.web.servlet.ResultActions;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
-import us.dev.backend.Account.Account;
-import us.dev.backend.Account.AccountRole;
 import us.dev.backend.Account.AccountService;
 import us.dev.backend.common.AppProperties;
 import us.dev.backend.common.BaseControllerTest;
 import us.dev.backend.common.TestDescription;
 
-import java.util.Arrays;
-import java.util.Set;
-
-import static org.junit.Assert.*;
 import static org.springframework.restdocs.hypermedia.HypermediaDocumentation.linkWithRel;
 import static org.springframework.restdocs.hypermedia.HypermediaDocumentation.links;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
-import static org.springframework.restdocs.payload.PayloadDocumentation.*;
-import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.httpBasic;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
+import static org.springframework.restdocs.payload.PayloadDocumentation.relaxedResponseFields;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.multipart;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -76,7 +65,7 @@ public class PostControllerTest extends BaseControllerTest {
                                 fieldWithPath("accountId").description("사용자 id"),
                                 fieldWithPath("id").description("Post id"),
                                 fieldWithPath("article").description("Post 작성글"),
-                                fieldWithPath("hashTag").description("Hash Tage"),
+                                fieldWithPath("hashTag").description("Hash Tag"),
                                 fieldWithPath("filePath").description("file path"),
                                 fieldWithPath("selfLike").description("좋아요 여부"),
                                 fieldWithPath("commentCount").description("댓글 수"),
