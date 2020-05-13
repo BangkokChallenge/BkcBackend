@@ -1,11 +1,12 @@
 [source,options="nowrap"]
 ----
 {
-  "createdAt" : "2020-05-06T01:53:42.139216",
-  "modifiedAt" : "2020-05-06T01:53:42.139216",
-  "id" : 81,
+  "createdAt" : "2020-05-13 00:29:32",
+  "modifiedAt" : "2020-05-13 00:29:32",
+  "id" : 41,
   "postId" : 1,
   "accountId" : "TDD_TEMP_ID",
-  "likeTrueAndFalse" : true
+  "likeTrueAndFalse" : true,
+  "likeCount" : 1
 }
 ----

@@ -1,5 +1,5 @@
 [source,bash]
 ----
 $ curl 'http://localhost:8080/api/like/1' -i -X PUT \
-    -H 'Authorization: Bearer 0d4bc031-df8e-4ddd-bc0c-567559151ba8'
+    -H 'Authorization: Bearer 2c215f61-5f16-4d4b-ba75-a9743db0da23'
 ----
