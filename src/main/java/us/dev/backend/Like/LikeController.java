@@ -63,18 +63,18 @@ public class LikeController {
         else {
             if(getLike.likeTrueAndFalse) {
                 getLike.setLikeTrueAndFalse(false);
-
-                likeCountPlusAndMinus(postId,false);
                 this.likeRepository.save(getLike);
+
+                long getLikeCount = likeCountPlusAndMinus(postId,false);
+                getLike.setLikeCount(getLikeCount);
             }
             else {
                 getLike.setLikeTrueAndFalse(true);
                 this.likeRepository.save(getLike);
 
-                likeCountPlusAndMinus(postId,true);
+                long getLikeCount = likeCountPlusAndMinus(postId,true);
+                getLike.setLikeCount(getLikeCount);
             }
-            long getLikeCount = likeCountPlusAndMinus(postId,true);
-            getLike.setLikeCount(getLikeCount);
             return ResponseEntity.ok(getLike);
         }
     }
