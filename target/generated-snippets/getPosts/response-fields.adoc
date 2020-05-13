@@ -22,7 +22,7 @@
 |Post ID
 
 |`+_embedded.postList[0].hashTag+`
-|`+String+`
+|`+Array+`
 |Post HashTag
 
 |`+_embedded.postList[0].selfLike+`

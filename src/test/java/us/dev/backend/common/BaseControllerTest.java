@@ -52,18 +52,18 @@ public class BaseControllerTest {
     @Autowired
     protected AccountService accountService;
 
-//    @Before
-//    public void createTddAccount() {
-//        Account account = Account.builder()
-//                .id("TDD_TEMP_ID")
-//                .password("1234")
-//                .nickname("TDD_NICKNAME")
-//                .roles(Set.of(AccountRole.USER))
-//                .profile_photo("TDD_PHOTO")
-//                .build();
-//
-//        accountService.saveAccount(account);
-//    }
+    @Before
+    public void createTddAccount() {
+        Account account = Account.builder()
+                .id("TDD_TEMP_ID")
+                .password("1234")
+                .nickname("TDD_NICKNAME")
+                .roles(Set.of(AccountRole.USER))
+                .profile_photo("TDD_PHOTO")
+                .build();
+
+        accountService.saveAccount(account);
+    }
 
     public String getBearerToken() throws Exception {
         return "Bearer " + getAccessToken();

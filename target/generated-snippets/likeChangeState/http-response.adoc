@@ -1,7 +1,6 @@
 [source,http,options="nowrap"]
 ----
 HTTP/1.1 200 OK
-Content-Length: 184
 Pragma: no-cache
 X-XSS-Protection: 1; mode=block
 Expires: 0
@@ -9,13 +8,15 @@ X-Frame-Options: DENY
 X-Content-Type-Options: nosniff
 Content-Type: application/hal+json;charset=UTF-8
 Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Content-Length: 189
 
 {
-  "createdAt" : "2020-05-06T01:53:42.139216",
-  "modifiedAt" : "2020-05-06T01:53:42.139216",
-  "id" : 81,
+  "createdAt" : "2020-05-13 00:29:32",
+  "modifiedAt" : "2020-05-13 00:29:32",
+  "id" : 41,
   "postId" : 1,
   "accountId" : "TDD_TEMP_ID",
-  "likeTrueAndFalse" : true
+  "likeTrueAndFalse" : true,
+  "likeCount" : 1
 }
 ----

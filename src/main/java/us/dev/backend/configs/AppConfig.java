@@ -87,11 +87,11 @@ public class AppConfig {
             @Override
             public void run(ApplicationArguments args) throws Exception {
                 Account account = Account.builder()
-                        .id("TDD_TEMP_ID")
+                        .id("LOCAL_TEMP_ID")
                         .password("1234")
-                        .nickname("TDD_NICKNAME")
+                        .nickname("LOCAL_NICKNAME")
                         .roles(Set.of(AccountRole.USER))
-                        .profile_photo("TDD_PHOTO")
+                        .profile_photo("LOCAL_PHOTO")
                         .build();
                 accountService.saveAccount(account);
 
@@ -103,7 +103,7 @@ public class AppConfig {
 
                 MultiValueMap<String, String> parameters = new LinkedMultiValueMap<>();
                 parameters.add("grant_type", "password");
-                parameters.add("username", "TDD_TEMP_ID");
+                parameters.add("username", "LOCAL_TEMP_ID");
                 parameters.add("password", "1234");
                 HttpEntity<MultiValueMap<String, String>> requestEntity = new HttpEntity<>(parameters, headers);
 
@@ -120,7 +120,7 @@ public class AppConfig {
                 System.out.println("***REFRESH_TOKEN***");
                 System.out.println(getrefrsh_Token);
 
-                Optional<Account> getOptional = accountRepository.findById("TDD_TEMP_ID");
+                Optional<Account> getOptional = accountRepository.findById("LOCAL_TEMP_ID");
                 Account newAccount = getOptional.get();
                 newAccount.setServiceAccessToken(getaccess_Token);
                 newAccount.setServiceRefreshToken(getrefrsh_Token);
