@@ -8,9 +8,7 @@ import org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders;
 import us.dev.backend.Account.Account;
 import us.dev.backend.Account.AccountRepository;
 import us.dev.backend.Account.AccountRole;
-import us.dev.backend.Account.AccountService;
 import us.dev.backend.Post.Post;
-import us.dev.backend.Post.PostDto;
 import us.dev.backend.Post.PostRepository;
 import us.dev.backend.common.AppProperties;
 import us.dev.backend.common.BaseControllerTest;
@@ -18,16 +16,12 @@ import us.dev.backend.common.TestDescription;
 
 import java.util.Set;
 
-import static org.springframework.restdocs.hypermedia.HypermediaDocumentation.linkWithRel;
-import static org.springframework.restdocs.hypermedia.HypermediaDocumentation.links;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
 import static org.springframework.restdocs.payload.PayloadDocumentation.relaxedResponseFields;
 import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
 import static org.springframework.restdocs.request.RequestDocumentation.pathParameters;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
@@ -85,6 +79,7 @@ public class CommentControllerTest extends BaseControllerTest {
                                 fieldWithPath("[0].modifiedAt").description("comment 수정시간"),
                                 fieldWithPath("[0].postId").description("Post 아이디"),
                                 fieldWithPath("[0].accountId").description("작성자 Kakao ID"),
+                                fieldWithPath("[0].profile_photo").description("작성자 Kakao Profile Photo"),
                                 fieldWithPath("[0].nickname").description("작성자 Kakao Nickname")
                         )
                         )
@@ -114,6 +109,7 @@ public class CommentControllerTest extends BaseControllerTest {
                                 fieldWithPath("modifiedAt").description("comment 수정시간"),
                                 fieldWithPath("postId").description("Post 아이디"),
                                 fieldWithPath("accountId").description("작성자 Kakao ID"),
+                                fieldWithPath("profile_photo").description("작성자 Kakao Profile Photo"),
                                 fieldWithPath("nickname").description("작성자 Kakao Nickname")
                         )
                         )

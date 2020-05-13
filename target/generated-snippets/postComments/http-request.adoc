@@ -1,12 +1,12 @@
 [source,http,options="nowrap"]
 ----
 POST /api/post/11/comment HTTP/1.1
-Authorization: Bearer a792003f-2a6b-431d-a06f-f54bf886e603
+Authorization: Bearer fbf7cd72-8e6a-4c4e-85c7-184526930d1d
 Content-Type: application/json;charset=UTF-8
 Content-Length: 24
 Host: localhost:8080
 
 {
-  "content" : "test"
+  "content" : "hihi"
 }
 ----

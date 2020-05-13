@@ -1,9 +1,8 @@
 package us.dev.backend.Comment;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,9 +16,9 @@ public class CommentController {
 
     // 댓글 등록
     @PostMapping("/{postId}/comment")
-    public Comment save(@PathVariable Integer postId, @RequestBody CommentDto commentDto, Authentication authentication) {
-        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-        String userId = userDetails.getUsername();
+    public Comment save(@PathVariable Integer postId, @RequestBody CommentDto commentDto) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String userId = authentication.getName();
         return commentService.save(postId, commentDto, userId);
     }
 
@@ -37,9 +36,9 @@ public class CommentController {
 
     // 댓글 삭제
     @DeleteMapping("/{postId}/comment/{commentId}")
-    public void delete(@PathVariable Integer postId, @PathVariable Long commentId, Authentication authentication) {
-        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-        String userId = userDetails.getUsername();
+    public void delete(@PathVariable Integer postId, @PathVariable Long commentId) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String userId = authentication.getName();
         commentService.delete(postId, commentId, userId);
     }
 
@@ -47,10 +46,9 @@ public class CommentController {
     @PutMapping("/{postId}/comment/{commentId}")
     public Comment update(@PathVariable Integer postId,
                           @PathVariable Long commentId,
-                          @RequestBody CommentDto commentDto,
-                          Authentication authentication) {
-        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-        String userId = userDetails.getUsername();
+                          @RequestBody CommentDto commentDto) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String userId = authentication.getName();
         return commentService.update(postId, commentId, commentDto, userId);
     }
 }
