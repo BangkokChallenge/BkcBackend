@@ -6,17 +6,18 @@ X-XSS-Protection: 1; mode=block
 Expires: 0
 X-Frame-Options: DENY
 X-Content-Type-Options: nosniff
-Content-Length: 194
+Content-Length: 227
 Content-Type: application/json;charset=UTF-8
 Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 
 {
   "id" : 1,
-  "content" : "test",
-  "createdAt" : "2020-05-11 20:28:00",
-  "modifiedAt" : "2020-05-11 20:28:00",
+  "content" : "hihi",
+  "createdAt" : "2020-05-13 01:23:43",
+  "modifiedAt" : "2020-05-13 01:23:43",
   "postId" : 11,
   "accountId" : "TDD_TEMP_ID",
+  "profile_photo" : "TDD_PHOTO",
   "nickname" : "TDD_NICKNAME"
 }
 ----
