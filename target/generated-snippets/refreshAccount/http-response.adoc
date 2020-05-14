@@ -2,31 +2,38 @@
 ----
 HTTP/1.1 201 Created
 Pragma: no-cache
+X-Frame-Options: DENY
+Content-Length: 749
+Access-Control-Allow-Headers: *
+Access-Control-Max-Age: 3600
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: POST, GET, OPTIONS, DELETE
+Location: http://localhost:8080/api/account/refresh
 X-XSS-Protection: 1; mode=block
 Expires: 0
-X-Frame-Options: DENY
 X-Content-Type-Options: nosniff
 Content-Type: application/hal+json;charset=UTF-8
-Content-Length: 676
-Location: http://localhost:8080/api/account/login/%257Bkey%257D
 Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 
 {
-  "createdAt" : "2020-05-11T20:43:10.940062",
-  "modifiedAt" : "2020-05-11T20:43:12.824541",
+  "createdAt" : "2020-05-14 23:16:36",
+  "modifiedAt" : "2020-05-14 23:16:37",
   "id" : "TDD_TEMP_ID",
   "nickname" : "TDD_NICKNAME",
   "profile_photo" : "TDD_PHOTO",
-  "password" : "{bcrypt}$2a$10$niglt1Eb/6lNsAGvgEas1ewpIEYU84HO1rS157fQAiRGWPsS8t/3S",
+  "password" : "{bcrypt}$2a$10$j0oJ0fNyeCoj2a8cl.YYpe8L9oZm/96ld.cBMxLghZvjGav4xIikq",
   "roles" : [ "USER" ],
-  "serviceRefreshToken" : "d228390d-9682-4627-b783-0b40fe8da865",
-  "serviceAccessToken" : "85bb868b-6059-435f-bccc-9c384e919654",
+  "serviceAccessToken" : "0af55050-c1fe-4b12-8270-dc727cd6b92c",
+  "serviceRefreshToken" : "90ab5d30-79f2-45cc-b320-0b99bbbc3924",
   "_links" : {
     "self" : {
-      "href" : "http://localhost:8080/api/account"
+      "href" : "http://localhost:8080/api/account/refresh"
     },
-    "account" : {
-      "href" : "http://localhost:8080/api/account"
+    "login" : {
+      "href" : "http://localhost:8080/api/account/login"
+    },
+    "post list" : {
+      "href" : "http://localhost:8080/api/post"
     },
     "profile" : {
       "href" : "/docs/index.html#resource-refreshAccount"

@@ -20,6 +20,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.RestTemplate;
+import us.dev.backend.Post.PostController;
 import us.dev.backend.common.AppProperties;
 import us.dev.backend.common.ErrorsResource;
 import us.dev.backend.configs.AppConfig;
@@ -30,6 +31,7 @@ import java.net.URI;
 import java.util.*;
 
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 
 @Controller
 @RequestMapping(value = "/api/account", produces = MediaTypes.HAL_JSON_UTF8_VALUE)
@@ -128,13 +130,13 @@ public class AccountController {
 
 
         /* HATEOUS */
-        ControllerLinkBuilder selfLinkBuilder = linkTo(AccountController.class).slash("/login/{key}");
+        ControllerLinkBuilder selfLinkBuilder = linkTo(AccountController.class).slash("login");
         URI createdUri = selfLinkBuilder.toUri();
 
         AccountResource accountResource = new AccountResource(newAccount);
-        accountResource.add(linkTo(AccountController.class).withRel("account"));
-
-        accountResource.add(new Link("/docs/index.html#resource-createAccount").withRel("profile"));
+        accountResource.add(linkTo(AccountController.class).slash("login").withSelfRel());
+        accountResource.add(linkTo(PostController.class).slash("").withRel("post list"));
+        accountResource.add(new Link("/docs/index.html#resource-AccountLogin").withRel("profile"));
         return ResponseEntity.created(createdUri).body(accountResource);
 
     }
@@ -184,12 +186,13 @@ public class AccountController {
 
 
         /* HATEOUS */
-        ControllerLinkBuilder selfLinkBuilder = linkTo(AccountController.class).slash("/login/{key}");
+        ControllerLinkBuilder selfLinkBuilder = linkTo(AccountController.class).slash("refresh");
         URI createdUri = selfLinkBuilder.toUri();
 
         AccountResource accountResource = new AccountResource(getAccount);
-        accountResource.add(linkTo(AccountController.class).withRel("account"));
-
+        accountResource.add(linkTo(AccountController.class).slash("refresh").withSelfRel());
+        accountResource.add(linkTo(AccountController.class).slash("login").withRel("login"));
+        accountResource.add(linkTo(PostController.class).slash("").withRel("post list"));
         accountResource.add(new Link("/docs/index.html#resource-refreshAccount").withRel("profile"));
         return ResponseEntity.created(createdUri).body(accountResource);
 
@@ -205,9 +208,19 @@ public class AccountController {
         }
 
         Account account = optionalAccount.get();
+
+        /* HATEOUS */
+        ControllerLinkBuilder selfLinkBuilder = linkTo(AccountController.class).slash(account.getId());
+        URI createdUri = selfLinkBuilder.toUri();
+
         AccountResource accountResource = new AccountResource(account);
-        accountResource.add(new Link("/docs/index.html#resource-getAccount").withRel("profile"));
-        return ResponseEntity.ok(accountResource);
+
+        accountResource.add(linkTo(AccountController.class).slash(account.getId()).withSelfRel());
+        accountResource.add(linkTo(AccountController.class).slash("login").withRel("login"));
+        accountResource.add(linkTo(AccountController.class).slash("refresh").withRel("refresh"));
+        accountResource.add(linkTo(PostController.class).slash("").withRel("post list"));
+        accountResource.add(new Link("/docs/index.html#resource-getAccountInfo").withRel("profile"));
+        return ResponseEntity.created(createdUri).body(accountResource);
     }
 
     /* 회원정보 수정 -> 아직 필요 없음 */

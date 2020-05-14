@@ -2,17 +2,21 @@
 ----
 HTTP/1.1 200 OK
 Pragma: no-cache
+Access-Control-Allow-Methods: POST, GET, OPTIONS, DELETE
 X-XSS-Protection: 1; mode=block
 Expires: 0
 X-Frame-Options: DENY
 X-Content-Type-Options: nosniff
+Access-Control-Allow-Headers: *
 Content-Length: 172
+Access-Control-Max-Age: 3600
 Content-Type: application/json;charset=UTF-8
+Access-Control-Allow-Origin: *
 Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 
 {
   "active" : true,
-  "exp" : 1589469750,
+  "exp" : 1590069972,
   "user_name" : "TDD_TEMP_ID",
   "authorities" : [ "ROLE_USER" ],
   "client_id" : "membership",

@@ -1,11 +1,12 @@
 [source,http,options="nowrap"]
 ----
 POST /api/account/login HTTP/1.1
-Content-Length: 70
+Content-Length: 85
 Content-Type: application/json;charset=UTF-8
 Host: localhost:8080
 
 {
-  "key" : "Bs0WZW_TdjWQ5FV5T8FF8J_JqX4Ak2Dgmnu3Jgo9dVwAAAFxu5lOxg"
+  "id" : null,
+  "key" : "B1EHOZwUzgVaHYLu1HsSvdmTnBI8INOF7ZpkEAo9cuoAAAFyE4Hc_Q"
 }
 ----

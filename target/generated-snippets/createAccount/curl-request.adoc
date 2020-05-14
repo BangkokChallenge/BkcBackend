@@ -3,6 +3,7 @@
 $ curl 'http://localhost:8080/api/account/login' -i -X POST \
     -H 'Content-Type: application/json;charset=UTF-8' \
     -d '{
-  "key" : "Bs0WZW_TdjWQ5FV5T8FF8J_JqX4Ak2Dgmnu3Jgo9dVwAAAFxu5lOxg"
+  "id" : null,
+  "key" : "B1EHOZwUzgVaHYLu1HsSvdmTnBI8INOF7ZpkEAo9cuoAAAFyE4Hc_Q"
 }'
 ----

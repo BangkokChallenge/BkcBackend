@@ -2,12 +2,16 @@
 ----
 HTTP/1.1 400 Bad Request
 Pragma: no-cache
+Access-Control-Allow-Methods: POST, GET, OPTIONS, DELETE
 X-XSS-Protection: 1; mode=block
 X-Frame-Options: DENY
 X-Content-Type-Options: nosniff
 Content-Length: 83
+Access-Control-Allow-Headers: *
+Access-Control-Max-Age: 3600
 Cache-Control: no-store
 Content-Type: application/json;charset=UTF-8
+Access-Control-Allow-Origin: *
 
 {
   "error" : "invalid_token",

@@ -94,7 +94,7 @@ operation::indexAddr[snippets='httpie-request,response-body,http-response,links'
 유저정보는 유저정보를 만들거나 조회할 때 사용한다.
 
 
-[[resources-create-Account]]
+[[resources-AccountLogin]]
 === 유저 회원가입
 
 `POST` 요청을 사용해서 새 유저정보를 만들 수 있다. +
@@ -120,7 +120,7 @@ operation::checkTokenSuccess[snippets='http-request,http-response,response-field
 
 operation::checkTokenBad[snippets='http-request,http-response,response-fields']
 
-[[resources-refresh-Account]]
+[[resources-refreshAccount]]
 === Refresh Token으로 AccessToken 갱신하기
 
 operation::refreshAccount[snippets='http-request,http-response,response-fields,links']
@@ -131,7 +131,7 @@ operation::refreshAccount[snippets='http-request,http-response,response-fields,l
 
 해당 플랫폼에서 쿠키/데이터 삭제 진행.
 
-[[resources-get-Account]]
+[[resources-getAccountInfo]]
 === 유저 정보가져오기
 
 `Get` 요청을 사용해서 유저정보 하나를 조회할 수 있다.
@@ -143,7 +143,7 @@ operation::getAccount[snippets='http-request,http-response,response-fields,links
 
 Post는 Post를 만들거나 조회할 때 사용한다.
 
-[[resources-post-upload]]
+[[resources-uploadPost]]
 === Post Upload
 
 `POST` 요청을 통해서 Post를 Upload 할 수 있다.
@@ -151,7 +151,7 @@ Post는 Post를 만들거나 조회할 때 사용한다.
 operation::uploadPost[snippets='http-request,http-response,response-fields,links']
 
 
-[[resources-post-list]]
+[[resources-getPostListß]]
 === Post List 조회
 
 `GET` 요청을 사용해서 Post List를 받아올 수 있다. +
