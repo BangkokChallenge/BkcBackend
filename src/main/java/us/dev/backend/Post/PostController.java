@@ -11,7 +11,6 @@ import org.springframework.hateoas.mvc.ControllerLinkBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -75,10 +74,11 @@ public class PostController {
 
         Post post = this.appConfig.modelMapper().map(postDto, Post.class);
 
+        String[] strHashTags = postDto.getHashTag().replaceAll(" ", "").split("#");
         List<HashTag> hashTags = new ArrayList<>();
-        for (String stringHashTag : postDto.getHashTag()) {
+        for(int i =1; i < strHashTags.length; i++){
             HashTag hashTag = new HashTag();
-            hashTag.setContent("#"+stringHashTag);
+            hashTag.setContent("#"+strHashTags[i]);
             hashTag.setAccount(newAccount);
             hashTags.add(hashTag);
         }
