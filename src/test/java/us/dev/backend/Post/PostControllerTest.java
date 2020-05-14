@@ -53,7 +53,7 @@ public class PostControllerTest extends BaseControllerTest {
                 .header(HttpHeaders.AUTHORIZATION, getBearerToken()))
                 .andDo(print())
                 .andExpect(status().isCreated())
-                .andExpect(jsonPath("file").exists())
+                .andExpect(jsonPath("filePath").exists())
                 .andExpect(jsonPath("article").exists())
                 .andDo(document("uploadPost",
                         links(

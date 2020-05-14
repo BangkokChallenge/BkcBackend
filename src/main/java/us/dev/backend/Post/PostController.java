@@ -79,7 +79,7 @@ public class PostController {
         List<HashTag> hashTags = new ArrayList<>();
         if(postDto.getHashTag() != null) {
             String[] strHashTags = postDto.getHashTag().replaceAll(" ", "").split("#");
-            for(int i =1; i < strHashTags.length; i++){ {
+            for(int i =1; i < strHashTags.length; i++) {
                 HashTag hashTag = new HashTag();
                 hashTag.setContent("#"+strHashTags[i]);
                 hashTag.setAccount(newAccount);

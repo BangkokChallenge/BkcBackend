@@ -17,4 +17,8 @@
 |`+Boolean+`
 |변경된 좋아요 상태
 
+|`+likeCount+`
+|`+Number+`
+|해당 게시물의 Like 총 개수
+
 |===

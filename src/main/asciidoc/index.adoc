@@ -187,13 +187,15 @@ operation::getComments[snippets='http-request,http-response,response-fields']
 
 사용자가 좋아요를 누르면 Table에 반영시킬 수 있다.
 
-[[resources-changeState-like]]
+[[resources-changeLikeState]]
 === Like 상태 변경
 
 `PUT` 요청에 PostId를 이용하여 현재 이용중인 사용자가 해당 Post에 좋아요 상태를 반영할 수 있다. +
-```
+
+----
 http://localhost:8080/api/like/{postId}
-```
+----
+
 `ex` True = 좋아요 활성화 상태, False = 좋아요 비활성화 상태 +
 
 operation::likeChangeState[snippets='http-request,http-response,response-fields']
