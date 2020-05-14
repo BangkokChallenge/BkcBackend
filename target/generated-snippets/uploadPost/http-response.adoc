@@ -2,11 +2,11 @@
 ----
 HTTP/1.1 201 Created
 Pragma: no-cache
-Content-Length: 949
 X-Frame-Options: DENY
-Access-Control-Allow-Headers: x-requested-with, authorization
+Access-Control-Allow-Headers: *
 Access-Control-Max-Age: 3600
 Access-Control-Allow-Origin: *
+Content-Length: 1030
 Access-Control-Allow-Methods: POST, GET, OPTIONS, DELETE
 X-XSS-Protection: 1; mode=block
 Expires: 0
@@ -16,8 +16,8 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Location: http://localhost:8080/api/post/upload
 
 {
-  "createdAt" : "2020-05-14 17:42:58",
-  "modifiedAt" : "2020-05-14 17:42:58",
+  "createdAt" : "2020-05-14 23:32:36",
+  "modifiedAt" : "2020-05-14 23:32:36",
   "accountId" : "TDD_TEMP_ID",
   "id" : 41,
   "article" : "테스트내용",
@@ -30,25 +30,28 @@ Location: http://localhost:8080/api/post/upload
   "hashTag" : [ {
     "id" : 41,
     "content" : "#홍제",
-    "createdAt" : "2020-05-14 17:42:58",
-    "modifiedAt" : "2020-05-14 17:42:58"
+    "createdAt" : "2020-05-14 23:32:36",
+    "modifiedAt" : "2020-05-14 23:32:36"
   }, {
     "id" : 42,
     "content" : "#짱짱",
-    "createdAt" : "2020-05-14 17:42:58",
-    "modifiedAt" : "2020-05-14 17:42:58"
+    "createdAt" : "2020-05-14 23:32:36",
+    "modifiedAt" : "2020-05-14 23:32:36"
   }, {
     "id" : 43,
     "content" : "#짱짱맨",
-    "createdAt" : "2020-05-14 17:42:58",
-    "modifiedAt" : "2020-05-14 17:42:58"
+    "createdAt" : "2020-05-14 23:32:36",
+    "modifiedAt" : "2020-05-14 23:32:36"
   } ],
   "_links" : {
     "self" : {
+      "href" : "http://localhost:8080/api/post/upload"
+    },
+    "post list" : {
       "href" : "http://localhost:8080/api/post"
     },
     "profile" : {
-      "href" : "/docs/index.html#resource-post-upload"
+      "href" : "/docs/index.html#resource-uploadPost"
     }
   }
 }

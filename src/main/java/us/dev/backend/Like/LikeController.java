@@ -1,7 +1,9 @@
 package us.dev.backend.Like;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.Link;
 import org.springframework.hateoas.MediaTypes;
+import org.springframework.hateoas.mvc.ControllerLinkBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -14,9 +16,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import us.dev.backend.Account.Account;
 import us.dev.backend.Account.AccountRepository;
 import us.dev.backend.Post.Post;
+import us.dev.backend.Post.PostController;
 import us.dev.backend.Post.PostRepository;
+import us.dev.backend.Post.PostResource;
 
+import java.net.URI;
 import java.util.Optional;
+
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 
 @Controller
 @RequestMapping(value = "/api/like", produces = MediaTypes.HAL_JSON_UTF8_VALUE)
@@ -57,7 +64,17 @@ public class LikeController {
 
             long getLikeCount = likeCountPlusAndMinus(postId,true);
             newLike.setLikeCount(getLikeCount);
-            return ResponseEntity.ok(newLike);
+
+            /* HATEOAS */
+            ControllerLinkBuilder selfLinkBuilder = linkTo(LikeController.class).slash("like").slash(newLike.getPostId());
+            URI createdUri = selfLinkBuilder.toUri();
+
+            LikeResource likeResource = new LikeResource(newLike);
+            likeResource.add(linkTo(LikeController.class).slash(newLike.getPostId()).withSelfRel());
+            likeResource.add(linkTo(PostController.class).slash("").withRel("Post list"));
+            likeResource.add(new Link("/docs/index.html#resource-changeLikeState").withRel("profile"));
+
+            return ResponseEntity.created(createdUri).body(likeResource);
 
         } // 있으면 상태값 반대로해서 저장.
         else {
@@ -75,7 +92,18 @@ public class LikeController {
                 long getLikeCount = likeCountPlusAndMinus(postId,true);
                 getLike.setLikeCount(getLikeCount);
             }
-            return ResponseEntity.ok(getLike);
+
+
+            ControllerLinkBuilder selfLinkBuilder = linkTo(LikeController.class).slash("like").slash(getLike.getPostId());
+            URI createdUri = selfLinkBuilder.toUri();
+
+            LikeResource likeResource = new LikeResource(getLike);
+            likeResource.add(linkTo(LikeController.class).slash(getLike.getPostId()).withSelfRel());
+            likeResource.add(linkTo(PostController.class).slash("").withRel("Post list"));
+            likeResource.add(new Link("/docs/index.html#resource-changeLikeState").withRel("profile"));
+
+
+            return ResponseEntity.created(createdUri).body(likeResource);
         }
     }
 

@@ -21,17 +21,23 @@ public class LikeControllerTest extends BaseControllerTest {
     @TestDescription("좋아요 눌렀을 때 반영테스트")
     public void likeChangeState() throws Exception{
 
-       this.mockMvc.perform(put("/api/like//{postId}","1")
+       this.mockMvc.perform(put("/api/like/{postId}","1")
                .header(HttpHeaders.AUTHORIZATION, getBearerToken()))
                .andDo(print())
-               .andExpect(status().isOk())
+               .andExpect(status().isCreated())
                .andExpect(jsonPath("postId").exists())
                .andDo(document("likeChangeState",
+                       links(
+                               linkWithRel("self").description("현재 링크"),
+                               linkWithRel("Post list").description("Post List를 가져오는 링크"),
+                               linkWithRel("profile").description("도큐먼트 링크")
+                       ),
                        relaxedResponseFields(
                                fieldWithPath("id").description("LikePost PK"),
                                fieldWithPath("accountId").description("좋아요를 누른 사용자 카카오 아이디"),
                                fieldWithPath("postId").description("좋아요가 반영된 Post 아이디"),
-                               fieldWithPath("likeTrueAndFalse").description("변경된 좋아요 상태")
+                               fieldWithPath("likeTrueAndFalse").description("변경된 좋아요 상태"),
+                               fieldWithPath("likeCount").description("해당 게시물의 Like 총 개수")
                        ))
        );
     }

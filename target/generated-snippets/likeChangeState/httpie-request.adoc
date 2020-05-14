@@ -1,5 +1,5 @@
 [source,bash]
 ----
 $ http PUT 'http://localhost:8080/api/like/1' \
-    'Authorization:Bearer 2c215f61-5f16-4d4b-ba75-a9743db0da23'
+    'Authorization:Bearer 8191d821-580d-461e-bb96-2c935ad8729f'
 ----
