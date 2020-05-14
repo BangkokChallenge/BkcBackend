@@ -23,7 +23,7 @@
 
 |`+hashTag+`
 |`+Array+`
-|Hash Tage
+|Hash Tag
 
 |`+filePath+`
 |`+String+`

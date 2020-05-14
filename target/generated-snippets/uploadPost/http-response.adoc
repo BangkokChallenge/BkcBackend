@@ -2,54 +2,56 @@
 ----
 HTTP/1.1 201 Created
 Pragma: no-cache
+X-Frame-Options: DENY
+Access-Control-Allow-Headers: *
+Access-Control-Max-Age: 3600
+Access-Control-Allow-Origin: *
+Content-Length: 1030
+Access-Control-Allow-Methods: POST, GET, OPTIONS, DELETE
 X-XSS-Protection: 1; mode=block
 Expires: 0
-X-Frame-Options: DENY
 X-Content-Type-Options: nosniff
 Content-Type: application/hal+json;charset=UTF-8
 Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Location: http://localhost:8080/api/post/upload
-Content-Length: 1080
 
 {
-  "createdAt" : "2020-05-13 00:25:08",
-  "modifiedAt" : "2020-05-13 00:25:08",
+  "createdAt" : "2020-05-14 23:32:36",
+  "modifiedAt" : "2020-05-14 23:32:36",
   "accountId" : "TDD_TEMP_ID",
   "id" : 41,
   "article" : "테스트내용",
   "nickname" : "TDD_NICKNAME",
-  "profile_photo" : "TDD_NICKNAME",
+  "profile_photo" : "TDD_PHOTO",
   "selfLike" : false,
   "commentCount" : 0,
   "likeCount" : 0,
   "filePath" : "https://jayass3cloud.s3.ap-northeast-2.amazonaws.com/hello.txt",
   "hashTag" : [ {
     "id" : 41,
-    "content" : "#일상",
-    "createdAt" : "2020-05-13 00:25:08",
-    "modifiedAt" : "2020-05-13 00:25:08"
+    "content" : "#홍제",
+    "createdAt" : "2020-05-14 23:32:36",
+    "modifiedAt" : "2020-05-14 23:32:36"
   }, {
     "id" : 42,
-    "content" : "#기쁨",
-    "createdAt" : "2020-05-13 00:25:08",
-    "modifiedAt" : "2020-05-13 00:25:08"
+    "content" : "#짱짱",
+    "createdAt" : "2020-05-14 23:32:36",
+    "modifiedAt" : "2020-05-14 23:32:36"
   }, {
     "id" : 43,
-    "content" : "#희망",
-    "createdAt" : "2020-05-13 00:25:08",
-    "modifiedAt" : "2020-05-13 00:25:08"
-  }, {
-    "id" : 44,
-    "content" : "#사랑",
-    "createdAt" : "2020-05-13 00:25:08",
-    "modifiedAt" : "2020-05-13 00:25:08"
+    "content" : "#짱짱맨",
+    "createdAt" : "2020-05-14 23:32:36",
+    "modifiedAt" : "2020-05-14 23:32:36"
   } ],
   "_links" : {
     "self" : {
+      "href" : "http://localhost:8080/api/post/upload"
+    },
+    "post list" : {
       "href" : "http://localhost:8080/api/post"
     },
     "profile" : {
-      "href" : "/docs/index.html#resource-post-upload"
+      "href" : "/docs/index.html#resource-uploadPost"
     }
   }
 }

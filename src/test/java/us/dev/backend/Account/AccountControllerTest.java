@@ -41,7 +41,7 @@ public class AccountControllerTest extends BaseControllerTest{
     public void createAccount() throws Exception {
         //given
         AccountDtoKey accountDtoKey = AccountDtoKey.builder()
-                .key("Bs0WZW_TdjWQ5FV5T8FF8J_JqX4Ak2Dgmnu3Jgo9dVwAAAFxu5lOxg")
+                .key("B1EHOZwUzgVaHYLu1HsSvdmTnBI8INOF7ZpkEAo9cuoAAAFyE4Hc_Q")
                 .build();
 
         //when&then
@@ -54,7 +54,7 @@ public class AccountControllerTest extends BaseControllerTest{
                 .andDo(document("createAccount",
                         links(
                                 linkWithRel("self").description("현재 링크"),
-                                linkWithRel("account").description("Account 링크"),
+                                linkWithRel("post list").description("Post List를 가져오는 링크"),
                                 linkWithRel("profile").description("도큐먼트 링크")
                         ),
                         relaxedRequestFields(
@@ -77,13 +77,16 @@ public class AccountControllerTest extends BaseControllerTest{
     @Test
     @TestDescription("Refesh token 날려서 Account info update test")
     public void refreshAccount() throws Exception {
+
+        createAccount();
+
         //given
         Optional<Account> getOptionalAccount = this.accountRepository.findById("TDD_TEMP_ID");
         Account getAccount = getOptionalAccount.get();
 
         AccountDtoKey accountDtoKey = AccountDtoKey.builder()
                 .id("TDD_TEMP_ID")
-                .key(getAccount.getServiceRefreshToken())
+                .key(getRefreshToken())
                 .build();
 
 
@@ -98,7 +101,8 @@ public class AccountControllerTest extends BaseControllerTest{
                 .andDo(document("refreshAccount",
                         links(
                                 linkWithRel("self").description("현재 링크"),
-                                linkWithRel("account").description("Account 링크"),
+                                linkWithRel("login").description("카카오부터 로그인 시작 링크"),
+                                linkWithRel("post list").description("Post List를 가져오는 링크"),
                                 linkWithRel("profile").description("도큐먼트 링크")
                         ),
                         relaxedRequestFields(
@@ -128,11 +132,14 @@ public class AccountControllerTest extends BaseControllerTest{
         this.mockMvc.perform(get("/api/account/{id}","TDD_TEMP_ID")
                 .header(HttpHeaders.AUTHORIZATION, getBearerToken()))
                 .andDo(print())
-                .andExpect(status().isOk())
+                .andExpect(status().isCreated())
                 .andExpect(jsonPath("id").exists())
                 .andDo(document("getAccount",
                         links(
                                 linkWithRel("self").description("현재 링크"),
+                                linkWithRel("login").description("카카오부터 로그인 시작 링크"),
+                                linkWithRel("refresh").description("토큰 Refresh 링크"),
+                                linkWithRel("post list").description("Post List를 가져오는 링크"),
                                 linkWithRel("profile").description("도큐먼트 링크")
                         ),
                         relaxedResponseFields(

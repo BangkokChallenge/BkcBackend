@@ -2,7 +2,10 @@
 |Relation|Description
 
 |`+self+`
-|도큐먼트 링크
+|현재 링크
+
+|`+post list+`
+|Post List를 가져오는 링크
 
 |`+profile+`
 |도큐먼트 링크
