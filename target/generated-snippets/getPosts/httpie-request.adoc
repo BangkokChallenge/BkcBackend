@@ -1,5 +1,5 @@
 [source,bash]
 ----
 $ http GET 'http://localhost:8080/api/post/' \
-    'Authorization:Bearer fbf7cd72-8e6a-4c4e-85c7-184526930d1d'
+    'Authorization:Bearer e9dd5001-13e6-4fad-83f9-fe77cf2740c5'
 ----

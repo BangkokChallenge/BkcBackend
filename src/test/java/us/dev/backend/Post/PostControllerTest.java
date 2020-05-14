@@ -53,10 +53,12 @@ public class PostControllerTest extends BaseControllerTest {
                 .header(HttpHeaders.AUTHORIZATION, getBearerToken()))
                 .andDo(print())
                 .andExpect(status().isCreated())
+                .andExpect(jsonPath("file").exists())
                 .andExpect(jsonPath("article").exists())
                 .andDo(document("uploadPost",
                         links(
-                                linkWithRel("self").description("도큐먼트 링크"),
+                                linkWithRel("self").description("현재 링크"),
+                                linkWithRel("post list").description("Post List를 가져오는 링크"),
                                 linkWithRel("profile").description("도큐먼트 링크")
                         ),
                         relaxedResponseFields(
@@ -82,7 +84,7 @@ public class PostControllerTest extends BaseControllerTest {
         //given
         this.mockMvc.perform(get("/api/post/")
                 .header(HttpHeaders.AUTHORIZATION, getBearerToken()))
-                .andExpect(status().isOk())
+                .andExpect(status().isCreated())
                 .andExpect(jsonPath("_embedded").exists())
                 .andExpect(jsonPath("_links.self").exists())
                 .andExpect(jsonPath("_links.profile").exists())

@@ -2,7 +2,7 @@
 ----
 {
   "active" : true,
-  "exp" : 1589469750,
+  "exp" : 1590069972,
   "user_name" : "TDD_TEMP_ID",
   "authorities" : [ "ROLE_USER" ],
   "client_id" : "membership",

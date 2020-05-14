@@ -4,6 +4,15 @@
 |`+self+`
 |현재 링크
 
+|`+login+`
+|카카오부터 로그인 시작 링크
+
+|`+refresh+`
+|토큰 Refresh 링크
+
+|`+post list+`
+|Post List를 가져오는 링크
+
 |`+profile+`
 |도큐먼트 링크
 

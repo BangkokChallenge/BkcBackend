@@ -34,6 +34,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 
 @Controller
 @RequestMapping(value = "/api/post")
@@ -58,7 +59,7 @@ public class PostController {
     AppConfig appConfig;
 
     @PostMapping("/upload")
-    public ResponseEntity createPost(MultipartFile file, PostDto postDto) throws IOException {
+    public ResponseEntity uploadPost(MultipartFile file, PostDto postDto) throws IOException {
         /* 현재 사용자 받아오기 */
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String getUsername = authentication.getName();
@@ -76,13 +77,15 @@ public class PostController {
         Post post = this.appConfig.modelMapper().map(postDto, Post.class);
 
         List<HashTag> hashTags = new ArrayList<>();
-        for (String stringHashTag : postDto.getHashTag()) {
-            HashTag hashTag = new HashTag();
-            hashTag.setContent("#"+stringHashTag);
-            hashTag.setAccount(newAccount);
-            hashTags.add(hashTag);
+        if(postDto.getHashTag() != null) {
+            for (String stringHashTag : postDto.getHashTag()) {
+                HashTag hashTag = new HashTag();
+                hashTag.setContent("#"+stringHashTag);
+                hashTag.setAccount(newAccount);
+                hashTags.add(hashTag);
+            }
+            post.setHashTag(hashTags);
         }
-        post.setHashTag(hashTags);
         post.setAccountId(newAccount.getId());
         post.setNickname(newAccount.getNickname());
         post.setProfile_photo(newAccount.getProfile_photo());
@@ -100,18 +103,22 @@ public class PostController {
 
         likeRepository.save(newLike);
 
-        ControllerLinkBuilder selfLinkBuilder = linkTo(PostController.class).slash("/upload");
+        // header location 용 uri
+        ControllerLinkBuilder selfLinkBuilder = linkTo(PostController.class).slash("upload");
         URI createdUri = selfLinkBuilder.toUri();
 
         PostResource postResource = new PostResource(newPost);
-        postResource.add(new Link("/docs/index.html#resource-post-upload").withRel("profile"));
+        postResource.add(linkTo(PostController.class).slash("upload").withSelfRel());
+        postResource.add(linkTo(PostController.class).slash("").withRel("post list"));
+        postResource.add(new Link("/docs/index.html#resource-uploadPost").withRel("profile"));
 
+        //created(uri)는 리턴하면 header location 내 createUri 가 들어가게됨.
         return ResponseEntity.created(createdUri).body(postResource);
 
     }
 
     @GetMapping
-    public ResponseEntity getPosts(@PageableDefault Pageable pageable, PagedResourcesAssembler<Post> assembler) {
+    public ResponseEntity getPostList(@PageableDefault Pageable pageable, PagedResourcesAssembler<Post> assembler) {
         List<Post> postList = this.postRepository.findAllByOrderByCreatedAtDesc();
 
         postList.stream().forEach(post -> {
@@ -137,10 +144,15 @@ public class PostController {
         Page<Post> postFeed = new PageImpl<>(postList.subList(pageStart,pageEnd), pageable, postList.size());
 
         var pagedResources = assembler.toResource(postFeed);
-        pagedResources.add(new Link("/docs/index.html#resource-post-list").withRel("profile"));
+
+        ControllerLinkBuilder selfLinkBuilder = linkTo(PostController.class).slash("");
+        URI createdUri = selfLinkBuilder.toUri();
+
+        pagedResources.add(linkTo(PostController.class).slash("").withSelfRel());
+        pagedResources.add(new Link("/docs/index.html#resource-getPostList").withRel("profile"));
 
 
-        return ResponseEntity.ok(pagedResources);
+        return ResponseEntity.created(createdUri).body(pagedResources);
     }
 
 
