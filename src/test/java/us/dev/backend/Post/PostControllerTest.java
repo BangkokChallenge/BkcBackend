@@ -44,7 +44,7 @@ public class PostControllerTest extends BaseControllerTest {
 
         MultiValueMap<String,String> map = new LinkedMultiValueMap<>();
 
-        map.add("hashTag","일상,기쁨,희망,사랑");
+        map.add("hashTag","#홍제#짱짱 #짱짱맨");
         map.add("article","테스트내용");
 
 
