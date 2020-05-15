@@ -34,7 +34,6 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
                 .authorizeRequests()
                     .antMatchers("/oauth/token").permitAll()
                     .antMatchers("/oauth/check_token").permitAll()
-                    .antMatchers("/docs/**").permitAll()
                     .antMatchers("/api/account/login").permitAll()
                     .antMatchers("/api/account/refresh").permitAll()
                     .antMatchers("/api/account/checkToken").permitAll()
@@ -46,7 +45,8 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
                 .cors()
                 .and()
                 .csrf().disable()
-                .formLogin().disable()
+                .formLogin()
+                .and()
                 .exceptionHandling()
                 .accessDeniedHandler(new OAuth2AccessDeniedHandler());
     }

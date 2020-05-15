@@ -33,11 +33,31 @@
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-thymeleaf -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+            <version>2.2.6.RELEASE</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/nz.net.ultraq.thymeleaf/thymeleaf-layout-dialect -->
+        <dependency>
+            <groupId>com.github.zhanhb</groupId>
+            <artifactId>thymeleaf-layout-dialect</artifactId>
+            <version>2.4.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.thymeleaf.extras</groupId>
+            <artifactId>thymeleaf-extras-springsecurity5</artifactId>
+        </dependency>
+
+        <!-- Live load -->
 <!--        <dependency>-->
 <!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-thymeleaf</artifactId>-->
-<!--            <version>2.2.6.RELEASE</version>-->
+<!--            <artifactId>spring-boot-devtools</artifactId>-->
+<!--            <optional>true</optional>-->
 <!--        </dependency>-->
+
 
         <dependency>
             <groupId>org.postgresql</groupId>

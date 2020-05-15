@@ -465,12 +465,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#resources-account">유저정보</a>
 <ul class="sectlevel2">
-<li><a href="#resources-create-Account">유저 회원가입</a>
+<li><a href="#resources-AccountLogin">유저 회원가입</a>
 <ul class="sectlevel3">
-<li><a href="#resources-create-Account_http_request">HTTP request</a></li>
-<li><a href="#resources-create-Account_http_response">Example response</a></li>
-<li><a href="#resources-create-Account_response_fields">Response fields</a></li>
-<li><a href="#resources-create-Account_links">Links</a></li>
+<li><a href="#resources-AccountLogin_http_request">HTTP request</a></li>
+<li><a href="#resources-AccountLogin_http_response">Example response</a></li>
+<li><a href="#resources-AccountLogin_response_fields">Response fields</a></li>
+<li><a href="#resources-AccountLogin_links">Links</a></li>
 </ul>
 </li>
 <li><a href="#resources-login-Account">유저 로그인</a></li>
@@ -484,41 +484,41 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#resources-check-Token_response_fields">Response fields</a></li>
 </ul>
 </li>
-<li><a href="#resources-refresh-Account">Refresh Token으로 AccessToken 갱신하기</a>
+<li><a href="#resources-refreshAccount">Refresh Token으로 AccessToken 갱신하기</a>
 <ul class="sectlevel3">
-<li><a href="#resources-refresh-Account_http_request">HTTP request</a></li>
-<li><a href="#resources-refresh-Account_http_response">Example response</a></li>
-<li><a href="#resources-refresh-Account_response_fields">Response fields</a></li>
-<li><a href="#resources-refresh-Account_links">Links</a></li>
+<li><a href="#resources-refreshAccount_http_request">HTTP request</a></li>
+<li><a href="#resources-refreshAccount_http_response">Example response</a></li>
+<li><a href="#resources-refreshAccount_response_fields">Response fields</a></li>
+<li><a href="#resources-refreshAccount_links">Links</a></li>
 </ul>
 </li>
 <li><a href="#resources-logout-Account">유저 로그아웃</a></li>
-<li><a href="#resources-get-Account">유저 정보가져오기</a>
+<li><a href="#resources-getAccountInfo">유저 정보가져오기</a>
 <ul class="sectlevel3">
-<li><a href="#resources-get-Account_http_request">HTTP request</a></li>
-<li><a href="#resources-get-Account_http_response">Example response</a></li>
-<li><a href="#resources-get-Account_response_fields">Response fields</a></li>
-<li><a href="#resources-get-Account_links">Links</a></li>
+<li><a href="#resources-getAccountInfo_http_request">HTTP request</a></li>
+<li><a href="#resources-getAccountInfo_http_response">Example response</a></li>
+<li><a href="#resources-getAccountInfo_response_fields">Response fields</a></li>
+<li><a href="#resources-getAccountInfo_links">Links</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><a href="#resources-post">Post 정보</a>
 <ul class="sectlevel2">
-<li><a href="#resources-post-upload">Post Upload</a>
+<li><a href="#resources-uploadPost">Post Upload</a>
 <ul class="sectlevel3">
-<li><a href="#resources-post-upload_http_request">HTTP request</a></li>
-<li><a href="#resources-post-upload_http_response">Example response</a></li>
-<li><a href="#resources-post-upload_response_fields">Response fields</a></li>
-<li><a href="#resources-post-upload_links">Links</a></li>
+<li><a href="#resources-uploadPost_http_request">HTTP request</a></li>
+<li><a href="#resources-uploadPost_http_response">Example response</a></li>
+<li><a href="#resources-uploadPost_response_fields">Response fields</a></li>
+<li><a href="#resources-uploadPost_links">Links</a></li>
 </ul>
 </li>
-<li><a href="#resources-post-list">Post List 조회</a>
+<li><a href="#resources-getPostListß">Post List 조회</a>
 <ul class="sectlevel3">
-<li><a href="#resources-post-list_http_request">HTTP request</a></li>
-<li><a href="#resources-post-list_http_response">Example response</a></li>
-<li><a href="#resources-post-list_response_fields">Response fields</a></li>
-<li><a href="#resources-post-list_links">Links</a></li>
+<li><a href="#resources-getPostListß_http_request">HTTP request</a></li>
+<li><a href="#resources-getPostListß_http_response">Example response</a></li>
+<li><a href="#resources-getPostListß_response_fields">Response fields</a></li>
+<li><a href="#resources-getPostListß_links">Links</a></li>
 </ul>
 </li>
 </ul>
@@ -543,11 +543,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#resources-like">좋아요 정보</a>
 <ul class="sectlevel2">
-<li><a href="#resources-changeState-like">Like 상태 변경</a>
+<li><a href="#resources-changeLikeState">Like 상태 변경</a>
 <ul class="sectlevel3">
-<li><a href="#resources-changeState-like_http_request">HTTP request</a></li>
-<li><a href="#resources-changeState-like_http_response">Example response</a></li>
-<li><a href="#resources-changeState-like_response_fields">Response fields</a></li>
+<li><a href="#resources-changeLikeState_http_request">HTTP request</a></li>
+<li><a href="#resources-changeLikeState_http_response">Example response</a></li>
+<li><a href="#resources-changeLikeState_response_fields">Response fields</a></li>
 </ul>
 </li>
 </ul>
@@ -757,60 +757,65 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 <p>유저정보는 유저정보를 만들거나 조회할 때 사용한다.</p>
 </div>
 <div class="sect2">
-<h3 id="resources-create-Account"><a class="link" href="#resources-create-Account">유저 회원가입</a></h3>
+<h3 id="resources-AccountLogin"><a class="link" href="#resources-AccountLogin">유저 회원가입</a></h3>
 <div class="paragraph">
 <p><code>POST</code> 요청을 사용해서 새 유저정보를 만들 수 있다.<br>
 매커니즘은 카카오에 로그인을 하고, 그 값으로 자체 Token을 만들어 Return 한다.</p>
 </div>
 <div class="sect3">
-<h4 id="resources-create-Account_http_request"><a class="link" href="#resources-create-Account_http_request">HTTP request</a></h4>
+<h4 id="resources-AccountLogin_http_request"><a class="link" href="#resources-AccountLogin_http_request">HTTP request</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">POST /api/account/login HTTP/1.1
-Content-Length: 70
+Content-Length: 85
 Content-Type: application/json;charset=UTF-8
 Host: localhost:8080
 
 {
-  "key" : "Bs0WZW_TdjWQ5FV5T8FF8J_JqX4Ak2Dgmnu3Jgo9dVwAAAFxu5lOxg"
+  "id" : null,
+  "key" : "B1EHOZwUzgVaHYLu1HsSvdmTnBI8INOF7ZpkEAo9cuoAAAFyE4Hc_Q"
 }</code></pre>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="resources-create-Account_http_response"><a class="link" href="#resources-create-Account_http_response">Example response</a></h4>
+<h4 id="resources-AccountLogin_http_response"><a class="link" href="#resources-AccountLogin_http_response">Example response</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 201 Created
 Pragma: no-cache
+X-Frame-Options: DENY
+Location: http://localhost:8080/api/account/login
+Access-Control-Allow-Headers: *
+Access-Control-Max-Age: 3600
+Access-Control-Allow-Origin: *
+Content-Length: 730
+Access-Control-Allow-Methods: POST, GET, OPTIONS, DELETE
 X-XSS-Protection: 1; mode=block
 Expires: 0
-X-Frame-Options: DENY
 X-Content-Type-Options: nosniff
 Content-Type: application/hal+json;charset=UTF-8
-Location: http://localhost:8080/api/account/login/%257Bkey%257D
 Cache-Control: no-cache, no-store, max-age=0, must-revalidate
-Content-Length: 740
 
 {
-  "createdAt" : "2020-04-27T21:34:07.893457",
-  "modifiedAt" : "2020-04-27T21:34:08.157836",
-  "id" : "1254792462",
+  "createdAt" : "2020-05-14 23:16:36",
+  "modifiedAt" : "2020-05-14 23:16:36",
+  "id" : "1345541213",
   "nickname" : "모준",
-  "profile_photo" : "http://k.kakaocdn.net/dn/Vma9w/btqz37kUX70/adEGnhLkS6k4nnWer44jyk/img_640x640.jpg",
-  "password" : "{bcrypt}$2a$10$w1jRaigBhjjNGpnhOY3e2e9PaThTyDNnj/lYhClH0YisWv4BOz4Ty",
+  "profile_photo" : "http://k.kakaocdn.net/dn/oMYoX/btqDheA1EpU/CiRZnaTetvs2OfkeRcTQL0/img_640x640.jpg",
+  "password" : "{bcrypt}$2a$10$TCjG5TITTs.hjUthmW9rwO1bm6.soASc5zFC3QX7Z9JN1B9JOpR7.",
   "roles" : [ "USER" ],
-  "serviceAccessToken" : "2bf43610-e58b-486f-b288-b7c61a005643",
-  "serviceRefreshToken" : "723c6fe0-7431-4f5e-9b5f-5c7619c75be0",
+  "serviceAccessToken" : "9f9a4179-5c20-472f-abfb-2cc1d5e23a36",
+  "serviceRefreshToken" : "e1b83055-ac0f-4dc8-a837-1dcc80829e1d",
   "_links" : {
     "self" : {
-      "href" : "http://localhost:8080/api/account"
+      "href" : "http://localhost:8080/api/account/login"
     },
-    "account" : {
-      "href" : "http://localhost:8080/api/account"
+    "post list" : {
+      "href" : "http://localhost:8080/api/post"
     },
     "profile" : {
-      "href" : "/docs/index.html#resource-createAccount"
+      "href" : "/docs/index.html#resource-AccountLogin"
     }
   }
 }</code></pre>
@@ -818,7 +823,7 @@ Content-Length: 740
 </div>
 </div>
 <div class="sect3">
-<h4 id="resources-create-Account_response_fields"><a class="link" href="#resources-create-Account_response_fields">Response fields</a></h4>
+<h4 id="resources-AccountLogin_response_fields"><a class="link" href="#resources-AccountLogin_response_fields">Response fields</a></h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -877,7 +882,7 @@ Content-Length: 740
 </table>
 </div>
 <div class="sect3">
-<h4 id="resources-create-Account_links"><a class="link" href="#resources-create-Account_links">Links</a></h4>
+<h4 id="resources-AccountLogin_links"><a class="link" href="#resources-AccountLogin_links">Links</a></h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -895,8 +900,8 @@ Content-Length: 740
 <td class="tableblock halign-left valign-top"><p class="tableblock">현재 링크</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>account</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Account 링크</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>post list</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Post List를 가져오는 링크</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>profile</code></p></td>
@@ -948,7 +953,7 @@ Content-Length: 740
 <h4 id="resources-check-Token_http_request"><a class="link" href="#resources-check-Token_http_request">HTTP request</a></h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /oauth/check_token?token=f6a427fd-aa46-4e31-bfda-f6cb5c6241f2 HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /oauth/check_token?token=4bd41541-4094-4545-ada1-3c312de87eb6 HTTP/1.1
 Host: localhost:8080</code></pre>
 </div>
 </div>
@@ -959,17 +964,21 @@ Host: localhost:8080</code></pre>
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
 Pragma: no-cache
+Access-Control-Allow-Methods: POST, GET, OPTIONS, DELETE
 X-XSS-Protection: 1; mode=block
 Expires: 0
 X-Frame-Options: DENY
 X-Content-Type-Options: nosniff
+Access-Control-Allow-Headers: *
 Content-Length: 172
+Access-Control-Max-Age: 3600
 Content-Type: application/json;charset=UTF-8
+Access-Control-Allow-Origin: *
 Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 
 {
   "active" : true,
-  "exp" : 1589469750,
+  "exp" : 1590069972,
   "user_name" : "TDD_TEMP_ID",
   "authorities" : [ "ROLE_USER" ],
   "client_id" : "membership",
@@ -1032,12 +1041,16 @@ Host: localhost:8080</code></pre>
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 400 Bad Request
 Pragma: no-cache
+Access-Control-Allow-Methods: POST, GET, OPTIONS, DELETE
 X-XSS-Protection: 1; mode=block
 X-Frame-Options: DENY
 X-Content-Type-Options: nosniff
 Content-Length: 83
+Access-Control-Allow-Headers: *
+Access-Control-Max-Age: 3600
 Cache-Control: no-store
 Content-Type: application/json;charset=UTF-8
+Access-Control-Allow-Origin: *
 
 {
   "error" : "invalid_token",
@@ -1077,9 +1090,9 @@ Content-Type: application/json;charset=UTF-8
 </div>
 </div>
 <div class="sect2">
-<h3 id="resources-refresh-Account"><a class="link" href="#resources-refresh-Account">Refresh Token으로 AccessToken 갱신하기</a></h3>
+<h3 id="resources-refreshAccount"><a class="link" href="#resources-refreshAccount">Refresh Token으로 AccessToken 갱신하기</a></h3>
 <div class="sect3">
-<h4 id="resources-refresh-Account_http_request"><a class="link" href="#resources-refresh-Account_http_request">HTTP request</a></h4>
+<h4 id="resources-refreshAccount_http_request"><a class="link" href="#resources-refreshAccount_http_request">HTTP request</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">POST /api/account/refresh HTTP/1.1
@@ -1089,42 +1102,49 @@ Host: localhost:8080
 
 {
   "id" : "TDD_TEMP_ID",
-  "key" : "d228390d-9682-4627-b783-0b40fe8da865"
+  "key" : "90ab5d30-79f2-45cc-b320-0b99bbbc3924"
 }</code></pre>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="resources-refresh-Account_http_response"><a class="link" href="#resources-refresh-Account_http_response">Example response</a></h4>
+<h4 id="resources-refreshAccount_http_response"><a class="link" href="#resources-refreshAccount_http_response">Example response</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 201 Created
 Pragma: no-cache
+X-Frame-Options: DENY
+Content-Length: 749
+Access-Control-Allow-Headers: *
+Access-Control-Max-Age: 3600
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: POST, GET, OPTIONS, DELETE
+Location: http://localhost:8080/api/account/refresh
 X-XSS-Protection: 1; mode=block
 Expires: 0
-X-Frame-Options: DENY
 X-Content-Type-Options: nosniff
 Content-Type: application/hal+json;charset=UTF-8
-Content-Length: 676
-Location: http://localhost:8080/api/account/login/%257Bkey%257D
 Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 
 {
-  "createdAt" : "2020-05-11T20:43:10.940062",
-  "modifiedAt" : "2020-05-11T20:43:12.824541",
+  "createdAt" : "2020-05-14 23:16:36",
+  "modifiedAt" : "2020-05-14 23:16:37",
   "id" : "TDD_TEMP_ID",
   "nickname" : "TDD_NICKNAME",
   "profile_photo" : "TDD_PHOTO",
-  "password" : "{bcrypt}$2a$10$niglt1Eb/6lNsAGvgEas1ewpIEYU84HO1rS157fQAiRGWPsS8t/3S",
+  "password" : "{bcrypt}$2a$10$j0oJ0fNyeCoj2a8cl.YYpe8L9oZm/96ld.cBMxLghZvjGav4xIikq",
   "roles" : [ "USER" ],
-  "serviceRefreshToken" : "d228390d-9682-4627-b783-0b40fe8da865",
-  "serviceAccessToken" : "85bb868b-6059-435f-bccc-9c384e919654",
+  "serviceAccessToken" : "0af55050-c1fe-4b12-8270-dc727cd6b92c",
+  "serviceRefreshToken" : "90ab5d30-79f2-45cc-b320-0b99bbbc3924",
   "_links" : {
     "self" : {
-      "href" : "http://localhost:8080/api/account"
+      "href" : "http://localhost:8080/api/account/refresh"
     },
-    "account" : {
-      "href" : "http://localhost:8080/api/account"
+    "login" : {
+      "href" : "http://localhost:8080/api/account/login"
+    },
+    "post list" : {
+      "href" : "http://localhost:8080/api/post"
     },
     "profile" : {
       "href" : "/docs/index.html#resource-refreshAccount"
@@ -1135,7 +1155,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 </div>
 </div>
 <div class="sect3">
-<h4 id="resources-refresh-Account_response_fields"><a class="link" href="#resources-refresh-Account_response_fields">Response fields</a></h4>
+<h4 id="resources-refreshAccount_response_fields"><a class="link" href="#resources-refreshAccount_response_fields">Response fields</a></h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -1194,7 +1214,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 </table>
 </div>
 <div class="sect3">
-<h4 id="resources-refresh-Account_links"><a class="link" href="#resources-refresh-Account_links">Links</a></h4>
+<h4 id="resources-refreshAccount_links"><a class="link" href="#resources-refreshAccount_links">Links</a></h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -1212,8 +1232,12 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 <td class="tableblock halign-left valign-top"><p class="tableblock">현재 링크</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>account</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Account 링크</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>login</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">카카오부터 로그인 시작 링크</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>post list</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Post List를 가져오는 링크</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>profile</code></p></td>
@@ -1230,50 +1254,64 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 </div>
 </div>
 <div class="sect2">
-<h3 id="resources-get-Account"><a class="link" href="#resources-get-Account">유저 정보가져오기</a></h3>
+<h3 id="resources-getAccountInfo"><a class="link" href="#resources-getAccountInfo">유저 정보가져오기</a></h3>
 <div class="paragraph">
 <p><code>Get</code> 요청을 사용해서 유저정보 하나를 조회할 수 있다.</p>
 </div>
 <div class="sect3">
-<h4 id="resources-get-Account_http_request"><a class="link" href="#resources-get-Account_http_request">HTTP request</a></h4>
+<h4 id="resources-getAccountInfo_http_request"><a class="link" href="#resources-getAccountInfo_http_request">HTTP request</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /api/account/TDD_TEMP_ID HTTP/1.1
-Host: localhost:8080
-Authorization: Bearer bda27d25-1e67-4eef-89c5-2d4aac9b0d28</code></pre>
+Authorization: Bearer 16b85e7c-a2c0-44b1-a462-1cf8e73d8e03
+Host: localhost:8080</code></pre>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="resources-get-Account_http_response"><a class="link" href="#resources-get-Account_http_response">Example response</a></h4>
+<h4 id="resources-getAccountInfo_http_response"><a class="link" href="#resources-getAccountInfo_http_response">Example response</a></h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 201 Created
 Pragma: no-cache
+X-Frame-Options: DENY
+Content-Length: 769
+Location: http://localhost:8080/api/account/TDD_TEMP_ID
+Access-Control-Allow-Headers: *
+Access-Control-Max-Age: 3600
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: POST, GET, OPTIONS, DELETE
 X-XSS-Protection: 1; mode=block
 Expires: 0
-X-Frame-Options: DENY
 X-Content-Type-Options: nosniff
 Content-Type: application/hal+json;charset=UTF-8
-Content-Length: 528
 Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 
 {
-  "createdAt" : "2020-04-27T21:55:29.157714",
-  "modifiedAt" : "2020-04-27T21:55:29.158796",
+  "createdAt" : "2020-05-14 23:19:56",
+  "modifiedAt" : "2020-05-14 23:19:56",
   "id" : "TDD_TEMP_ID",
   "nickname" : "TDD_NICKNAME",
   "profile_photo" : "TDD_PHOTO",
-  "password" : "{bcrypt}$2a$10$Am0zfigvWHMSEQURQB8eseGG4YDUIV51nnYMF71iSg19FJ7ju0uaS",
+  "password" : "{bcrypt}$2a$10$h.Mz2tW5WhJjY8MoZ9Nxe.Cnycfa3KUHqERb4phzeljPB4/AGbFsK",
   "roles" : [ "USER" ],
   "serviceAccessToken" : null,
   "serviceRefreshToken" : null,
   "_links" : {
     "self" : {
-      "href" : "http://localhost:8080/api/account"
+      "href" : "http://localhost:8080/api/account/TDD_TEMP_ID"
+    },
+    "login" : {
+      "href" : "http://localhost:8080/api/account/login"
+    },
+    "refresh" : {
+      "href" : "http://localhost:8080/api/account/refresh"
+    },
+    "post list" : {
+      "href" : "http://localhost:8080/api/post"
     },
     "profile" : {
-      "href" : "/docs/index.html#resource-getAccount"
+      "href" : "/docs/index.html#resource-getAccountInfo"
     }
   }
 }</code></pre>
@@ -1281,7 +1319,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 </div>
 </div>
 <div class="sect3">
-<h4 id="resources-get-Account_response_fields"><a class="link" href="#resources-get-Account_response_fields">Response fields</a></h4>
+<h4 id="resources-getAccountInfo_response_fields"><a class="link" href="#resources-getAccountInfo_response_fields">Response fields</a></h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -1340,7 +1378,7 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 </table>
 </div>
 <div class="sect3">
-<h4 id="resources-get-Account_links"><a class="link" href="#resources-get-Account_links">Links</a></h4>
+<h4 id="resources-getAccountInfo_links"><a class="link" href="#resources-getAccountInfo_links">Links</a></h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -1356,6 +1394,18 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>self</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">현재 링크</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>login</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">카카오부터 로그인 시작 링크</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>refresh</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">토큰 Refresh 링크</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>post list</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Post List를 가져오는 링크</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>profile</code></p></td>
@@ -1374,23 +1424,23 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 <p>Post는 Post를 만들거나 조회할 때 사용한다.</p>
 </div>
 <div class="sect2">
-<h3 id="resources-post-upload"><a class="link" href="#resources-post-upload">Post Upload</a></h3>
+<h3 id="resources-uploadPost"><a class="link" href="#resources-uploadPost">Post Upload</a></h3>
 <div class="paragraph">
 <p><code>POST</code> 요청을 통해서 Post를 Upload 할 수 있다.</p>
 </div>
 <div class="sect3">
-<h4 id="resources-post-upload_http_request"><a class="link" href="#resources-post-upload_http_request">HTTP request</a></h4>
+<h4 id="resources-uploadPost_http_request"><a class="link" href="#resources-uploadPost_http_request">HTTP request</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">POST /api/post/upload HTTP/1.1
-Authorization: Bearer ae4af41c-681f-450d-869b-b9eb2a159269
 Content-Type: multipart/form-data;charset=UTF-8; boundary=6o2knFse3p53ty9dmcQvWAIx1zInP11uCfbm
+Authorization: Bearer 89558170-5529-4220-ac90-262bdeb2909d
 Host: localhost:8080
 
 --6o2knFse3p53ty9dmcQvWAIx1zInP11uCfbm
 Content-Disposition: form-data; name=hashTag
 
-일상,기쁨,희망,사랑
+#홍제#짱짱 #짱짱맨
 --6o2knFse3p53ty9dmcQvWAIx1zInP11uCfbm
 Content-Disposition: form-data; name=article
 
@@ -1405,59 +1455,61 @@ Hello, World!
 </div>
 </div>
 <div class="sect3">
-<h4 id="resources-post-upload_http_response"><a class="link" href="#resources-post-upload_http_response">Example response</a></h4>
+<h4 id="resources-uploadPost_http_response"><a class="link" href="#resources-uploadPost_http_response">Example response</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 201 Created
 Pragma: no-cache
+X-Frame-Options: DENY
+Access-Control-Allow-Headers: *
+Access-Control-Max-Age: 3600
+Access-Control-Allow-Origin: *
+Content-Length: 1030
+Access-Control-Allow-Methods: POST, GET, OPTIONS, DELETE
 X-XSS-Protection: 1; mode=block
 Expires: 0
-X-Frame-Options: DENY
 X-Content-Type-Options: nosniff
 Content-Type: application/hal+json;charset=UTF-8
 Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Location: http://localhost:8080/api/post/upload
-Content-Length: 1080
 
 {
-  "createdAt" : "2020-05-13 00:25:08",
-  "modifiedAt" : "2020-05-13 00:25:08",
+  "createdAt" : "2020-05-14 23:32:36",
+  "modifiedAt" : "2020-05-14 23:32:36",
   "accountId" : "TDD_TEMP_ID",
   "id" : 41,
   "article" : "테스트내용",
   "nickname" : "TDD_NICKNAME",
-  "profile_photo" : "TDD_NICKNAME",
+  "profile_photo" : "TDD_PHOTO",
   "selfLike" : false,
   "commentCount" : 0,
   "likeCount" : 0,
   "filePath" : "https://jayass3cloud.s3.ap-northeast-2.amazonaws.com/hello.txt",
   "hashTag" : [ {
     "id" : 41,
-    "content" : "#일상",
-    "createdAt" : "2020-05-13 00:25:08",
-    "modifiedAt" : "2020-05-13 00:25:08"
+    "content" : "#홍제",
+    "createdAt" : "2020-05-14 23:32:36",
+    "modifiedAt" : "2020-05-14 23:32:36"
   }, {
     "id" : 42,
-    "content" : "#기쁨",
-    "createdAt" : "2020-05-13 00:25:08",
-    "modifiedAt" : "2020-05-13 00:25:08"
+    "content" : "#짱짱",
+    "createdAt" : "2020-05-14 23:32:36",
+    "modifiedAt" : "2020-05-14 23:32:36"
   }, {
     "id" : 43,
-    "content" : "#희망",
-    "createdAt" : "2020-05-13 00:25:08",
-    "modifiedAt" : "2020-05-13 00:25:08"
-  }, {
-    "id" : 44,
-    "content" : "#사랑",
-    "createdAt" : "2020-05-13 00:25:08",
-    "modifiedAt" : "2020-05-13 00:25:08"
+    "content" : "#짱짱맨",
+    "createdAt" : "2020-05-14 23:32:36",
+    "modifiedAt" : "2020-05-14 23:32:36"
   } ],
   "_links" : {
     "self" : {
+      "href" : "http://localhost:8080/api/post/upload"
+    },
+    "post list" : {
       "href" : "http://localhost:8080/api/post"
     },
     "profile" : {
-      "href" : "/docs/index.html#resource-post-upload"
+      "href" : "/docs/index.html#resource-uploadPost"
     }
   }
 }</code></pre>
@@ -1465,7 +1517,7 @@ Content-Length: 1080
 </div>
 </div>
 <div class="sect3">
-<h4 id="resources-post-upload_response_fields"><a class="link" href="#resources-post-upload_response_fields">Response fields</a></h4>
+<h4 id="resources-uploadPost_response_fields"><a class="link" href="#resources-uploadPost_response_fields">Response fields</a></h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -1508,7 +1560,7 @@ Content-Length: 1080
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>hashTag</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Hash Tage</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hash Tag</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>filePath</code></p></td>
@@ -1534,7 +1586,7 @@ Content-Length: 1080
 </table>
 </div>
 <div class="sect3">
-<h4 id="resources-post-upload_links"><a class="link" href="#resources-post-upload_links">Links</a></h4>
+<h4 id="resources-uploadPost_links"><a class="link" href="#resources-uploadPost_links">Links</a></h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -1549,7 +1601,11 @@ Content-Length: 1080
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>self</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">도큐먼트 링크</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">현재 링크</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>post list</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Post List를 가져오는 링크</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>profile</code></p></td>
@@ -1560,41 +1616,46 @@ Content-Length: 1080
 </div>
 </div>
 <div class="sect2">
-<h3 id="resources-post-list"><a class="link" href="#resources-post-list">Post List 조회</a></h3>
+<h3 id="resources-getPostListß"><a class="link" href="#resources-getPostListß">Post List 조회</a></h3>
 <div class="paragraph">
 <p><code>GET</code> 요청을 사용해서 Post List를 받아올 수 있다.<br>
 만약, 정렬이나 페이지를 조정하고 싶다면, 주소 뒤에 파라미터를 넘긴다.<br>
 <code>ex</code> /api/post?page=0&amp;size=10&amp;sort=ename,desc<br></p>
 </div>
 <div class="sect3">
-<h4 id="resources-post-list_http_request"><a class="link" href="#resources-post-list_http_request">HTTP request</a></h4>
+<h4 id="resources-getPostListß_http_request"><a class="link" href="#resources-getPostListß_http_request">HTTP request</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">GET /api/post/ HTTP/1.1
-Authorization: Bearer fbf7cd72-8e6a-4c4e-85c7-184526930d1d
+Authorization: Bearer e9dd5001-13e6-4fad-83f9-fe77cf2740c5
 Host: localhost:8080</code></pre>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="resources-post-list_http_response"><a class="link" href="#resources-post-list_http_response">Example response</a></h4>
+<h4 id="resources-getPostListß_http_response"><a class="link" href="#resources-getPostListß_http_response">Example response</a></h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 201 Created
+Location: http://localhost:8080/api/post
 Pragma: no-cache
+X-Frame-Options: DENY
+Content-Length: 9406
+Access-Control-Allow-Headers: *
+Access-Control-Max-Age: 3600
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: POST, GET, OPTIONS, DELETE
 X-XSS-Protection: 1; mode=block
 Expires: 0
-X-Frame-Options: DENY
 X-Content-Type-Options: nosniff
 Content-Type: application/hal+json;charset=UTF-8
 Cache-Control: no-cache, no-store, max-age=0, must-revalidate
-Content-Length: 9343
 
 {
   "_embedded" : {
     "postList" : [ {
-      "createdAt" : "2020-05-13 01:08:00",
-      "modifiedAt" : "2020-05-13 01:08:00",
+      "createdAt" : "2020-05-14 23:22:57",
+      "modifiedAt" : "2020-05-14 23:22:57",
       "accountId" : "Kakao_FIX_ID",
       "id" : 40,
       "article" : "미안하다 이거 보여주려고 어그로끌었다.. 나루토 사스케 싸움수준 ㄹㅇ실화냐? 진짜 세계관최강자들의 싸움이다.. 그찐따같던 나루토가 맞나? 진짜 나루토는 전설이다.",
@@ -1607,12 +1668,12 @@ Content-Length: 9343
       "hashTag" : [ {
         "id" : 40,
         "content" : "#힐링",
-        "createdAt" : "2020-05-13 01:08:00",
-        "modifiedAt" : "2020-05-13 01:08:00"
+        "createdAt" : "2020-05-14 23:22:57",
+        "modifiedAt" : "2020-05-14 23:22:57"
       } ]
     }, {
-      "createdAt" : "2020-05-13 01:08:00",
-      "modifiedAt" : "2020-05-13 01:08:00",
+      "createdAt" : "2020-05-14 23:22:57",
+      "modifiedAt" : "2020-05-14 23:22:57",
       "accountId" : "Kakao_FIX_ID",
       "id" : 39,
       "article" : "미안하다 이거 보여주려고 어그로끌었다.. 나루토 사스케 싸움수준 ㄹㅇ실화냐? 진짜 세계관최강자들의 싸움이다.. 그찐따같던 나루토가 맞나? 진짜 나루토는 전설이다.",
@@ -1625,12 +1686,12 @@ Content-Length: 9343
       "hashTag" : [ {
         "id" : 39,
         "content" : "#힐링",
-        "createdAt" : "2020-05-13 01:08:00",
-        "modifiedAt" : "2020-05-13 01:08:00"
+        "createdAt" : "2020-05-14 23:22:57",
+        "modifiedAt" : "2020-05-14 23:22:57"
       } ]
     }, {
-      "createdAt" : "2020-05-13 01:08:00",
-      "modifiedAt" : "2020-05-13 01:08:00",
+      "createdAt" : "2020-05-14 23:22:57",
+      "modifiedAt" : "2020-05-14 23:22:57",
       "accountId" : "Kakao_FIX_ID",
       "id" : 38,
       "article" : "미안하다 이거 보여주려고 어그로끌었다.. 나루토 사스케 싸움수준 ㄹㅇ실화냐? 진짜 세계관최강자들의 싸움이다.. 그찐따같던 나루토가 맞나? 진짜 나루토는 전설이다.",
@@ -1643,12 +1704,12 @@ Content-Length: 9343
       "hashTag" : [ {
         "id" : 38,
         "content" : "#힐링",
-        "createdAt" : "2020-05-13 01:08:00",
-        "modifiedAt" : "2020-05-13 01:08:00"
+        "createdAt" : "2020-05-14 23:22:57",
+        "modifiedAt" : "2020-05-14 23:22:57"
       } ]
     }, {
-      "createdAt" : "2020-05-13 01:08:00",
-      "modifiedAt" : "2020-05-13 01:08:00",
+      "createdAt" : "2020-05-14 23:22:57",
+      "modifiedAt" : "2020-05-14 23:22:57",
       "accountId" : "Kakao_FIX_ID",
       "id" : 37,
       "article" : "미안하다 이거 보여주려고 어그로끌었다.. 나루토 사스케 싸움수준 ㄹㅇ실화냐? 진짜 세계관최강자들의 싸움이다.. 그찐따같던 나루토가 맞나? 진짜 나루토는 전설이다.",
@@ -1661,12 +1722,12 @@ Content-Length: 9343
       "hashTag" : [ {
         "id" : 37,
         "content" : "#힐링",
-        "createdAt" : "2020-05-13 01:08:00",
-        "modifiedAt" : "2020-05-13 01:08:00"
+        "createdAt" : "2020-05-14 23:22:57",
+        "modifiedAt" : "2020-05-14 23:22:57"
       } ]
     }, {
-      "createdAt" : "2020-05-13 01:08:00",
-      "modifiedAt" : "2020-05-13 01:08:00",
+      "createdAt" : "2020-05-14 23:22:57",
+      "modifiedAt" : "2020-05-14 23:22:57",
       "accountId" : "Kakao_FIX_ID",
       "id" : 36,
       "article" : "미안하다 이거 보여주려고 어그로끌었다.. 나루토 사스케 싸움수준 ㄹㅇ실화냐? 진짜 세계관최강자들의 싸움이다.. 그찐따같던 나루토가 맞나? 진짜 나루토는 전설이다.",
@@ -1679,12 +1740,12 @@ Content-Length: 9343
       "hashTag" : [ {
         "id" : 36,
         "content" : "#힐링",
-        "createdAt" : "2020-05-13 01:08:00",
-        "modifiedAt" : "2020-05-13 01:08:00"
+        "createdAt" : "2020-05-14 23:22:57",
+        "modifiedAt" : "2020-05-14 23:22:57"
       } ]
     }, {
-      "createdAt" : "2020-05-13 01:08:00",
-      "modifiedAt" : "2020-05-13 01:08:00",
+      "createdAt" : "2020-05-14 23:22:57",
+      "modifiedAt" : "2020-05-14 23:22:57",
       "accountId" : "Kakao_FIX_ID",
       "id" : 35,
       "article" : "미안하다 이거 보여주려고 어그로끌었다.. 나루토 사스케 싸움수준 ㄹㅇ실화냐? 진짜 세계관최강자들의 싸움이다.. 그찐따같던 나루토가 맞나? 진짜 나루토는 전설이다.",
@@ -1697,12 +1758,12 @@ Content-Length: 9343
       "hashTag" : [ {
         "id" : 35,
         "content" : "#힐링",
-        "createdAt" : "2020-05-13 01:08:00",
-        "modifiedAt" : "2020-05-13 01:08:00"
+        "createdAt" : "2020-05-14 23:22:57",
+        "modifiedAt" : "2020-05-14 23:22:57"
       } ]
     }, {
-      "createdAt" : "2020-05-13 01:08:00",
-      "modifiedAt" : "2020-05-13 01:08:00",
+      "createdAt" : "2020-05-14 23:22:57",
+      "modifiedAt" : "2020-05-14 23:22:57",
       "accountId" : "Kakao_FIX_ID",
       "id" : 34,
       "article" : "미안하다 이거 보여주려고 어그로끌었다.. 나루토 사스케 싸움수준 ㄹㅇ실화냐? 진짜 세계관최강자들의 싸움이다.. 그찐따같던 나루토가 맞나? 진짜 나루토는 전설이다.",
@@ -1715,12 +1776,12 @@ Content-Length: 9343
       "hashTag" : [ {
         "id" : 34,
         "content" : "#힐링",
-        "createdAt" : "2020-05-13 01:08:00",
-        "modifiedAt" : "2020-05-13 01:08:00"
+        "createdAt" : "2020-05-14 23:22:57",
+        "modifiedAt" : "2020-05-14 23:22:57"
       } ]
     }, {
-      "createdAt" : "2020-05-13 01:08:00",
-      "modifiedAt" : "2020-05-13 01:08:00",
+      "createdAt" : "2020-05-14 23:22:57",
+      "modifiedAt" : "2020-05-14 23:22:57",
       "accountId" : "Kakao_FIX_ID",
       "id" : 33,
       "article" : "미안하다 이거 보여주려고 어그로끌었다.. 나루토 사스케 싸움수준 ㄹㅇ실화냐? 진짜 세계관최강자들의 싸움이다.. 그찐따같던 나루토가 맞나? 진짜 나루토는 전설이다.",
@@ -1733,12 +1794,12 @@ Content-Length: 9343
       "hashTag" : [ {
         "id" : 33,
         "content" : "#힐링",
-        "createdAt" : "2020-05-13 01:08:00",
-        "modifiedAt" : "2020-05-13 01:08:00"
+        "createdAt" : "2020-05-14 23:22:57",
+        "modifiedAt" : "2020-05-14 23:22:57"
       } ]
     }, {
-      "createdAt" : "2020-05-13 01:08:00",
-      "modifiedAt" : "2020-05-13 01:08:00",
+      "createdAt" : "2020-05-14 23:22:57",
+      "modifiedAt" : "2020-05-14 23:22:57",
       "accountId" : "Kakao_FIX_ID",
       "id" : 32,
       "article" : "미안하다 이거 보여주려고 어그로끌었다.. 나루토 사스케 싸움수준 ㄹㅇ실화냐? 진짜 세계관최강자들의 싸움이다.. 그찐따같던 나루토가 맞나? 진짜 나루토는 전설이다.",
@@ -1751,12 +1812,12 @@ Content-Length: 9343
       "hashTag" : [ {
         "id" : 32,
         "content" : "#힐링",
-        "createdAt" : "2020-05-13 01:08:00",
-        "modifiedAt" : "2020-05-13 01:08:00"
+        "createdAt" : "2020-05-14 23:22:57",
+        "modifiedAt" : "2020-05-14 23:22:57"
       } ]
     }, {
-      "createdAt" : "2020-05-13 01:08:00",
-      "modifiedAt" : "2020-05-13 01:08:00",
+      "createdAt" : "2020-05-14 23:22:57",
+      "modifiedAt" : "2020-05-14 23:22:57",
       "accountId" : "Kakao_FIX_ID",
       "id" : 31,
       "article" : "미안하다 이거 보여주려고 어그로끌었다.. 나루토 사스케 싸움수준 ㄹㅇ실화냐? 진짜 세계관최강자들의 싸움이다.. 그찐따같던 나루토가 맞나? 진짜 나루토는 전설이다.",
@@ -1769,8 +1830,8 @@ Content-Length: 9343
       "hashTag" : [ {
         "id" : 31,
         "content" : "#힐링",
-        "createdAt" : "2020-05-13 01:08:00",
-        "modifiedAt" : "2020-05-13 01:08:00"
+        "createdAt" : "2020-05-14 23:22:57",
+        "modifiedAt" : "2020-05-14 23:22:57"
       } ]
     } ]
   },
@@ -1778,9 +1839,11 @@ Content-Length: 9343
     "first" : {
       "href" : "http://localhost:8080/api/post?page=0&amp;size=10"
     },
-    "self" : {
+    "self" : [ {
       "href" : "http://localhost:8080/api/post?page=0&amp;size=10"
-    },
+    }, {
+      "href" : "http://localhost:8080/api/post"
+    } ],
     "next" : {
       "href" : "http://localhost:8080/api/post?page=1&amp;size=10"
     },
@@ -1788,7 +1851,7 @@ Content-Length: 9343
       "href" : "http://localhost:8080/api/post?page=3&amp;size=10"
     },
     "profile" : {
-      "href" : "/docs/index.html#resource-post-list"
+      "href" : "/docs/index.html#resource-getPostList"
     }
   },
   "page" : {
@@ -1802,7 +1865,7 @@ Content-Length: 9343
 </div>
 </div>
 <div class="sect3">
-<h4 id="resources-post-list_response_fields"><a class="link" href="#resources-post-list_response_fields">Response fields</a></h4>
+<h4 id="resources-getPostListß_response_fields"><a class="link" href="#resources-getPostListß_response_fields">Response fields</a></h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -1881,7 +1944,7 @@ Content-Length: 9343
 </table>
 </div>
 <div class="sect3">
-<h4 id="resources-post-list_links"><a class="link" href="#resources-post-list_links">Links</a></h4>
+<h4 id="resources-getPostListß_links"><a class="link" href="#resources-getPostListß_links">Links</a></h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -2147,56 +2210,72 @@ Content-Length: 233
 <p>사용자가 좋아요를 누르면 Table에 반영시킬 수 있다.</p>
 </div>
 <div class="sect2">
-<h3 id="resources-changeState-like"><a class="link" href="#resources-changeState-like">Like 상태 변경</a></h3>
+<h3 id="resources-changeLikeState"><a class="link" href="#resources-changeLikeState">Like 상태 변경</a></h3>
 <div class="paragraph">
 <p><code>PUT</code> 요청에 PostId를 이용하여 현재 이용중인 사용자가 해당 Post에 좋아요 상태를 반영할 수 있다.<br></p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code>http://localhost:8080/api/like/{postId}</code></pre>
+<pre>http://localhost:8080/api/like/{postId}</pre>
 </div>
 </div>
 <div class="paragraph">
 <p><code>ex</code> True = 좋아요 활성화 상태, False = 좋아요 비활성화 상태<br></p>
 </div>
 <div class="sect3">
-<h4 id="resources-changeState-like_http_request"><a class="link" href="#resources-changeState-like_http_request">HTTP request</a></h4>
+<h4 id="resources-changeLikeState_http_request"><a class="link" href="#resources-changeLikeState_http_request">HTTP request</a></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">PUT /api/like/1 HTTP/1.1
-Authorization: Bearer 2c215f61-5f16-4d4b-ba75-a9743db0da23
+Authorization: Bearer 8191d821-580d-461e-bb96-2c935ad8729f
 Host: localhost:8080</code></pre>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="resources-changeState-like_http_response"><a class="link" href="#resources-changeState-like_http_response">Example response</a></h4>
+<h4 id="resources-changeLikeState_http_response"><a class="link" href="#resources-changeLikeState_http_response">Example response</a></h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
+<pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 201 Created
 Pragma: no-cache
+X-Frame-Options: DENY
+Content-Length: 439
+Access-Control-Allow-Headers: *
+Access-Control-Max-Age: 3600
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: POST, GET, OPTIONS, DELETE
 X-XSS-Protection: 1; mode=block
 Expires: 0
-X-Frame-Options: DENY
 X-Content-Type-Options: nosniff
 Content-Type: application/hal+json;charset=UTF-8
+Location: http://localhost:8080/api/like/like/1
 Cache-Control: no-cache, no-store, max-age=0, must-revalidate
-Content-Length: 189
 
 {
-  "createdAt" : "2020-05-13 00:29:32",
-  "modifiedAt" : "2020-05-13 00:29:32",
+  "createdAt" : "2020-05-14 23:50:31",
+  "modifiedAt" : "2020-05-14 23:50:31",
   "id" : 41,
   "postId" : 1,
   "accountId" : "TDD_TEMP_ID",
   "likeTrueAndFalse" : true,
-  "likeCount" : 1
+  "likeCount" : 1,
+  "_links" : {
+    "self" : {
+      "href" : "http://localhost:8080/api/like/1"
+    },
+    "Post list" : {
+      "href" : "http://localhost:8080/api/post"
+    },
+    "profile" : {
+      "href" : "/docs/index.html#resource-changeLikeState"
+    }
+  }
 }</code></pre>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="resources-changeState-like_response_fields"><a class="link" href="#resources-changeState-like_response_fields">Response fields</a></h4>
+<h4 id="resources-changeLikeState_response_fields"><a class="link" href="#resources-changeLikeState_response_fields">Response fields</a></h4>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -2231,6 +2310,11 @@ Content-Length: 189
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">변경된 좋아요 상태</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>likeCount</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">해당 게시물의 Like 총 개수</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -2240,7 +2324,7 @@ Content-Length: 189
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-05-13 00:04:26 +0900
+Last updated 2020-05-14 23:57:24 +0900
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/github.min.css">
