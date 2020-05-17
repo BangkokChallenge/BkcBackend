@@ -1,8 +1,0 @@
-[source,bash]
-----
-$ http --form POST 'http://localhost:8080/api/post/upload' \
-    'file'@'hello.txt' \
-    'Authorization:Bearer 89558170-5529-4220-ac90-262bdeb2909d' \
-    'hashTag=#홍제#짱짱 #짱짱맨' \
-    'article=테스트내용'
-----

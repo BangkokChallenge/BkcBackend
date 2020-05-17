@@ -1,7 +1,0 @@
-[source,http,options="nowrap"]
-----
-GET /api/post/ HTTP/1.1
-Authorization: Bearer e9dd5001-13e6-4fad-83f9-fe77cf2740c5
-Host: localhost:8080
-
-----
