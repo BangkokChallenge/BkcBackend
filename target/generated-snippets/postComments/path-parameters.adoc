@@ -1,8 +1,0 @@
-.+/api/post/{id}/comment+
-|===
-|Parameter|Description
-
-|`+id+`
-|post 아이디
-
-|===

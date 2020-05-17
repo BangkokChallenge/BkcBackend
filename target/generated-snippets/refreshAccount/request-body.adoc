@@ -1,7 +1,0 @@
-[source,options="nowrap"]
-----
-{
-  "id" : "TDD_TEMP_ID",
-  "key" : "90ab5d30-79f2-45cc-b320-0b99bbbc3924"
-}
-----

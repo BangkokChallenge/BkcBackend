@@ -3,7 +3,7 @@ src/main/resources/application-deploy.properties
 src/test/resources/application-test.properties
 HELP.md
 
-target
+target/**
 
 
 ### IntelliJ IDEA ###

@@ -1,9 +1,0 @@
-[source,bash]
-----
-$ curl 'http://localhost:8080/api/post/upload' -i -X POST \
-    -H 'Content-Type: multipart/form-data;charset=UTF-8' \
-    -H 'Authorization: Bearer 89558170-5529-4220-ac90-262bdeb2909d' \
-    -F 'file=@hello.txt;type=text/plain' \
-    -F 'hashTag=#홍제#짱짱 #짱짱맨' \
-    -F 'article=테스트내용'
-----

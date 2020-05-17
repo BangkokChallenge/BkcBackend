@@ -1,5 +1,0 @@
-[source,bash]
-----
-$ curl 'http://localhost:8080/api/account/TDD_TEMP_ID' -i -X GET \
-    -H 'Authorization: Bearer 16b85e7c-a2c0-44b1-a462-1cf8e73d8e03'
-----
