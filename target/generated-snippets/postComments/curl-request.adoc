@@ -1,9 +1,0 @@
-[source,bash]
-----
-$ curl 'http://localhost:8080/api/post/11/comment' -i -X POST \
-    -H 'Authorization: Bearer fbf7cd72-8e6a-4c4e-85c7-184526930d1d' \
-    -H 'Content-Type: application/json;charset=UTF-8' \
-    -d '{
-  "content" : "hihi"
-}'
-----

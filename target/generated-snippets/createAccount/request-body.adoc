@@ -1,7 +1,0 @@
-[source,options="nowrap"]
-----
-{
-  "id" : null,
-  "key" : "B1EHOZwUzgVaHYLu1HsSvdmTnBI8INOF7ZpkEAo9cuoAAAFyE4Hc_Q"
-}
-----

@@ -1,5 +1,0 @@
-[source,bash]
-----
-$ curl 'http://localhost:8080/api/like/1' -i -X PUT \
-    -H 'Authorization: Bearer 8191d821-580d-461e-bb96-2c935ad8729f'
-----

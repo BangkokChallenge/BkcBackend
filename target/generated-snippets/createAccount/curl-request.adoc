@@ -1,9 +1,0 @@
-[source,bash]
-----
-$ curl 'http://localhost:8080/api/account/login' -i -X POST \
-    -H 'Content-Type: application/json;charset=UTF-8' \
-    -d '{
-  "id" : null,
-  "key" : "B1EHOZwUzgVaHYLu1HsSvdmTnBI8INOF7ZpkEAo9cuoAAAFyE4Hc_Q"
-}'
-----

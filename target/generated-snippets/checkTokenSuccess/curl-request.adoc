@@ -1,4 +1,0 @@
-[source,bash]
-----
-$ curl 'http://localhost:8080/oauth/check_token?token=4bd41541-4094-4545-ada1-3c312de87eb6' -i -X GET
-----

@@ -1,7 +1,0 @@
-[source,bash]
-----
-$ http --form --auth 'membership:skuniv' POST 'http://localhost:8080/oauth/token' \
-    'username=TEST_ID' \
-    'password=TEST_PWD' \
-    'grant_type=password'
-----
