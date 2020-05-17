@@ -93,7 +93,17 @@ public class AppConfig {
                         .roles(Set.of(AccountRole.USER))
                         .profile_photo("LOCAL_PHOTO")
                         .build();
+
                 accountService.saveAccount(account);
+
+                Account adminAccount = Account.builder()
+                        .id("admin")
+                        .password("1234")
+                        .nickname("admin")
+                        .roles(Set.of(AccountRole.ADMIN))
+                        .profile_photo("admin photo")
+                        .build();
+                accountService.saveAccount(adminAccount);
 
 
                 /* 시작하자마자 Oauth Token 받기 (테스트용) */
@@ -125,7 +135,6 @@ public class AppConfig {
                 newAccount.setServiceAccessToken(getaccess_Token);
                 newAccount.setServiceRefreshToken(getrefrsh_Token);
                 accountService.saveAccount(newAccount);
-
 
 
 
