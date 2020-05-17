@@ -62,10 +62,10 @@
       </a>
       <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
-          <a class="collapse-item" href="/api/admin/user/list">유저 목록</a>
-          <a class="collapse-item" href="#">유저 생성</a>
-          <a class="collapse-item" href="#">유저 삭제</a>
-          <a class="collapse-item" href="#">유저 수정</a>
+          <a class="collapse-item" th:href="@{/manager/accountList}">유저 목록</a>
+          <a class="collapse-item" th:href="@{/manager/404}">유저 생성</a>
+          <a class="collapse-item" th:href="@{/manager/404}">유저 삭제</a>
+          <a class="collapse-item" th:href="@{/manager/404}">유저 수정</a>
         </div>
       </div>
     </li>
@@ -78,9 +78,9 @@
       </a>
       <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
-          <a class="collapse-item" href="#">Post 목록</a>
-          <a class="collapse-item" href="#">Post 삭제</a>
-          <a class="collapse-item" href="#">Post 수정</a>
+          <a class="collapse-item" th:href="@{/manager/postList}">Post 목록</a>
+          <a class="collapse-item" th:href="@{/manager/404}">Post 삭제</a>
+          <a class="collapse-item" th:href="@{/manager/404}">Post 수정</a>
         </div>
       </div>
     </li>
@@ -113,7 +113,7 @@
         <!-- Topbar Search -->
         <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
           <div class="input-group">
-            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+            <input type="text" class="form-control bg-light border-0 small" placeholder="아직 미구현.. 쓸모가 없음" aria-label="Search" aria-describedby="basic-addon2">
             <div class="input-group-append">
               <button class="btn btn-primary" type="button">
                 <i class="fas fa-search fa-sm"></i>
@@ -284,7 +284,7 @@
                 <div class="row no-gutters align-items-center">
                   <div class="col mr-2">
                     <div class="text-xs font-weight-bold text-success text-uppercase mb-1">현재 서버 상태</div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800">8</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">좋음</div>
                   </div>
                   <div class="col-auto">
                     <i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -307,7 +307,7 @@
                 <h6 class="m-0 font-weight-bold text-primary">공지사항</h6>
               </div>
               <div class="card-body">
-                <p>열심히 개발해주세요.</p>
+                <p><span th:text="${notices.getNoticeAll()}"></span></p>
               </div>
             </div>
             <!-- 개발 스케쥴 - Web -->
@@ -316,7 +316,7 @@
                 <h6 class="m-0 font-weight-bold text-primary">개발 스케쥴 - Web</h6>
               </div>
               <div class="card-body">
-                <p>임시 게시판입니다.</p>
+                <p><span th:text="${notices.getNoticeWeb()}"></span></p>
               </div>
             </div>
           </div>
@@ -328,7 +328,7 @@
                 <h6 class="m-0 font-weight-bold text-primary">개발 스케쥴 - Android</h6>
               </div>
               <div class="card-body">
-                <p>임시 게시판입니다.</p>
+                <p><span th:text="${notices.getNoticeAndroid()}"></span></p>
               </div>
             </div>
             <!-- 개발 스케쥴 - BackEnd -->
@@ -337,15 +337,13 @@
                 <h6 class="m-0 font-weight-bold text-primary">개발 스케쥴 - BackEnd</h6>
               </div>
               <div class="card-body">
-                <p>임시 게시판입니다.</p>
+                <p><span th:text="${notices.getNoticeBackEnd()}"></span></p>
               </div>
             </div>
           </div>
 
         </div>
         <!-- Content 2번째 Row 끝-->
-
-        <!--      </div>-->
 
         <!-- Content 3 Row -->
         <div class="row">
@@ -382,13 +380,13 @@
                 </div>
                 <div class="mt-4 text-center small">
                     <span class="mr-2">
-                      <i class="fas fa-circle text-primary"></i> Direct
+                      <i class="fas fa-circle text-primary"></i> #일상
                     </span>
                   <span class="mr-2">
-                      <i class="fas fa-circle text-success"></i> Social
+                      <i class="fas fa-circle text-success"></i> #방콕
                     </span>
                   <span class="mr-2">
-                      <i class="fas fa-circle text-info"></i> Referral
+                      <i class="fas fa-circle text-info"></i> #코로나19
                     </span>
                 </div>
               </div>

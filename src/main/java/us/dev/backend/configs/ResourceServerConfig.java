@@ -43,7 +43,6 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     }
 
 
-    //TODO 뷰와 Oauth2를 동시에 적용하는 것은 오바인것같다.
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http
