@@ -1,6 +1,7 @@
 package us.dev.backend.configs;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -13,6 +14,7 @@ import org.springframework.security.oauth2.provider.error.OAuth2AccessDeniedHand
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.util.matcher.RequestMatcher;
 import org.springframework.web.cors.CorsUtils;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import us.dev.backend.Account.AccountRole;
@@ -25,6 +27,7 @@ import java.util.Set;
 
 @Configuration
 @EnableResourceServer
+@Order(1)
 public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
     /*
@@ -47,8 +50,6 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
                 .anonymous()
                 .and()
                 .authorizeRequests()
-                    .antMatchers("/manager","/resources/**","/static/**","/templates/**").permitAll()
-                    .antMatchers("/manager/**").permitAll()
                     .antMatchers("/oauth/token").permitAll()
                     .antMatchers("/oauth/check_token").permitAll()
                     .antMatchers("/api/account/login").permitAll()
@@ -56,21 +57,24 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
                     .antMatchers("/api/account/checkToken").permitAll()
                     .requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
                     .anyRequest()
-                    .authenticated()
-                    //.permitAll()
+                        .authenticated()
                 .and()
                 .cors()
-                .and()
-                .formLogin()
-                    .loginPage("/manager").permitAll()
-                    .loginProcessingUrl("/login")
-                    .defaultSuccessUrl("/manager/home",true)
-                .and()
-                .httpBasic()
-
                 .and()
                 .csrf().disable()
                 .exceptionHandling()
                 .accessDeniedHandler(new OAuth2AccessDeniedHandler());
+
+        http.requestMatcher(new OAuthRequestedMatcher())
+                .authorizeRequests().anyRequest().fullyAuthenticated();
+    }
+
+    private static class OAuthRequestedMatcher implements RequestMatcher {
+        public boolean matches(HttpServletRequest request) {
+            String auth = request.getHeader("Authorization");
+            boolean haveOauth2Token = (auth != null) && auth.startsWith("Bearer");
+            boolean haveAccessToken = request.getParameter("access_token")!=null;
+            return haveOauth2Token || haveAccessToken;
+        }
     }
 }

@@ -22,6 +22,7 @@ import org.springframework.security.oauth2.provider.token.store.InMemoryTokenSto
 import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.CorsUtils;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import us.dev.backend.Account.AccountService;
@@ -63,32 +64,36 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().mvcMatchers("/docs/index.html","/css/**", "/js/**", "/img/**","/vendor/**","/scss/**");
-        web.ignoring().antMatchers("/templates/**");
+        web.ignoring().antMatchers("/templates/**","/static/**","/resources/**");
         web.ignoring().requestMatchers(PathRequest.toStaticResources().atCommonLocations());
     }
-//
-//    @Override
-//    protected void configure(HttpSecurity http) throws Exception {
-//        http
-//                .authorizeRequests()
-//                .antMatchers("/manager","/resources/**","/static/**","/templates/**").permitAll()
-//                .antMatchers("/manager/**").hasRole("ADMIN")
-//                .anyRequest()
-//                    .authenticated()
-//                .and()
-//                .formLogin()
-//                    .loginPage("/manager")
-//                    .loginProcessingUrl("/loginProcess")
-//                    .defaultSuccessUrl("/manager/home")
-//                    .permitAll()
-//                .and()
-//                .logout()
-//                    .permitAll()
-//                .and()
-//                .exceptionHandling()
-//                ;
-//
-//    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+                .authorizeRequests()
+                .antMatchers("/manager","/resources/**","/static/**","/templates/**").permitAll()
+                .antMatchers("/manager/**").hasRole("ADMIN")
+                .requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
+                .anyRequest()
+                    .authenticated()
+                .and()
+                .formLogin()
+                    .loginPage("/manager").permitAll()
+                    .loginProcessingUrl("/loginProcess").permitAll()
+                    .usernameParameter("username")
+                    .passwordParameter("password")
+                    .defaultSuccessUrl("/manager/home")
+                .and()
+                .logout()
+                    .invalidateHttpSession(true)
+                    .permitAll()
+                .and()
+                .csrf().disable()
+                .exceptionHandling()
+                ;
+
+    }
 
     /* CORS with Security */
     @Bean
