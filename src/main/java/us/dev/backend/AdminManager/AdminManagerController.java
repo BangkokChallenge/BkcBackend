@@ -5,14 +5,26 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
-@RequestMapping(value = "/api/admin")
+@RequestMapping(value = "/manager", produces = "text/html")
 public class AdminManagerController {
 
     @GetMapping
-    public String DashBoard(Model model) {
-
-        return "adminPage";
+    public String managerLogin(Model model, HttpServletRequest req) {
+        model.addAttribute("message",req.getServletContext());
+        return "managerLogin";
 
     }
+
+
+    @GetMapping("/home")
+    public String managerPage(Model model) {
+        return "managerPage";
+    }
+
+
+
+
 }

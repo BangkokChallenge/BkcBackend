@@ -1,7 +1,9 @@
 package us.dev.backend.configs;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -60,11 +62,33 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     /* Docs 같은 정적 Resource는 무시함. */
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().mvcMatchers("/docs/index.html");
+        web.ignoring().mvcMatchers("/docs/index.html","/css/**", "/js/**", "/img/**","/vendor/**","/scss/**");
+        web.ignoring().antMatchers("/templates/**");
         web.ignoring().requestMatchers(PathRequest.toStaticResources().atCommonLocations());
     }
-
-
+//
+//    @Override
+//    protected void configure(HttpSecurity http) throws Exception {
+//        http
+//                .authorizeRequests()
+//                .antMatchers("/manager","/resources/**","/static/**","/templates/**").permitAll()
+//                .antMatchers("/manager/**").hasRole("ADMIN")
+//                .anyRequest()
+//                    .authenticated()
+//                .and()
+//                .formLogin()
+//                    .loginPage("/manager")
+//                    .loginProcessingUrl("/loginProcess")
+//                    .defaultSuccessUrl("/manager/home")
+//                    .permitAll()
+//                .and()
+//                .logout()
+//                    .permitAll()
+//                .and()
+//                .exceptionHandling()
+//                ;
+//
+//    }
 
     /* CORS with Security */
     @Bean
