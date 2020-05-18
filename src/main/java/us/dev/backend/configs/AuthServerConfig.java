@@ -57,8 +57,8 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
             .checkTokenAccess("permitAll()");
         // Token 정보를 API(/oauth/check_token)를 활성화 시킨다. ( 기본은 denyAll )
 
-        security.allowFormAuthenticationForClients();
     }
+
 
     /*
         Client 설정. 기기 단의 정보.
