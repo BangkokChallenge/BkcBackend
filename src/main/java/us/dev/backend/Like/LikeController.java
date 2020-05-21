@@ -9,6 +9,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -38,6 +39,8 @@ public class LikeController {
     @Autowired
     LikeRepository likeRepository;
 
+
+    @Transactional
     @PutMapping("/{postId}")
     public ResponseEntity changeLikeState(@PathVariable Integer postId) {
         /* 현재 사용자 받아오기 */
@@ -51,14 +54,14 @@ public class LikeController {
 
         Account newAccount = optionalAccount.get();
 
-        LikePost getLike = this.likeRepository.findByAccountIdAndPostId(newAccount.getId(),postId);
+        LikePost getLike = this.likeRepository.findByAccountIdAndPostId(getUsername,postId);
 
         // 없으면 -> 기본 false -> true 로 생성해서 저장.
         if(getLike == null) {
             LikePost newLike = LikePost.builder()
                     .postId(postId)
                     .accountId(newAccount.getId())
-                    .likeTrueAndFalse(true)
+                    .likeState(true)
                     .build();
             this.likeRepository.save(newLike);
 
@@ -78,15 +81,15 @@ public class LikeController {
 
         } // 있으면 상태값 반대로해서 저장.
         else {
-            if(getLike.likeTrueAndFalse) {
-                getLike.setLikeTrueAndFalse(false);
+            if(getLike.isLikeState()) {
+                getLike.setLikeState(false);
                 this.likeRepository.save(getLike);
 
                 long getLikeCount = likeCountPlusAndMinus(postId,false);
                 getLike.setLikeCount(getLikeCount);
             }
             else {
-                getLike.setLikeTrueAndFalse(true);
+                getLike.setLikeState(true);
                 this.likeRepository.save(getLike);
 
                 long getLikeCount = likeCountPlusAndMinus(postId,true);

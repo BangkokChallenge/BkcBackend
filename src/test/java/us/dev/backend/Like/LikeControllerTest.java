@@ -21,7 +21,7 @@ public class LikeControllerTest extends BaseControllerTest {
     @TestDescription("좋아요 눌렀을 때 반영테스트")
     public void likeChangeState() throws Exception{
 
-       this.mockMvc.perform(put("/api/like/{postId}","1")
+       this.mockMvc.perform(put("/api/like/{postId}","38")
                .header(HttpHeaders.AUTHORIZATION, getBearerToken()))
                .andDo(print())
                .andExpect(status().isCreated())
@@ -36,7 +36,7 @@ public class LikeControllerTest extends BaseControllerTest {
                                fieldWithPath("id").description("LikePost PK"),
                                fieldWithPath("accountId").description("좋아요를 누른 사용자 카카오 아이디"),
                                fieldWithPath("postId").description("좋아요가 반영된 Post 아이디"),
-                               fieldWithPath("likeTrueAndFalse").description("변경된 좋아요 상태"),
+                               fieldWithPath("likeState").description("변경된 좋아요 상태"),
                                fieldWithPath("likeCount").description("해당 게시물의 Like 총 개수")
                        ))
        );
