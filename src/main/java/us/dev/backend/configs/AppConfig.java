@@ -139,7 +139,7 @@ public class AppConfig {
 
 
                 /* test data 여러개 집어넣기 */
-                IntStream.rangeClosed(1, 40).forEach(index -> {
+                IntStream.rangeClosed(1, 38).forEach(index -> {
                     List<HashTag> hashTags = new ArrayList<>();
                     HashTag hashTag = new HashTag();
                     hashTag.setContent("#힐링");

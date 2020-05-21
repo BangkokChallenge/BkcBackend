@@ -1,9 +1,7 @@
 package us.dev.backend.Post;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.*;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.hateoas.Link;
@@ -12,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -57,6 +56,7 @@ public class PostController {
     @Autowired
     AppConfig appConfig;
 
+    @Transactional
     @PostMapping("/upload")
     public ResponseEntity uploadPost(MultipartFile file, PostDto postDto) throws IOException {
         /* 현재 사용자 받아오기 */
@@ -118,13 +118,17 @@ public class PostController {
 
     }
 
+    /* Post 전체 List */
     @GetMapping
     public ResponseEntity getPostList(@PageableDefault Pageable pageable, PagedResourcesAssembler<Post> assembler) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String getUsername = authentication.getName();
+
         List<Post> postList = this.postRepository.findAllByOrderByCreatedAtDesc();
 
         postList.stream().forEach(post -> {
 
-            LikePost getLike = this.likeRepository.findByAccountIdAndPostId(post.getAccountId(), post.getId());
+            LikePost getLike = this.likeRepository.findByAccountIdAndPostId(getUsername, post.getId());
 
             if (getLike == null) {
                 post.setSelfLike(false);
@@ -138,11 +142,10 @@ public class PostController {
 
         });
 
-        //TODO 이부분 첫번째 인자를 고쳐야함 0-10 이라 10개 고정인듯
         //TODO 맨뒤(3번쨰) 인자를 통해서 리턴하는 최대 개수를 설정할 수 있음
-        int pageStart = pageable.getPageNumber()*10;
-        int pageEnd = pageStart + 10;
-        Page<Post> postFeed = new PageImpl<>(postList.subList(pageStart,pageEnd), pageable, postList.size());
+        int pageStart = (int)pageable.getOffset();
+        int pageEnd = (pageStart + pageable.getPageSize()) > postList.size() ? postList.size() : (pageStart + pageable.getPageSize());
+        Page<Post> postFeed = new PageImpl<>(postList.subList(pageStart, pageEnd), pageable, postList.size());
 
         var pagedResources = assembler.toResource(postFeed);
 
@@ -154,6 +157,18 @@ public class PostController {
 
 
         return ResponseEntity.created(createdUri).body(pagedResources);
+    }
+
+    /* 내가 작성한 Post List */
+    @GetMapping("/myWritePost")
+    public ResponseEntity getmyWritePostList(@PageableDefault Pageable pageable, PagedResourcesAssembler<Post> assembler) {
+
+    }
+
+    /* 내가 좋아요한 Post List */
+    @GetMapping("/myLikePostList")
+    public ResponseEntity getmyLikePostList(@PageableDefault Pageable pageable, PagedResourcesAssembler<Post> assembler) {
+
     }
 
 

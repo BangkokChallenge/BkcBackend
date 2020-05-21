@@ -9,6 +9,7 @@ import java.util.List;
 
 @Service
 public interface PostRepository extends JpaRepository<Post, Integer> {
+
     List<Post> findAllByOrderByCreatedAtDesc();
 
 }
