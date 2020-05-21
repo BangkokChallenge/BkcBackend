@@ -14,6 +14,9 @@ import org.springframework.security.oauth2.provider.error.OAuth2AccessDeniedHand
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.security.web.util.matcher.NegatedRequestMatcher;
+import org.springframework.security.web.util.matcher.OrRequestMatcher;
 import org.springframework.security.web.util.matcher.RequestMatcher;
 import org.springframework.web.cors.CorsUtils;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -27,7 +30,6 @@ import java.util.Set;
 
 @Configuration
 @EnableResourceServer
-@Order(1)
 public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
     /*
@@ -46,9 +48,13 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http
+                .requestMatchers()
+                    .antMatchers("/api/**","/oauth/**")
+                .and()
                 .anonymous()
                 .and()
                 .authorizeRequests()
+                    .antMatchers("/api").permitAll()
                     .antMatchers("/oauth/token").permitAll()
                     .antMatchers("/oauth/check_token").permitAll()
                     .antMatchers("/api/account/login").permitAll()
@@ -58,22 +64,14 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
                     .anyRequest()
                         .authenticated()
                 .and()
+                .formLogin().disable()
                 .cors()
                 .and()
                 .csrf().disable()
                 .exceptionHandling()
                 .accessDeniedHandler(new OAuth2AccessDeniedHandler());
 
-        http.requestMatcher(new OAuthRequestedMatcher())
-                .authorizeRequests().anyRequest().fullyAuthenticated();
+
     }
 
-    private static class OAuthRequestedMatcher implements RequestMatcher {
-        public boolean matches(HttpServletRequest request) {
-            String auth = request.getHeader("Authorization");
-            boolean haveOauth2Token = (auth != null) && auth.startsWith("Bearer");
-            boolean haveAccessToken = request.getParameter("access_token")!=null;
-            return haveOauth2Token || haveAccessToken;
-        }
-    }
 }

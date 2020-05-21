@@ -1,9 +1,7 @@
 package us.dev.backend.Post;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.*;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.hateoas.Link;
@@ -12,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -57,6 +56,7 @@ public class PostController {
     @Autowired
     AppConfig appConfig;
 
+    @Transactional
     @PostMapping("/upload")
     public ResponseEntity uploadPost(MultipartFile file, PostDto postDto) throws IOException {
         /* 현재 사용자 받아오기 */
@@ -97,7 +97,7 @@ public class PostController {
         Post newPost = postRepository.save(post);
 
         LikePost newLike = LikePost.builder()
-                .likeTrueAndFalse(false)
+                .likeState(false)
                 .postId(newPost.getId())
                 .accountId(newPost.getAccountId())
                 .build();
@@ -110,7 +110,9 @@ public class PostController {
 
         PostResource postResource = new PostResource(newPost);
         postResource.add(linkTo(PostController.class).slash("upload").withSelfRel());
-        postResource.add(linkTo(PostController.class).slash("").withRel("post list"));
+        postResource.add(linkTo(PostController.class).slash("").withRel("getPostAllList"));
+        postResource.add(linkTo(PostController.class).slash("getMyPosts").withRel("getMyPosts"));
+        postResource.add(linkTo(PostController.class).slash("getMyLikes").withRel("getMyLikes"));
         postResource.add(new Link("/docs/index.html#resource-uploadPost").withRel("profile"));
 
         //created(uri)는 리턴하면 header location 내 createUri 가 들어가게됨.
@@ -118,18 +120,22 @@ public class PostController {
 
     }
 
+    /* Post 전체 List */
     @GetMapping
     public ResponseEntity getPostList(@PageableDefault Pageable pageable, PagedResourcesAssembler<Post> assembler) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String getUsername = authentication.getName();
+
         List<Post> postList = this.postRepository.findAllByOrderByCreatedAtDesc();
 
         postList.stream().forEach(post -> {
 
-            LikePost getLike = this.likeRepository.findByAccountIdAndPostId(post.getAccountId(), post.getId());
+            LikePost getLike = this.likeRepository.findByAccountIdAndPostId(getUsername, post.getId());
 
             if (getLike == null) {
                 post.setSelfLike(false);
             } else {
-                if (getLike.isLikeTrueAndFalse()) {
+                if (getLike.isLikeState()) {
                     post.setSelfLike(true);
                 } else {
                     post.setSelfLike(false);
@@ -138,20 +144,104 @@ public class PostController {
 
         });
 
-        //TODO 이부분 첫번째 인자를 고쳐야함 0-10 이라 10개 고정인듯
         //TODO 맨뒤(3번쨰) 인자를 통해서 리턴하는 최대 개수를 설정할 수 있음
-        int pageStart = pageable.getPageNumber()*10;
-        int pageEnd = pageStart + 10;
-        Page<Post> postFeed = new PageImpl<>(postList.subList(pageStart,pageEnd), pageable, postList.size());
+        int pageStart = (int)pageable.getOffset();
+        int pageEnd = (pageStart + pageable.getPageSize()) > postList.size() ? postList.size() : (pageStart + pageable.getPageSize());
+        Page<Post> postFeed = new PageImpl<>(postList.subList(pageStart, pageEnd), pageable, postList.size());
 
         var pagedResources = assembler.toResource(postFeed);
 
         ControllerLinkBuilder selfLinkBuilder = linkTo(PostController.class).slash("");
         URI createdUri = selfLinkBuilder.toUri();
 
-        pagedResources.add(linkTo(PostController.class).slash("").withSelfRel());
+//        pagedResources.add(linkTo(PostController.class).slash("").withSelfRel());
+        pagedResources.add(linkTo(PostController.class).slash("upload").withRel("postUpload"));
+        pagedResources.add(linkTo(PostController.class).slash("getMyPosts").withRel("getMyPosts"));
+        pagedResources.add(linkTo(PostController.class).slash("getMyLikes").withRel("getMyLikes"));
         pagedResources.add(new Link("/docs/index.html#resource-getPostList").withRel("profile"));
 
+
+        return ResponseEntity.created(createdUri).body(pagedResources);
+    }
+
+    /* 내가 작성한 Post List */
+    @GetMapping("/getMyPosts")
+    public ResponseEntity getMyPosts(@PageableDefault Pageable pageable, PagedResourcesAssembler<Post> assembler) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String getUsername = authentication.getName();
+
+        List<Post> postList = postRepository.findByAccountIdOrderByCreatedAtDesc(getUsername);
+
+        postList.stream().forEach(post -> {
+
+            LikePost getLike = this.likeRepository.findByAccountIdAndPostId(getUsername, post.getId());
+
+            if (getLike == null) {
+                post.setSelfLike(false);
+            } else {
+                if (getLike.isLikeState()) {
+                    post.setSelfLike(true);
+                } else {
+                    post.setSelfLike(false);
+                }
+            }
+
+        });
+
+        int pageStart = (int)pageable.getOffset();
+        int pageEnd = (pageStart + pageable.getPageSize()) > postList.size() ? postList.size() : (pageStart + pageable.getPageSize());
+        Page<Post> postFeed = new PageImpl<>(postList.subList(pageStart, pageEnd), pageable, postList.size());
+
+        var pagedResources = assembler.toResource(postFeed);
+
+        ControllerLinkBuilder selfLinkBuilder = linkTo(PostController.class).slash("");
+        URI createdUri = selfLinkBuilder.toUri();
+
+        pagedResources.add(linkTo(PostController.class).slash("upload").withRel("postUpload"));
+        pagedResources.add(linkTo(PostController.class).slash("").withRel("getPostAllList"));
+        pagedResources.add(linkTo(PostController.class).slash("getMyLikes").withRel("getMyLikes"));
+        pagedResources.add(new Link("/docs/index.html#resource-getMyPosts").withRel("profile"));
+
+        return ResponseEntity.created(createdUri).body(pagedResources);
+    }
+
+    /* 내가 좋아요한 Post List */
+    @GetMapping("/getMyLikes")
+    public ResponseEntity getMyLikes(@PageableDefault Pageable pageable, PagedResourcesAssembler<Post> assembler) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String getUsername = authentication.getName();
+
+        List<LikePost> likePostList = likeRepository.findByAccountIdAndLikeStateOrderByCreatedAtDesc(getUsername,true);
+        if(likePostList.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        List<Post> postList = new ArrayList<>();
+
+        likePostList.stream().forEach(likePost -> {
+            Optional<Post> getOptionalPost = postRepository.findById(likePost.getPostId());
+            if(getOptionalPost.isEmpty()) {
+                throw new IllegalArgumentException("해당 포스트와 연결된 것이 없음");
+            }
+            Post getPost = getOptionalPost.get();
+            getPost.setSelfLike(true);
+            postList.add(getPost);
+        });
+
+
+        int pageStart = (int)pageable.getOffset();
+        int pageEnd = (pageStart + pageable.getPageSize()) > postList.size() ? postList.size() : (pageStart + pageable.getPageSize());
+        Page<Post> postFeed = new PageImpl<>(postList.subList(pageStart, pageEnd), pageable, postList.size());
+
+        var pagedResources = assembler.toResource(postFeed);
+
+        ControllerLinkBuilder selfLinkBuilder = linkTo(PostController.class).slash("");
+        URI createdUri = selfLinkBuilder.toUri();
+
+        pagedResources.add(linkTo(PostController.class).slash("upload").withRel("postUpload"));
+        pagedResources.add(linkTo(PostController.class).slash("").withRel("getPostAllList"));
+        pagedResources.add(linkTo(PostController.class).slash("getMyPosts").withRel("getMyPosts"));
+        pagedResources.add(new Link("/docs/index.html#resource-getMyLikes").withRel("profile"));
 
         return ResponseEntity.created(createdUri).body(pagedResources);
     }
