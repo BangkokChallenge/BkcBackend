@@ -22,7 +22,7 @@ public class LikePost extends BaseTimeEntity {
 
     String accountId;
 
-    boolean likeTrueAndFalse;
+    boolean likeState;
 
     @Transient
     long likeCount;

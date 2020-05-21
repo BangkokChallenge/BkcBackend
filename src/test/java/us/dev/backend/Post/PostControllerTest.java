@@ -17,8 +17,7 @@ import static org.springframework.restdocs.hypermedia.HypermediaDocumentation.li
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
 import static org.springframework.restdocs.payload.PayloadDocumentation.relaxedResponseFields;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.multipart;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -58,7 +57,9 @@ public class PostControllerTest extends BaseControllerTest {
                 .andDo(document("uploadPost",
                         links(
                                 linkWithRel("self").description("현재 링크"),
-                                linkWithRel("post list").description("Post List를 가져오는 링크"),
+                                linkWithRel("getPostAllList").description("모든 Post를 가져오는 링크"),
+                                linkWithRel("getMyPosts").description("내가 업로드한 Posts 링크"),
+                                linkWithRel("getMyLikes").description("내가 좋아요한 Posts 링크"),
                                 linkWithRel("profile").description("도큐먼트 링크")
                         ),
                         relaxedResponseFields(
@@ -90,10 +91,93 @@ public class PostControllerTest extends BaseControllerTest {
                 .andExpect(jsonPath("_links.profile").exists())
                 .andDo(document("getPosts",links(
                         linkWithRel("self").description("현재 링크"),
-                        linkWithRel("profile").description("도큐먼트 링크"),
                         linkWithRel("next").description("다음 페이지 링크"),
                         linkWithRel("first").description("첫 페이지 링크"),
-                        linkWithRel("last").description("마지막 페이지 링크")
+                        linkWithRel("last").description("마지막 페이지 링크"),
+                        linkWithRel("postUpload").description("게시물 업로드 링크"),
+                        linkWithRel("getMyPosts").description("내가 작성한 Posts 링크"),
+                        linkWithRel("getMyLikes").description("내가 좋아요한 Posts 링크"),
+                        linkWithRel("profile").description("도큐먼트 링크")
+
+                        ),
+                        relaxedResponseFields(
+                                fieldWithPath("_embedded").description("Post 페이지정보들[기본리턴속성임]"),
+                                fieldWithPath("_embedded.postList[0].accountId").description("작성자 Kakao ID"),
+                                fieldWithPath("_embedded.postList[0].nickname").description("작성자 Kakao Nickname"),
+                                fieldWithPath("_embedded.postList[0].profile_photo").description("작성자 KaKao Profile Photo"),
+                                fieldWithPath("_embedded.postList[0].id").description("Post ID"),
+                                fieldWithPath("_embedded.postList[0].hashTag").description("Post HashTag"),
+                                fieldWithPath("_embedded.postList[0].selfLike").description("작성자가 해당 Post에 좋아요를 눌렀는지 여부"),
+                                fieldWithPath("_embedded.postList[0].commentCount").description("댓글 수 "),
+                                fieldWithPath("_embedded.postList[0].likeCount").description("좋아요 수 "),
+                                fieldWithPath("_embedded.postList[0].article").description("Post 내용"),
+                                fieldWithPath("_embedded.postList[0].filePath").description("S3 image file path"),
+                                fieldWithPath("page").description("Paging 정보들")
+
+                        )
+                ))
+        ;
+    }
+
+    @Test
+    @TestDescription("내가 업로드한 Post를 가져오는 테스트")
+    public void getMyWritePosts() throws Exception {
+        //given
+        this.mockMvc.perform(get("/api/post/getMyPosts")
+                .header(HttpHeaders.AUTHORIZATION, getBearerToken()))
+                .andExpect(status().isCreated())
+                .andExpect(jsonPath("_embedded").exists())
+                .andExpect(jsonPath("_links.self").exists())
+                .andExpect(jsonPath("_links.profile").exists())
+                .andDo(document("getMyPosts",links(
+                        linkWithRel("self").description("현재 링크"),
+                        linkWithRel("next").description("다음 페이지 링크"),
+                        linkWithRel("first").description("첫 페이지 링크"),
+                        linkWithRel("last").description("마지막 페이지 링크"),
+                        linkWithRel("postUpload").description("게시물 업로드 링크"),
+                        linkWithRel("getPostAllList").description("모든 Post를 가져오는 링크"),
+                        linkWithRel("getMyLikes").description("내가 좋아요한 Posts 링크"),
+                        linkWithRel("profile").description("도큐먼트 링크")
+                        ),
+                        relaxedResponseFields(
+                                fieldWithPath("_embedded").description("Post 페이지정보들[기본리턴속성임]"),
+                                fieldWithPath("_embedded.postList[0].accountId").description("작성자 Kakao ID"),
+                                fieldWithPath("_embedded.postList[0].nickname").description("작성자 Kakao Nickname"),
+                                fieldWithPath("_embedded.postList[0].profile_photo").description("작성자 KaKao Profile Photo"),
+                                fieldWithPath("_embedded.postList[0].id").description("Post ID"),
+                                fieldWithPath("_embedded.postList[0].hashTag").description("Post HashTag"),
+                                fieldWithPath("_embedded.postList[0].selfLike").description("작성자가 해당 Post에 좋아요를 눌렀는지 여부"),
+                                fieldWithPath("_embedded.postList[0].commentCount").description("댓글 수 "),
+                                fieldWithPath("_embedded.postList[0].likeCount").description("좋아요 수 "),
+                                fieldWithPath("_embedded.postList[0].article").description("Post 내용"),
+                                fieldWithPath("_embedded.postList[0].filePath").description("S3 image file path"),
+                                fieldWithPath("page").description("Paging 정보들")
+
+                        )
+                ))
+        ;
+    }
+
+    @Test
+    @TestDescription("내가 좋아요한 Post를 가져오는 테스트")
+    public void getMyLikePosts() throws Exception {
+        //given
+
+        this.mockMvc.perform(get("/api/post/getMyLikes")
+                .header(HttpHeaders.AUTHORIZATION, getBearerToken()))
+                .andExpect(status().isCreated())
+                .andExpect(jsonPath("_embedded").exists())
+                .andExpect(jsonPath("_links.self").exists())
+                .andExpect(jsonPath("_links.profile").exists())
+                .andDo(document("getMyLikes",links(
+                        linkWithRel("self").description("현재 링크"),
+                        linkWithRel("next").description("다음 페이지 링크"),
+                        linkWithRel("first").description("첫 페이지 링크"),
+                        linkWithRel("last").description("마지막 페이지 링크"),
+                        linkWithRel("postUpload").description("게시물 업로드 링크"),
+                        linkWithRel("getPostAllList").description("모든 Post를 가져오는 링크"),
+                        linkWithRel("getMyPosts").description("내가 업로드한 Posts 링크"),
+                        linkWithRel("profile").description("도큐먼트 링크")
                         ),
                         relaxedResponseFields(
                                 fieldWithPath("_embedded").description("Post 페이지정보들[기본리턴속성임]"),

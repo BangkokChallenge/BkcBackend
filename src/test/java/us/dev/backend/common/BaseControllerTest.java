@@ -18,8 +18,16 @@ import org.springframework.test.web.servlet.ResultActions;
 import us.dev.backend.Account.Account;
 import us.dev.backend.Account.AccountRole;
 import us.dev.backend.Account.AccountService;
+import us.dev.backend.HashTag.HashTag;
+import us.dev.backend.Like.LikePost;
+import us.dev.backend.Like.LikeRepository;
+import us.dev.backend.Post.Post;
+import us.dev.backend.Post.PostRepository;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.IntStream;
 
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.httpBasic;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -52,6 +60,12 @@ public class BaseControllerTest {
     @Autowired
     protected AccountService accountService;
 
+    @Autowired
+    protected PostRepository postRepository;
+
+    @Autowired
+    protected LikeRepository likeRepository;
+
     @Before
     public void createTddAccount() {
         Account account = Account.builder()
@@ -63,6 +77,39 @@ public class BaseControllerTest {
                 .build();
 
         accountService.saveAccount(account);
+
+        IntStream.rangeClosed(1, 22).forEach(index -> {
+            List<HashTag> hashTags = new ArrayList<>();
+            HashTag hashTag = new HashTag();
+            hashTag.setContent("#힐링");
+            hashTag.setAccount(account);
+            hashTags.add(hashTag);
+
+
+            Post initPost = Post.builder()
+                    .accountId(account.getId())
+                    .article("TDD 내용")
+                    .filePath("TDD FilePath")
+                    .profile_photo("TDD Profile Photo")
+                    .nickname(account.getNickname())
+                    .hashTag(hashTags)
+                    .build();
+
+            Post newPost = postRepository.save(initPost);
+            LikePost initLike = LikePost.builder()
+                    .accountId(newPost.getAccountId())
+                    .likeState(false)
+                    .postId(newPost.getId())
+                    .build();
+
+            if(index > 11) {
+                initLike.setLikeState(true);
+            }
+
+            likeRepository.save(initLike);
+
+
+        });
     }
 
     public String getBearerToken() throws Exception {

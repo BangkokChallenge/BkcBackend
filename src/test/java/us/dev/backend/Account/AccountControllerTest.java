@@ -41,7 +41,7 @@ public class AccountControllerTest extends BaseControllerTest{
     public void createAccount() throws Exception {
         //given
         AccountDtoKey accountDtoKey = AccountDtoKey.builder()
-                .key("B1EHOZwUzgVaHYLu1HsSvdmTnBI8INOF7ZpkEAo9cuoAAAFyE4Hc_Q")
+                .key("N-A3G74slcq1BlujTV6dWSaYV61G4n79GSwKrQo9dJcAAAFyJCCaow")
                 .build();
 
         //when&then

@@ -1,32 +1,26 @@
 package us.dev.backend.configs;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
+import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.oauth2.provider.error.OAuth2AccessDeniedHandler;
 import org.springframework.security.oauth2.provider.token.TokenStore;
-import org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore;
 import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
-import org.springframework.web.cors.CorsUtils;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import us.dev.backend.Account.AccountService;
-
 import javax.sql.DataSource;
 
 @Configuration
@@ -65,25 +59,26 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().mvcMatchers("/docs/index.html","/css/**", "/js/**", "/img/**","/vendor/**","/scss/**");
         web.ignoring().antMatchers("/templates/**","/static/**","/resources/**");
-        web.ignoring().requestMatchers(PathRequest.toStaticResources().atCommonLocations());
+
+         web.ignoring().requestMatchers(PathRequest.toStaticResources().atCommonLocations());
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+                .requestMatchers()
+                    .antMatchers("/manager","/manager/**")
+                .and()
                 .authorizeRequests()
-                .antMatchers("/manager","/resources/**","/static/**","/templates/**").permitAll()
-                .antMatchers("/manager/**").hasRole("ADMIN")
-                .requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
-                .anyRequest()
-                    .authenticated()
+                     .antMatchers("/manager/**").hasRole("ADMIN")
                 .and()
                 .formLogin()
                     .loginPage("/manager").permitAll()
-                    .loginProcessingUrl("/loginProcess").permitAll()
+                    .loginProcessingUrl("/manager/loginProcess").permitAll()
                     .usernameParameter("username")
                     .passwordParameter("password")
-                    .defaultSuccessUrl("/manager/home")
+                    .defaultSuccessUrl("/manager/home",true)
+                    .permitAll()
                 .and()
                 .logout()
                     .invalidateHttpSession(true)
@@ -94,6 +89,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 ;
 
     }
+
 
     /* CORS with Security */
     @Bean
