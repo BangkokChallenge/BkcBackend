@@ -9,6 +9,7 @@ import org.springframework.hateoas.mvc.ControllerLinkBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.Errors;
@@ -58,19 +59,30 @@ public class PostController {
 
     @Transactional
     @PostMapping("/upload")
-    public ResponseEntity uploadPost(MultipartFile file, PostDto postDto) throws IOException {
+    public ResponseEntity uploadPost(List<MultipartFile> fileList, PostDto postDto) throws Exception {
         /* 현재 사용자 받아오기 */
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String getUsername = authentication.getName();
 
-        Optional<Account> optionalAccount = this.accountRepository.findById(getUsername);
+        Account getAccount = this.accountRepository.findById(getUsername)
+                .orElseThrow(() -> new UsernameNotFoundException("계정 정보가 잘못됨"));
 
-        if (optionalAccount.isEmpty()) {
-            return ResponseEntity.notFound().build();
+        if(fileList.isEmpty()) {
+            throw new IllegalArgumentException("파일이 첨부되지 않았음");
         }
-        Account newAccount = optionalAccount.get();
 
-        String filePath = s3Service.upload(file);
+        String filePath = "";
+
+        for(int i=0;i<fileList.size();i++) {
+            String streamFilePath = s3Service.upload(fileList.get(i));
+            if(i == fileList.size()-1) {
+                filePath = filePath + streamFilePath;
+            }
+            else {
+                filePath = filePath + streamFilePath + ",";
+            }
+        }
+
         /* 저장할 POST Setting */
 
         Post post = this.appConfig.modelMapper().map(postDto, Post.class);
@@ -82,14 +94,14 @@ public class PostController {
             for(int i =1; i < strHashTags.length; i++) {
                 HashTag hashTag = new HashTag();
                 hashTag.setContent("#"+strHashTags[i]);
-                hashTag.setAccount(newAccount);
+                hashTag.setAccount(getAccount);
                 hashTags.add(hashTag);
             }
             post.setHashTag(hashTags);
         }
-        post.setAccountId(newAccount.getId());
-        post.setNickname(newAccount.getNickname());
-        post.setProfile_photo(newAccount.getProfile_photo());
+        post.setAccountId(getAccount.getId());
+        post.setNickname(getAccount.getNickname());
+        post.setProfile_photo(getAccount.getProfile_photo());
         post.setFilePath(filePath);
         post.setCommentCount(0);
         post.setLikeCount(0);
@@ -127,6 +139,10 @@ public class PostController {
         String getUsername = authentication.getName();
 
         List<Post> postList = this.postRepository.findAllByOrderByCreatedAtDesc();
+
+        if(postList.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
 
         postList.stream().forEach(post -> {
 
