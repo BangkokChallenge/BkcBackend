@@ -12,6 +12,9 @@ import us.dev.backend.common.AppProperties;
 import us.dev.backend.common.BaseControllerTest;
 import us.dev.backend.common.TestDescription;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.springframework.restdocs.hypermedia.HypermediaDocumentation.linkWithRel;
 import static org.springframework.restdocs.hypermedia.HypermediaDocumentation.links;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
@@ -39,7 +42,8 @@ public class PostControllerTest extends BaseControllerTest {
 
 
         /* Form data */
-        MockMultipartFile file = new MockMultipartFile("file", "hello.txt", MediaType.TEXT_PLAIN_VALUE, "Hello, World!".getBytes());
+        MockMultipartFile file1 = new MockMultipartFile("fileList", "hello1.txt", MediaType.TEXT_PLAIN_VALUE, "Hello, World!".getBytes());
+        MockMultipartFile file2 = new MockMultipartFile("fileList", "hello2.txt", MediaType.TEXT_PLAIN_VALUE, "Hello, World!".getBytes());
 
         MultiValueMap<String,String> map = new LinkedMultiValueMap<>();
 
@@ -48,7 +52,7 @@ public class PostControllerTest extends BaseControllerTest {
 
 
         //when&then
-        mockMvc.perform(multipart("/api/post/upload").file(file).params(map)
+        mockMvc.perform(multipart("/api/post/upload").file(file1).file(file2).params(map)
                 .header(HttpHeaders.AUTHORIZATION, getBearerToken()))
                 .andDo(print())
                 .andExpect(status().isCreated())
