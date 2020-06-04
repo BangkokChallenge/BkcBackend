@@ -7,8 +7,8 @@ import us.dev.backend.common.BaseTimeEntity;
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Builder
 @AllArgsConstructor
@@ -22,7 +22,8 @@ public class Post extends BaseTimeEntity {
     @NotNull
     String accountId;
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
 
     String article;
@@ -45,10 +46,12 @@ public class Post extends BaseTimeEntity {
     String filePath;
 
     @Builder.Default
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "post_hashtag",
-            joinColumns = @JoinColumn(name = "post_id"),
-            inverseJoinColumns = @JoinColumn(name = "hashtag_id"))
-    List<HashTag> hashTag = new ArrayList<>();
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(name = "post_hashtag", joinColumns = @JoinColumn(name = "post_id"), inverseJoinColumns = @JoinColumn(name = "hashtag_id"))
+    Set<HashTag> hashTags = new HashSet<>();
+
+    public void addHashTag(HashTag hashTag) {
+        this.hashTags.add(hashTag);
+    }
 
 }

@@ -11,7 +11,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.security.oauth2.common.util.Jackson2JsonParser;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
@@ -19,13 +18,13 @@ import us.dev.backend.Account.Account;
 import us.dev.backend.Account.AccountRole;
 import us.dev.backend.Account.AccountService;
 import us.dev.backend.HashTag.HashTag;
+import us.dev.backend.HashTag.HashTagService;
 import us.dev.backend.Like.LikePost;
 import us.dev.backend.Like.LikeRepository;
 import us.dev.backend.Post.Post;
 import us.dev.backend.Post.PostRepository;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.IntStream;
 
@@ -60,6 +59,9 @@ public class BaseControllerTest {
     protected AccountService accountService;
 
     @Autowired
+    protected HashTagService hashTagService;
+
+    @Autowired
     protected PostRepository postRepository;
 
     @Autowired
@@ -78,21 +80,23 @@ public class BaseControllerTest {
         accountService.saveAccount(account);
 
         IntStream.rangeClosed(1, 22).forEach(index -> {
-            List<HashTag> hashTags = new ArrayList<>();
-            HashTag hashTag = new HashTag();
-            hashTag.setContent("#힐링");
-            hashTag.setAccount(account);
-            hashTags.add(hashTag);
-
-
             Post initPost = Post.builder()
                     .accountId(account.getId())
                     .article("TDD 내용")
                     .filePath("TDD FilePath")
                     .profile_photo("TDD Profile Photo")
                     .nickname(account.getNickname())
-                    .hashTag(hashTags)
                     .build();
+
+            if (index < 19) {
+                HashTag newHashTag = new HashTag();
+                newHashTag.setContent("#맞팔");
+                initPost.addHashTag(newHashTag);
+            } else {
+                HashTag newHashTag = new HashTag();
+                newHashTag.setContent("#선팔");
+                initPost.addHashTag(newHashTag);
+            }
 
             Post newPost = postRepository.save(initPost);
             LikePost initLike = LikePost.builder()

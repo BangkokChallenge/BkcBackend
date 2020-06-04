@@ -24,6 +24,7 @@ import us.dev.backend.Account.AccountRepository;
 import us.dev.backend.Account.AccountRole;
 import us.dev.backend.Account.AccountService;
 import us.dev.backend.HashTag.HashTag;
+import us.dev.backend.HashTag.HashTagService;
 import us.dev.backend.Like.LikePost;
 import us.dev.backend.Like.LikeRepository;
 import us.dev.backend.Post.Post;
@@ -77,6 +78,9 @@ public class AppConfig {
 
             @Autowired
             PostRepository postRepository;
+
+            @Autowired
+            HashTagService hashTagService;
 
             @Autowired
             AccountRepository accountRepository;
@@ -140,20 +144,23 @@ public class AppConfig {
 
                 /* test data 여러개 집어넣기 */
                 IntStream.rangeClosed(1, 38).forEach(index -> {
-                    List<HashTag> hashTags = new ArrayList<>();
-                    HashTag hashTag = new HashTag();
-                    hashTag.setContent("#힐링");
-                    hashTag.setAccount(newAccount);
-                    hashTags.add(hashTag);
-
                     Post initPost = Post.builder()
                             .accountId(newAccount.getId())
                             .article("미안하다 이거 보여주려고 어그로끌었다.. 나루토 사스케 싸움수준 ㄹㅇ실화냐? 진짜 세계관최강자들의 싸움이다.. 그찐따같던 나루토가 맞나? 진짜 나루토는 전설이다.")
                             .filePath("https://jayass3cloud.s3.ap-northeast-2.amazonaws.com/IMG_8456.jpg")
                             .profile_photo("http://k.kakaocdn.net/dn/oMYoX/btqDheA1EpU/CiRZnaTetvs2OfkeRcTQL0/img_640x640.jpg")
                             .nickname(newAccount.getNickname())
-                            .hashTag(hashTags)
                             .build();
+                    if (index < 19) {
+                        HashTag newHashTag = new HashTag();
+                        newHashTag.setContent("#맞팔");
+                        initPost.addHashTag(newHashTag);
+
+                    } else {
+                        HashTag newHashTag = new HashTag();
+                        newHashTag.setContent("#선팔");
+                        initPost.addHashTag(newHashTag);
+                    }
 
                     Post newPost = postRepository.save(initPost);
                     LikePost initLike = LikePost.builder()

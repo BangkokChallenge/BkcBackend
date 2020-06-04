@@ -1,7 +1,9 @@
 package us.dev.backend.Post;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.*;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.hateoas.Link;
@@ -16,24 +18,24 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import us.dev.backend.Account.Account;
 import us.dev.backend.Account.AccountRepository;
 import us.dev.backend.Comment.CommentRepository;
 import us.dev.backend.HashTag.HashTag;
+import us.dev.backend.HashTag.HashTagService;
 import us.dev.backend.Like.LikePost;
 import us.dev.backend.Like.LikeRepository;
 import us.dev.backend.common.ErrorsResource;
 import us.dev.backend.configs.AppConfig;
 
-import java.io.IOException;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 
 @Controller
 @RequestMapping(value = "/api/post")
@@ -44,6 +46,9 @@ public class PostController {
 
     @Autowired
     AccountRepository accountRepository;
+
+    @Autowired
+    HashTagService hashTagService;
 
     @Autowired
     CommentRepository commentRepository;
@@ -67,18 +72,17 @@ public class PostController {
         Account getAccount = this.accountRepository.findById(getUsername)
                 .orElseThrow(() -> new UsernameNotFoundException("계정 정보가 잘못됨"));
 
-        if(fileList.isEmpty()) {
+        if (fileList.isEmpty()) {
             throw new IllegalArgumentException("파일이 첨부되지 않았음");
         }
 
         String filePath = "";
 
-        for(int i=0;i<fileList.size();i++) {
+        for (int i = 0; i < fileList.size(); i++) {
             String streamFilePath = s3Service.upload(fileList.get(i));
-            if(i == fileList.size()-1) {
+            if (i == fileList.size() - 1) {
                 filePath = filePath + streamFilePath;
-            }
-            else {
+            } else {
                 filePath = filePath + streamFilePath + ",";
             }
         }
@@ -87,17 +91,18 @@ public class PostController {
 
         Post post = this.appConfig.modelMapper().map(postDto, Post.class);
 
-
-        List<HashTag> hashTags = new ArrayList<>();
-        if(postDto.getHashTag() != null) {
+        if (postDto.getHashTag() != null) {
             String[] strHashTags = postDto.getHashTag().replaceAll(" ", "").split("#");
-            for(int i =1; i < strHashTags.length; i++) {
-                HashTag hashTag = new HashTag();
-                hashTag.setContent("#"+strHashTags[i]);
-                hashTag.setAccount(getAccount);
-                hashTags.add(hashTag);
+            for (int i = 1; i < strHashTags.length; i++) {
+                Optional<HashTag> hashTag = hashTagService.findByContent("#" + strHashTags[i]);
+                if (hashTag.isPresent()) {
+                    post.addHashTag(hashTag.get());
+                } else {
+                    HashTag newHashTag = new HashTag();
+                    newHashTag.setContent("#" + strHashTags[i]);
+                    post.addHashTag(newHashTag);
+                }
             }
-            post.setHashTag(hashTags);
         }
         post.setAccountId(getAccount.getId());
         post.setNickname(getAccount.getNickname());
@@ -134,13 +139,19 @@ public class PostController {
 
     /* Post 전체 List */
     @GetMapping
-    public ResponseEntity getPostList(@PageableDefault Pageable pageable, PagedResourcesAssembler<Post> assembler) {
+    public ResponseEntity getPostList(@PageableDefault Pageable pageable, PagedResourcesAssembler<Post> assembler, @RequestParam(value = "hashTag", required = false) String hashTagContent) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String getUsername = authentication.getName();
 
-        List<Post> postList = this.postRepository.findAllByOrderByCreatedAtDesc();
+        List<Post> postList;
 
-        if(postList.isEmpty()) {
+        if (hashTagContent != null) {
+            postList = postRepository.findAllByHashTagsContentOrderByCreatedAtDesc(hashTagContent);
+        } else {
+            postList = this.postRepository.findAllByOrderByCreatedAtDesc();
+        }
+
+        if (postList.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
 
@@ -161,7 +172,7 @@ public class PostController {
         });
 
         //TODO 맨뒤(3번쨰) 인자를 통해서 리턴하는 최대 개수를 설정할 수 있음
-        int pageStart = (int)pageable.getOffset();
+        int pageStart = (int) pageable.getOffset();
         int pageEnd = (pageStart + pageable.getPageSize()) > postList.size() ? postList.size() : (pageStart + pageable.getPageSize());
         Page<Post> postFeed = new PageImpl<>(postList.subList(pageStart, pageEnd), pageable, postList.size());
 
@@ -204,7 +215,7 @@ public class PostController {
 
         });
 
-        int pageStart = (int)pageable.getOffset();
+        int pageStart = (int) pageable.getOffset();
         int pageEnd = (pageStart + pageable.getPageSize()) > postList.size() ? postList.size() : (pageStart + pageable.getPageSize());
         Page<Post> postFeed = new PageImpl<>(postList.subList(pageStart, pageEnd), pageable, postList.size());
 
@@ -227,8 +238,8 @@ public class PostController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String getUsername = authentication.getName();
 
-        List<LikePost> likePostList = likeRepository.findByAccountIdAndLikeStateOrderByCreatedAtDesc(getUsername,true);
-        if(likePostList.isEmpty()) {
+        List<LikePost> likePostList = likeRepository.findByAccountIdAndLikeStateOrderByCreatedAtDesc(getUsername, true);
+        if (likePostList.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
 
@@ -236,7 +247,7 @@ public class PostController {
 
         likePostList.stream().forEach(likePost -> {
             Optional<Post> getOptionalPost = postRepository.findById(likePost.getPostId());
-            if(getOptionalPost.isEmpty()) {
+            if (getOptionalPost.isEmpty()) {
                 throw new IllegalArgumentException("해당 포스트와 연결된 것이 없음");
             }
             Post getPost = getOptionalPost.get();
@@ -245,7 +256,7 @@ public class PostController {
         });
 
 
-        int pageStart = (int)pageable.getOffset();
+        int pageStart = (int) pageable.getOffset();
         int pageEnd = (pageStart + pageable.getPageSize()) > postList.size() ? postList.size() : (pageStart + pageable.getPageSize());
         Page<Post> postFeed = new PageImpl<>(postList.subList(pageStart, pageEnd), pageable, postList.size());
 

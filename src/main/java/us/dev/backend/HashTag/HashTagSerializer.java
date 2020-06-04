@@ -17,8 +17,6 @@ public class HashTagSerializer extends JsonSerializer<HashTag> {
         jsonGenerator.writeStartObject();
         jsonGenerator.writeNumberField("id", hashTag.getId());
         jsonGenerator.writeStringField("content", hashTag.getContent());
-        jsonGenerator.writeObjectField("createdAt", DATE_FORMAT.format(hashTag.getCreatedAt()));
-        jsonGenerator.writeObjectField("modifiedAt", DATE_FORMAT.format(hashTag.getModifiedAt()));
         jsonGenerator.writeEndObject();
     }
 }
